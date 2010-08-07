@@ -1,0 +1,7 @@
+%h1 Proposals
+
+%ul
+- @proposals.each do |proposal|
+  %li=link_to(h(proposal.inspect), proposal)
+  
+= link_to 'New proposal', new_proposal_path

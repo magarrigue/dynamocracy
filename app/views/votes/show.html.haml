@@ -1,0 +1,7 @@
+%h1 Show vote
+
+%ul
+  - @vote.attributes.each do |key, value|
+    %li
+      %span= Vote.human_attribute_name key
+      %span= value

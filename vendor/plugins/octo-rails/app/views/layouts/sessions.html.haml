@@ -1,0 +1,18 @@
+!!! 5
+%html{ :lang => "en" }
+  %head
+    %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "Content-Type" }
+    = stylesheet_link_tag "openid", "octo_rails", "formtastic", "formtastic_changes"
+    = javascript_include_tag "openid/jquery.min", "openid/openid-jquery", "openid/signup"
+    %title Sign in or Register
+  %body
+    .octo-rails
+      %h1= ENV['APP_NAME'] || "ENV['APP_NAME']"
+      .form_area
+        = yield
+      .form_area.why_openid
+        = yield :sidebar
+      %div{:style=>"clear:both"}
+      %p.outdoors
+        Or, if you don't have an OpenID through any of the above, 
+        = link_to "click here to sign up!", "http://myopenid.com"

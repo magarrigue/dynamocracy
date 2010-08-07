@@ -1,0 +1,12 @@
+fr:
+  activerecord:
+    errors:
+      models:
+        proposal:
+          attributes:
+            closing_at:
+              blank: "Vindiou, il faut une date de fermeture !!"
+    attributes:
+      proposal:
+        status: Statut
+        

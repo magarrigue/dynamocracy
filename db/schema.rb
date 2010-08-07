@@ -1,0 +1,62 @@
+# This file is auto-generated from the current state of the database. Instead of editing this file, 
+# please use the migrations feature of Active Record to incrementally modify your database, and
+# then regenerate this schema definition.
+#
+# Note that this schema.rb definition is the authoritative source for your database schema. If you need
+# to create the application database on another system, you should be using db:schema:load, not running
+# all the migrations from scratch. The latter is a flawed and unsustainable approach (the more migrations
+# you'll amass, the slower it'll run and the greater likelihood for issues).
+#
+# It's strongly recommended to check this file into your version control system.
+
+ActiveRecord::Schema.define(:version => 20100807114453) do
+
+  create_table "open_id_associations", :force => true do |t|
+    t.binary  "server_url", :null => false
+    t.string  "handle",     :null => false
+    t.binary  "secret",     :null => false
+    t.integer "issued",     :null => false
+    t.integer "lifetime",   :null => false
+    t.string  "assoc_type", :null => false
+  end
+
+  create_table "open_id_nonces", :force => true do |t|
+    t.string  "server_url", :null => false
+    t.integer "timestamp",  :null => false
+    t.string  "salt",       :null => false
+  end
+
+  create_table "proposals", :force => true do |t|
+    t.text     "text"
+    t.string   "status",     :default => "open",                :null => false
+    t.datetime "opening_at", :default => '2010-07-31 01:00:51', :null => false
+    t.datetime "closing_at", :default => '2010-08-06 23:00:51', :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "signatures", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "proposal_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "nickname"
+    t.string   "email"
+    t.string   "openid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "votes", :force => true do |t|
+    t.string   "value"
+    t.integer  "voter_id"
+    t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "proposal_id"
+  end
+
+end

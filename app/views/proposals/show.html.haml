@@ -1,0 +1,11 @@
+%h1 View proposal
+
+%ul
+  - @proposal.attributes.each do |key, value|
+    %li
+      %span= Proposal.human_attribute_name key
+      %span= value
+= link_to 'Vote on this proposal', new_proposal_vote_path(@proposal)
+
+
+= link_to 'Back to list', proposals_path

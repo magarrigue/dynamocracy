@@ -1,0 +1,20 @@
+form.formtastic {
+  width: 100%; }
+  form.formtastic fieldset {
+    background: #efefef;
+    padding: 10px; }
+    form.formtastic fieldset legend {
+      background: none;
+      border: none;
+      font-weight: bold; }
+    form.formtastic fieldset.buttons {
+      background: #dedede;
+      padding: 10px; }
+      form.formtastic fieldset.buttons li {
+        margin-bottom: 0px; }
+
+form.formtastic fieldset {
+  width: 95%; }
+
+form.formtastic fieldset > ol > li.string input {
+  max-width: 70%; }
