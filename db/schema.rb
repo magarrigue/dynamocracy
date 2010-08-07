@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100807114453) do
+ActiveRecord::Schema.define(:version => 20100807160847) do
 
   create_table "open_id_associations", :force => true do |t|
     t.binary  "server_url", :null => false
@@ -28,19 +28,21 @@ ActiveRecord::Schema.define(:version => 20100807114453) do
 
   create_table "proposals", :force => true do |t|
     t.text     "text"
-    t.string   "status",     :default => "open",                :null => false
-    t.datetime "opening_at", :default => '2010-07-31 01:00:51', :null => false
-    t.datetime "closing_at", :default => '2010-08-06 23:00:51', :null => false
+    t.string   "status",     :default => "open", :null => false
+    t.datetime "opening_at",                     :null => false
+    t.datetime "closing_at",                     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "signatures", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "proposal_id"
+    t.integer  "user_id",     :null => false
+    t.integer  "proposal_id", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "signatures", ["user_id", "proposal_id"], :name => "index_signatures_on_user_id_and_proposal_id", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "nickname"

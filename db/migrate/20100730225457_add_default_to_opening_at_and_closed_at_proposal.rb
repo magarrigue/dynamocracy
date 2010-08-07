@@ -1,7 +1,7 @@
 class AddDefaultToOpeningAtAndClosedAtProposal < ActiveRecord::Migration
   def self.up
-    change_column :proposals, :opening_at, :datetime, :null => false, :default => Time.now
-    change_column :proposals, :closing_at, :datetime, :null => false, :default => 7.day.from_now
+    change_column :proposals, :opening_at, :datetime, :null => false, :default => (Time.now).to_s(:db)
+    change_column :proposals, :closing_at, :datetime, :null => false, :default => (Time.now + 1.week).to_s(:db)
   end
 
   def self.down

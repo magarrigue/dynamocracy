@@ -12,10 +12,8 @@ class Vote < ActiveRecord::Base
   validate :not_cancelled_proposal?
   validate :not_withdrawn_proposal?
   
-  
+  before_create :create_signature  
   before_create :remove_voter, :unless => :veto?
-  
-  after_create :create_signature
   after_create :cancel_proposal!, :if => :veto?
   #attr_accessor :voter_id
   

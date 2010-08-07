@@ -1,8 +1,27 @@
 require 'test_helper'
 
 class ProposalTest < ActiveSupport::TestCase
+  
   # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  test "should not save proposal without proposal" do
+    proposal = Factory :proposal
+    proposal.text = nil
+    assert ! proposal.save
   end
-end
+  
+  test "should save proposal a  proposal with a user and a proposal" do
+    proposal = Factory :proposal
+    assert proposal.save
+  end
+  
+  test "should not save proposal a  proposal without a user" do
+    proposal = Proposal.new :text=>"qu on prenne un café à la fraiche cet été"
+    assert ! proposal.save
+  end
+  
+  test 'default dates' do
+    assert_equal Time.now.to_i, Proposal.new.opening_at.to_i
+    assert_equal 7.day.from_now.to_i, Proposal.new.closing_at.to_i
+  end
+  
+end 

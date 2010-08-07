@@ -4,8 +4,7 @@ class ProposalsController < ApplicationController
   
   
   inherit_resources
-  
-  
+   
 
   private
   def set_user

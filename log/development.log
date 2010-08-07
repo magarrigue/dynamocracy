@@ -8238,3 +8238,1910 @@ Processing VotesController#show (for 127.0.0.1 at 2010-08-07 14:27:43) [GET]
   [4;35;1mVote Load (0.4ms)[0m   [0mSELECT * FROM "votes" WHERE ("votes"."id" = 15 AND ("votes".proposal_id = 1)) [0m
 Rendering votes/show
 Completed in 22ms (View: 5, DB: 1) | 200 OK [http://localhost/proposals/1/votes/15]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (160.1ms)[0m   [0;1mCREATE TABLE "open_id_associations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "server_url" blob NOT NULL, "handle" varchar(255) NOT NULL, "secret" blob NOT NULL, "issued" integer NOT NULL, "lifetime" integer NOT NULL, "assoc_type" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (100.9ms)[0m   [0;1mCREATE TABLE "open_id_nonces" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "server_url" varchar(255) NOT NULL, "timestamp" integer NOT NULL, "salt" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.7ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (125.4ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '2010-07-31 01:00:51' NOT NULL, "closing_at" datetime DEFAULT '2010-08-06 23:00:51' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.9ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (88.5ms)[0m   [0;1mCREATE TABLE "signatures" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "proposal_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.9ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (105.3ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar(255), "email" varchar(255), "openid" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (91.5ms)[0m   [0;1mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "value" varchar(255), "voter_id" integer, "comment" text, "created_at" datetime, "updated_at" datetime, "proposal_id" integer) [0m
+  [4;35;1mSQL (1.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (80.3ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (73.6ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (1.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (70.9ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100807114453')[0m
+  [4;36;1mSQL (57.8ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100730230521')[0m
+  [4;35;1mSQL (57.7ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100727113323')[0m
+  [4;36;1mSQL (59.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100219130200')[0m
+  [4;35;1mSQL (57.1ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100727113534')[0m
+  [4;36;1mSQL (57.8ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100730225457')[0m
+  [4;35;1mSQL (49.6ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100727113405')[0m
+  [4;36;1mSQL (57.8ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727113436')[0m
+  [4;35;1mSQL (66.2ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100727115743')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (127.7ms)[0m   [0;1mCREATE TABLE "open_id_associations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "server_url" blob NOT NULL, "handle" varchar(255) NOT NULL, "secret" blob NOT NULL, "issued" integer NOT NULL, "lifetime" integer NOT NULL, "assoc_type" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.7ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (101.6ms)[0m   [0;1mCREATE TABLE "open_id_nonces" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "server_url" varchar(255) NOT NULL, "timestamp" integer NOT NULL, "salt" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (1.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (149.9ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '2010-07-31 01:00:51' NOT NULL, "closing_at" datetime DEFAULT '2010-08-06 23:00:51' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.8ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (105.2ms)[0m   [0;1mCREATE TABLE "signatures" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "proposal_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.9ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (104.1ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar(255), "email" varchar(255), "openid" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (1.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (97.1ms)[0m   [0;1mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "value" varchar(255), "voter_id" integer, "comment" text, "created_at" datetime, "updated_at" datetime, "proposal_id" integer) [0m
+  [4;35;1mSQL (1.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (95.9ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (65.5ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (1.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (73.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100807114453')[0m
+  [4;36;1mSQL (49.6ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100730230521')[0m
+  [4;35;1mSQL (65.8ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100727113323')[0m
+  [4;36;1mSQL (58.1ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100219130200')[0m
+  [4;35;1mSQL (58.5ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100727113534')[0m
+  [4;36;1mSQL (57.9ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100730225457')[0m
+  [4;35;1mSQL (57.8ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100727113405')[0m
+  [4;36;1mSQL (49.4ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727113436')[0m
+  [4;35;1mSQL (49.5ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100727115743')[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (117.7ms)[0m   [0;1mCREATE TABLE "open_id_associations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "server_url" blob NOT NULL, "handle" varchar(255) NOT NULL, "secret" blob NOT NULL, "issued" integer NOT NULL, "lifetime" integer NOT NULL, "assoc_type" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (62.6ms)[0m   [0;1mCREATE TABLE "open_id_nonces" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "server_url" varchar(255) NOT NULL, "timestamp" integer NOT NULL, "salt" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.8ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (80.2ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '2010-07-31 01:00:51' NOT NULL, "closing_at" datetime DEFAULT '2010-08-06 23:00:51' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (1.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (57.9ms)[0m   [0;1mCREATE TABLE "signatures" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "proposal_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (83.9ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar(255), "email" varchar(255), "openid" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (1.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (71.1ms)[0m   [0;1mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "value" varchar(255), "voter_id" integer, "comment" text, "created_at" datetime, "updated_at" datetime, "proposal_id" integer) [0m
+  [4;35;1mSQL (1.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (61.4ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (64.9ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (1.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (53.5ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100807114453')[0m
+  [4;36;1mSQL (62.8ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100730230521')[0m
+  [4;35;1mSQL (61.1ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100727113323')[0m
+  [4;36;1mSQL (57.8ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100219130200')[0m
+  [4;35;1mSQL (57.8ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100727113534')[0m
+  [4;36;1mSQL (57.9ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100730225457')[0m
+  [4;35;1mSQL (65.9ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100727113405')[0m
+  [4;36;1mSQL (58.2ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727113436')[0m
+  [4;35;1mSQL (58.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100727115743')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (137.4ms)[0m   [0;1mCREATE TABLE "open_id_associations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "server_url" blob NOT NULL, "handle" varchar(255) NOT NULL, "secret" blob NOT NULL, "issued" integer NOT NULL, "lifetime" integer NOT NULL, "assoc_type" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (72.2ms)[0m   [0;1mCREATE TABLE "open_id_nonces" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "server_url" varchar(255) NOT NULL, "timestamp" integer NOT NULL, "salt" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.7ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (77.0ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '2010-07-31 01:00:51' NOT NULL, "closing_at" datetime DEFAULT '2010-08-06 23:00:51' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.8ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (68.9ms)[0m   [0;1mCREATE TABLE "signatures" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "proposal_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (1.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (97.1ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar(255), "email" varchar(255), "openid" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (1.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (73.1ms)[0m   [0;1mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "value" varchar(255), "voter_id" integer, "comment" text, "created_at" datetime, "updated_at" datetime, "proposal_id" integer) [0m
+  [4;35;1mSQL (1.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (71.8ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (65.6ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (1.5ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (70.1ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100807114453')[0m
+  [4;36;1mSQL (66.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100730230521')[0m
+  [4;35;1mSQL (64.7ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100727113323')[0m
+  [4;36;1mSQL (66.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100219130200')[0m
+  [4;35;1mSQL (65.9ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100727113534')[0m
+  [4;36;1mSQL (74.9ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100730225457')[0m
+  [4;35;1mSQL (58.3ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100727113405')[0m
+  [4;36;1mSQL (66.2ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727113436')[0m
+  [4;35;1mSQL (66.1ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100727115743')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (117.1ms)[0m   [0;1mCREATE TABLE "open_id_associations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "server_url" blob NOT NULL, "handle" varchar(255) NOT NULL, "secret" blob NOT NULL, "issued" integer NOT NULL, "lifetime" integer NOT NULL, "assoc_type" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (68.5ms)[0m   [0;1mCREATE TABLE "open_id_nonces" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "server_url" varchar(255) NOT NULL, "timestamp" integer NOT NULL, "salt" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.7ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (88.6ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '2010-07-31 01:00:51' NOT NULL, "closing_at" datetime DEFAULT '2010-08-06 23:00:51' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.9ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (72.9ms)[0m   [0;1mCREATE TABLE "signatures" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "proposal_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (85.3ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar(255), "email" varchar(255), "openid" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (1.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (69.2ms)[0m   [0;1mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "value" varchar(255), "voter_id" integer, "comment" text, "created_at" datetime, "updated_at" datetime, "proposal_id" integer) [0m
+  [4;35;1mSQL (1.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (63.6ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (65.5ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (1.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (54.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100807114453')[0m
+  [4;36;1mSQL (66.2ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100730230521')[0m
+  [4;35;1mSQL (66.2ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100727113323')[0m
+  [4;36;1mSQL (58.1ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100219130200')[0m
+  [4;35;1mSQL (57.6ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100727113534')[0m
+  [4;36;1mSQL (57.4ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100730225457')[0m
+  [4;35;1mSQL (66.4ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100727113405')[0m
+  [4;36;1mSQL (58.4ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727113436')[0m
+  [4;35;1mSQL (49.6ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100727115743')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to RenameColumUserIdToVoterIdInVotes (20100807114453)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE TEMPORARY TABLE "altered_votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "value" varchar(255), "user_id" integer, "comment" text, "created_at" datetime, "updated_at" datetime, "proposal_id" integer) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("votes")[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mDROP TABLE "votes"[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "value" varchar(255), "user_id" integer, "comment" text, "created_at" datetime, "updated_at" datetime, "proposal_id" integer) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_votes")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mDROP TABLE "altered_votes"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE FROM schema_migrations WHERE version = '20100807114453'[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("open_id_associations")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("open_id_nonces")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("proposals")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("signatures")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("votes")[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to ChangeProposalsStatusDefault (20100730230521)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE TEMPORARY TABLE "altered_proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '2010-07-31 01:00:51' NOT NULL, "closing_at" datetime DEFAULT '2010-08-06 23:00:51' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("proposals")[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mDROP TABLE "proposals"[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) NOT NULL, "opening_at" datetime DEFAULT '2010-07-31 01:00:51' NOT NULL, "closing_at" datetime DEFAULT '2010-08-06 23:00:51' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_proposals")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mDROP TABLE "altered_proposals"[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mDELETE FROM schema_migrations WHERE version = '20100730230521'[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("open_id_associations")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("open_id_nonces")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("proposals")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("signatures")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("votes")[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to AddDefaultToOpeningAtAndClosedAtProposal (20100730225457)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE TEMPORARY TABLE "altered_proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) NOT NULL, "opening_at" datetime DEFAULT '2010-07-31 01:00:51' NOT NULL, "closing_at" datetime DEFAULT '2010-08-06 23:00:51' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("proposals")[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mDROP TABLE "proposals"[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) NOT NULL, "opening_at" datetime NOT NULL, "closing_at" datetime DEFAULT '2010-08-06 23:00:51' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_proposals")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mDROP TABLE "altered_proposals"[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE TEMPORARY TABLE "altered_proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) NOT NULL, "opening_at" datetime NOT NULL, "closing_at" datetime DEFAULT '2010-08-06 23:00:51' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("proposals")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mDROP TABLE "proposals"[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) NOT NULL, "opening_at" datetime NOT NULL, "closing_at" datetime NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_proposals")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDROP TABLE "altered_proposals"[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mDELETE FROM schema_migrations WHERE version = '20100730225457'[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("open_id_associations")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("open_id_nonces")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("proposals")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("signatures")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("votes")[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to AddProposalIdToVotes (20100727115743)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE TEMPORARY TABLE "altered_votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "value" varchar(255), "user_id" integer, "comment" text, "created_at" datetime, "updated_at" datetime, "proposal_id" integer) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("votes")[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mDROP TABLE "votes"[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "value" varchar(255), "user_id" integer, "comment" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_votes")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDROP TABLE "altered_votes"[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mDELETE FROM schema_migrations WHERE version = '20100727115743'[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("open_id_associations")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("open_id_nonces")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("proposals")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("signatures")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("votes")[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to AddOpenidStoreToDb (20100219130200)
+Migrating to CreateProposals (20100727113323)
+Migrating to CreateVotes (20100727113405)
+Migrating to CreateSignatures (20100727113436)
+Migrating to CreateUsers (20100727113534)
+Migrating to AddProposalIdToVotes (20100727115743)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mALTER TABLE "votes" ADD "proposal_id" integer[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100727115743')[0m
+Migrating to AddDefaultToOpeningAtAndClosedAtProposal (20100730225457)
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE TEMPORARY TABLE "altered_proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) NOT NULL, "opening_at" datetime NOT NULL, "closing_at" datetime NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("proposals")[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mDROP TABLE "proposals"[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) NOT NULL, "opening_at" datetime DEFAULT '2010-08-07 15:01:26' NOT NULL, "closing_at" datetime NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_proposals")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mDROP TABLE "altered_proposals"[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE TEMPORARY TABLE "altered_proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) NOT NULL, "opening_at" datetime DEFAULT '2010-08-07 15:01:26' NOT NULL, "closing_at" datetime NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("proposals")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mDROP TABLE "proposals"[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) NOT NULL, "opening_at" datetime DEFAULT '2010-08-07 15:01:26' NOT NULL, "closing_at" datetime DEFAULT '2010-08-14 15:01:26' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_proposals")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDROP TABLE "altered_proposals"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100730225457')[0m
+Migrating to ChangeProposalsStatusDefault (20100730230521)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE TEMPORARY TABLE "altered_proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) NOT NULL, "opening_at" datetime DEFAULT '2010-08-07 15:01:26' NOT NULL, "closing_at" datetime DEFAULT '2010-08-14 15:01:26' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("proposals")[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mDROP TABLE "proposals"[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '2010-08-07 15:01:26' NOT NULL, "closing_at" datetime DEFAULT '2010-08-14 15:01:26' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("altered_proposals")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mDROP TABLE "altered_proposals"[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100730230521')[0m
+Migrating to RenameColumUserIdToVoterIdInVotes (20100807114453)
+  [4;35;1mSQL (0.3ms)[0m   [0mCREATE TEMPORARY TABLE "altered_votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "value" varchar(255), "voter_id" integer, "comment" text, "created_at" datetime, "updated_at" datetime, "proposal_id" integer) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("votes")[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mDROP TABLE "votes"[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "value" varchar(255), "voter_id" integer, "comment" text, "created_at" datetime, "updated_at" datetime, "proposal_id" integer) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_votes")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDROP TABLE "altered_votes"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100807114453')[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("open_id_associations")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("open_id_nonces")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("proposals")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("signatures")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("votes")[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (100.2ms)[0m   [0;1mCREATE TABLE "open_id_associations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "server_url" blob NOT NULL, "handle" varchar(255) NOT NULL, "secret" blob NOT NULL, "issued" integer NOT NULL, "lifetime" integer NOT NULL, "assoc_type" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (61.6ms)[0m   [0;1mCREATE TABLE "open_id_nonces" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "server_url" varchar(255) NOT NULL, "timestamp" integer NOT NULL, "salt" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.7ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (80.1ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '2010-08-07 15:01:26' NOT NULL, "closing_at" datetime DEFAULT '2010-08-14 15:01:26' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.8ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (74.9ms)[0m   [0;1mCREATE TABLE "signatures" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "proposal_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.9ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (101.1ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar(255), "email" varchar(255), "openid" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (1.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (71.7ms)[0m   [0;1mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "value" varchar(255), "voter_id" integer, "comment" text, "created_at" datetime, "updated_at" datetime, "proposal_id" integer) [0m
+  [4;35;1mSQL (1.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (72.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (62.4ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (1.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (45.7ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100807114453')[0m
+  [4;36;1mSQL (57.8ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100730230521')[0m
+  [4;35;1mSQL (57.8ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100727113323')[0m
+  [4;36;1mSQL (57.9ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100219130200')[0m
+  [4;35;1mSQL (57.8ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100727113534')[0m
+  [4;36;1mSQL (57.8ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100730225457')[0m
+  [4;35;1mSQL (57.7ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100727113405')[0m
+  [4;36;1mSQL (49.9ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727113436')[0m
+  [4;35;1mSQL (58.4ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100727115743')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to AddOpenidStoreToDb (20100219130200)
+Migrating to CreateProposals (20100727113323)
+Migrating to CreateVotes (20100727113405)
+Migrating to CreateSignatures (20100727113436)
+Migrating to CreateUsers (20100727113534)
+Migrating to AddProposalIdToVotes (20100727115743)
+Migrating to AddDefaultToOpeningAtAndClosedAtProposal (20100730225457)
+Migrating to ChangeProposalsStatusDefault (20100730230521)
+Migrating to RenameColumUserIdToVoterIdInVotes (20100807114453)
+Migrating to DropDefaultDatesOnProposal (20100807131612)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCREATE TEMPORARY TABLE "altered_proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '2010-08-07 15:01:26' NOT NULL, "closing_at" datetime DEFAULT '2010-08-14 15:01:26' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("proposals")[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mDROP TABLE "proposals"[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime NOT NULL, "closing_at" datetime DEFAULT '2010-08-14 15:01:26' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_proposals")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mDROP TABLE "altered_proposals"[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE TEMPORARY TABLE "altered_proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime NOT NULL, "closing_at" datetime DEFAULT '2010-08-14 15:01:26' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("proposals")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mDROP TABLE "proposals"[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime NOT NULL, "closing_at" datetime NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_proposals")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDROP TABLE "altered_proposals"[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100807131612')[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("open_id_associations")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("open_id_nonces")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("proposals")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("signatures")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("votes")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (119.3ms)[0m   [0;1mCREATE TABLE "open_id_associations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "server_url" blob NOT NULL, "handle" varchar(255) NOT NULL, "secret" blob NOT NULL, "issued" integer NOT NULL, "lifetime" integer NOT NULL, "assoc_type" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (111.0ms)[0m   [0;1mCREATE TABLE "open_id_nonces" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "server_url" varchar(255) NOT NULL, "timestamp" integer NOT NULL, "salt" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.9ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (123.2ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime NOT NULL, "closing_at" datetime NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (102.0ms)[0m   [0;1mCREATE TABLE "signatures" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "proposal_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.5ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (112.9ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar(255), "email" varchar(255), "openid" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (98.0ms)[0m   [0;1mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "value" varchar(255), "voter_id" integer, "comment" text, "created_at" datetime, "updated_at" datetime, "proposal_id" integer) [0m
+  [4;35;1mSQL (0.5ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (98.6ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (66.3ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (1.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (95.6ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100807131612')[0m
+  [4;36;1mSQL (66.1ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100807114453')[0m
+  [4;35;1mSQL (107.8ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100730230521')[0m
+  [4;36;1mSQL (128.6ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727113323')[0m
+  [4;35;1mSQL (144.9ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100219130200')[0m
+  [4;36;1mSQL (125.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727113534')[0m
+  [4;35;1mSQL (121.3ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100730225457')[0m
+  [4;36;1mSQL (111.2ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727113405')[0m
+  [4;35;1mSQL (135.6ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100727113436')[0m
+  [4;36;1mSQL (104.9ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727115743')[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to DropDefaultDatesOnProposal (20100807131612)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE TEMPORARY TABLE "altered_proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime NOT NULL, "closing_at" datetime NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("proposals")[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mDROP TABLE "proposals"[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '2010-08-07 15:27:57' NOT NULL, "closing_at" datetime NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_proposals")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mDROP TABLE "altered_proposals"[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE TEMPORARY TABLE "altered_proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '2010-08-07 15:27:57' NOT NULL, "closing_at" datetime NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("proposals")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mDROP TABLE "proposals"[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '2010-08-07 15:27:57' NOT NULL, "closing_at" datetime DEFAULT '2010-08-14 15:27:57' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_proposals")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDROP TABLE "altered_proposals"[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mDELETE FROM schema_migrations WHERE version = '20100807131612'[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("open_id_associations")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("open_id_nonces")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("proposals")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("signatures")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("votes")[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to AddOpenidStoreToDb (20100219130200)
+Migrating to CreateProposals (20100727113323)
+Migrating to CreateVotes (20100727113405)
+Migrating to CreateSignatures (20100727113436)
+Migrating to CreateUsers (20100727113534)
+Migrating to AddProposalIdToVotes (20100727115743)
+Migrating to AddDefaultToOpeningAtAndClosedAtProposal (20100730225457)
+Migrating to ChangeProposalsStatusDefault (20100730230521)
+Migrating to RenameColumUserIdToVoterIdInVotes (20100807114453)
+Migrating to DropDefaultDatesOnProposal (20100807131612)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCREATE TEMPORARY TABLE "altered_proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '2010-08-07 15:27:57' NOT NULL, "closing_at" datetime DEFAULT '2010-08-14 15:27:57' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("proposals")[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mDROP TABLE "proposals"[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '--- 
+:default: 
+' NOT NULL, "closing_at" datetime DEFAULT '2010-08-14 15:27:57' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_proposals")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mDROP TABLE "altered_proposals"[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE TEMPORARY TABLE "altered_proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime NOT NULL, "closing_at" datetime DEFAULT '2010-08-14 15:27:57' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("proposals")[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mDROP TABLE "proposals"[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime NOT NULL, "closing_at" datetime DEFAULT '--- 
+:default: 
+' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_proposals")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDROP TABLE "altered_proposals"[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100807131612')[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("open_id_associations")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("open_id_nonces")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("proposals")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("signatures")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("votes")[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to DropDefaultDatesOnProposal (20100807131612)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE TEMPORARY TABLE "altered_proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime NOT NULL, "closing_at" datetime NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("proposals")[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mDROP TABLE "proposals"[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '2010-08-07 15:29:46' NOT NULL, "closing_at" datetime NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_proposals")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mDROP TABLE "altered_proposals"[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCREATE TEMPORARY TABLE "altered_proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '2010-08-07 15:29:46' NOT NULL, "closing_at" datetime NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("proposals")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mDROP TABLE "proposals"[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '2010-08-07 15:29:46' NOT NULL, "closing_at" datetime DEFAULT '2010-08-14 15:29:46' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_proposals")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDROP TABLE "altered_proposals"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE FROM schema_migrations WHERE version = '20100807131612'[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("open_id_associations")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("open_id_nonces")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("proposals")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("signatures")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("votes")[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to AddOpenidStoreToDb (20100219130200)
+Migrating to CreateProposals (20100727113323)
+Migrating to CreateVotes (20100727113405)
+Migrating to CreateSignatures (20100727113436)
+Migrating to CreateUsers (20100727113534)
+Migrating to AddProposalIdToVotes (20100727115743)
+Migrating to AddDefaultToOpeningAtAndClosedAtProposal (20100730225457)
+Migrating to ChangeProposalsStatusDefault (20100730230521)
+Migrating to RenameColumUserIdToVoterIdInVotes (20100807114453)
+Migrating to DropDefaultDatesOnProposal (20100807131612)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCREATE TEMPORARY TABLE "altered_proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '2010-08-07 15:29:46' NOT NULL, "closing_at" datetime DEFAULT '2010-08-14 15:29:46' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("proposals")[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mDROP TABLE "proposals"[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '--- 
+:null: true
+:default: 
+' NOT NULL, "closing_at" datetime DEFAULT '2010-08-14 15:29:46' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_proposals")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mDROP TABLE "altered_proposals"[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCREATE TEMPORARY TABLE "altered_proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime NOT NULL, "closing_at" datetime DEFAULT '2010-08-14 15:29:46' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("proposals")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mDROP TABLE "proposals"[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime NOT NULL, "closing_at" datetime DEFAULT '--- 
+:null: true
+:default: 
+' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_proposals")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDROP TABLE "altered_proposals"[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100807131612')[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("open_id_associations")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("open_id_nonces")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("proposals")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("signatures")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("votes")[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to AddOpenidStoreToDb (20100219130200)
+Migrating to CreateProposals (20100727113323)
+Migrating to CreateVotes (20100727113405)
+Migrating to CreateSignatures (20100727113436)
+Migrating to CreateUsers (20100727113534)
+Migrating to AddProposalIdToVotes (20100727115743)
+Migrating to AddDefaultToOpeningAtAndClosedAtProposal (20100730225457)
+Migrating to ChangeProposalsStatusDefault (20100730230521)
+Migrating to RenameColumUserIdToVoterIdInVotes (20100807114453)
+Migrating to DropDefaultDatesOnProposal (20100807131612)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("open_id_associations")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("open_id_nonces")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("proposals")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("signatures")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("users")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("votes")[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to DropDefaultDatesOnProposal (20100807131612)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to DropDefaultDatesOnProposal (20100807131612)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCREATE TEMPORARY TABLE "altered_proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime NOT NULL, "closing_at" datetime NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("proposals")[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mDROP TABLE "proposals"[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '2010-08-07 15:32:44' NOT NULL, "closing_at" datetime NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_proposals")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDROP TABLE "altered_proposals"[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE TEMPORARY TABLE "altered_proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '2010-08-07 15:32:44' NOT NULL, "closing_at" datetime NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("proposals")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mDROP TABLE "proposals"[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '2010-08-07 15:32:44' NOT NULL, "closing_at" datetime DEFAULT '2010-08-14 15:32:44' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_proposals")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDROP TABLE "altered_proposals"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE FROM schema_migrations WHERE version = '20100807131612'[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("open_id_associations")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("open_id_nonces")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("proposals")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("signatures")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("votes")[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to AddOpenidStoreToDb (20100219130200)
+Migrating to CreateProposals (20100727113323)
+Migrating to CreateVotes (20100727113405)
+Migrating to CreateSignatures (20100727113436)
+Migrating to CreateUsers (20100727113534)
+Migrating to AddProposalIdToVotes (20100727115743)
+Migrating to AddDefaultToOpeningAtAndClosedAtProposal (20100730225457)
+Migrating to ChangeProposalsStatusDefault (20100730230521)
+Migrating to RenameColumUserIdToVoterIdInVotes (20100807114453)
+Migrating to DropDefaultDatesOnProposal (20100807131612)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCREATE TEMPORARY TABLE "altered_proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '2010-08-07 15:32:44' NOT NULL, "closing_at" datetime DEFAULT '2010-08-14 15:32:44' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("proposals")[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mDROP TABLE "proposals"[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '--- 
+:null: false
+:default: 1970-01-01 01:00:00
+' NOT NULL, "closing_at" datetime DEFAULT '2010-08-14 15:32:44' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_proposals")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDROP TABLE "altered_proposals"[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE TEMPORARY TABLE "altered_proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '1970-01-01 01:00:00' NOT NULL, "closing_at" datetime DEFAULT '2010-08-14 15:32:44' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("proposals")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mDROP TABLE "proposals"[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '1970-01-01 01:00:00' NOT NULL, "closing_at" datetime DEFAULT '--- 
+:null: false
+:default: 1970-01-01 01:00:00
+' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_proposals")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDROP TABLE "altered_proposals"[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100807131612')[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("open_id_associations")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("open_id_nonces")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("proposals")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("signatures")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("votes")[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (93.6ms)[0m   [0;1mCREATE TABLE "open_id_associations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "server_url" blob NOT NULL, "handle" varchar(255) NOT NULL, "secret" blob NOT NULL, "issued" integer NOT NULL, "lifetime" integer NOT NULL, "assoc_type" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (53.7ms)[0m   [0;1mCREATE TABLE "open_id_nonces" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "server_url" varchar(255) NOT NULL, "timestamp" integer NOT NULL, "salt" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.7ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (86.8ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '1970-01-01 01:00:00' NOT NULL, "closing_at" datetime DEFAULT '1970-01-01 01:00:00' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (62.1ms)[0m   [0;1mCREATE TABLE "signatures" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "proposal_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.9ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (83.2ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar(255), "email" varchar(255), "openid" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (1.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (73.3ms)[0m   [0;1mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "value" varchar(255), "voter_id" integer, "comment" text, "created_at" datetime, "updated_at" datetime, "proposal_id" integer) [0m
+  [4;35;1mSQL (1.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (71.8ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (57.0ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (1.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (60.1ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100807131612')[0m
+  [4;36;1mSQL (57.9ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100807114453')[0m
+  [4;35;1mSQL (57.6ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100730230521')[0m
+  [4;36;1mSQL (57.8ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727113323')[0m
+  [4;35;1mSQL (57.8ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100219130200')[0m
+  [4;36;1mSQL (57.8ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727113534')[0m
+  [4;35;1mSQL (65.9ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100730225457')[0m
+  [4;36;1mSQL (66.5ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727113405')[0m
+  [4;35;1mSQL (58.3ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100727113436')[0m
+  [4;36;1mSQL (57.7ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727115743')[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (106.2ms)[0m   [0;1mCREATE TABLE "open_id_associations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "server_url" blob NOT NULL, "handle" varchar(255) NOT NULL, "secret" blob NOT NULL, "issued" integer NOT NULL, "lifetime" integer NOT NULL, "assoc_type" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (71.4ms)[0m   [0;1mCREATE TABLE "open_id_nonces" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "server_url" varchar(255) NOT NULL, "timestamp" integer NOT NULL, "salt" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.7ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (88.1ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '1970-01-01 01:00:00' NOT NULL, "closing_at" datetime DEFAULT '1970-01-01 01:00:00' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.8ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (67.3ms)[0m   [0;1mCREATE TABLE "signatures" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "proposal_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (91.0ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar(255), "email" varchar(255), "openid" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (1.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (71.3ms)[0m   [0;1mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "value" varchar(255), "voter_id" integer, "comment" text, "created_at" datetime, "updated_at" datetime, "proposal_id" integer) [0m
+  [4;35;1mSQL (1.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (63.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.4ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (56.7ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (1.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (53.4ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100807131612')[0m
+  [4;36;1mSQL (66.1ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100807114453')[0m
+  [4;35;1mSQL (66.6ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100730230521')[0m
+  [4;36;1mSQL (66.2ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727113323')[0m
+  [4;35;1mSQL (66.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100219130200')[0m
+  [4;36;1mSQL (57.5ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727113534')[0m
+  [4;35;1mSQL (66.6ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100730225457')[0m
+  [4;36;1mSQL (66.6ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727113405')[0m
+  [4;35;1mSQL (66.1ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100727113436')[0m
+  [4;36;1mSQL (66.3ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727115743')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (145.6ms)[0m   [0;1mCREATE TABLE "open_id_associations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "server_url" blob NOT NULL, "handle" varchar(255) NOT NULL, "secret" blob NOT NULL, "issued" integer NOT NULL, "lifetime" integer NOT NULL, "assoc_type" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (64.3ms)[0m   [0;1mCREATE TABLE "open_id_nonces" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "server_url" varchar(255) NOT NULL, "timestamp" integer NOT NULL, "salt" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.7ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (76.9ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '1970-01-01 01:00:00' NOT NULL, "closing_at" datetime DEFAULT '1970-01-01 01:00:00' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.9ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (53.3ms)[0m   [0;1mCREATE TABLE "signatures" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "proposal_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (4.8ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (83.6ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar(255), "email" varchar(255), "openid" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (1.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (74.3ms)[0m   [0;1mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "value" varchar(255), "voter_id" integer, "comment" text, "created_at" datetime, "updated_at" datetime, "proposal_id" integer) [0m
+  [4;35;1mSQL (1.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (63.4ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (65.5ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (1.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (69.2ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100807131612')[0m
+  [4;36;1mSQL (57.8ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100807114453')[0m
+  [4;35;1mSQL (58.5ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100730230521')[0m
+  [4;36;1mSQL (66.2ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727113323')[0m
+  [4;35;1mSQL (65.4ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100219130200')[0m
+  [4;36;1mSQL (74.1ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727113534')[0m
+  [4;35;1mSQL (66.7ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100730225457')[0m
+  [4;36;1mSQL (58.4ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727113405')[0m
+  [4;35;1mSQL (57.9ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100727113436')[0m
+  [4;36;1mSQL (66.2ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727115743')[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to DropDefaultDatesOnProposal (20100807131612)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE TEMPORARY TABLE "altered_proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '1970-01-01 01:00:00' NOT NULL, "closing_at" datetime DEFAULT '1970-01-01 01:00:00' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("proposals")[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mDROP TABLE "proposals"[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '2010-08-07 15:46:16' NOT NULL, "closing_at" datetime DEFAULT '1970-01-01 01:00:00' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_proposals")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mDROP TABLE "altered_proposals"[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE TEMPORARY TABLE "altered_proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '2010-08-07 15:46:16' NOT NULL, "closing_at" datetime DEFAULT '1970-01-01 01:00:00' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("proposals")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mDROP TABLE "proposals"[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '2010-08-07 15:46:16' NOT NULL, "closing_at" datetime DEFAULT '2010-08-14 15:46:16' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_proposals")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDROP TABLE "altered_proposals"[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mDELETE FROM schema_migrations WHERE version = '20100807131612'[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("open_id_associations")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("open_id_nonces")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("proposals")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("signatures")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("votes")[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to AddOpenidStoreToDb (20100219130200)
+Migrating to CreateProposals (20100727113323)
+Migrating to CreateVotes (20100727113405)
+Migrating to CreateSignatures (20100727113436)
+Migrating to CreateUsers (20100727113534)
+Migrating to AddProposalIdToVotes (20100727115743)
+Migrating to AddDefaultToOpeningAtAndClosedAtProposal (20100730225457)
+Migrating to ChangeProposalsStatusDefault (20100730230521)
+Migrating to RenameColumUserIdToVoterIdInVotes (20100807114453)
+Migrating to DropDefaultDatesOnProposal (20100807131612)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to AddOpenidStoreToDb (20100219130200)
+Migrating to CreateProposals (20100727113323)
+Migrating to CreateVotes (20100727113405)
+Migrating to CreateSignatures (20100727113436)
+Migrating to CreateUsers (20100727113534)
+Migrating to AddProposalIdToVotes (20100727115743)
+Migrating to AddDefaultToOpeningAtAndClosedAtProposal (20100730225457)
+Migrating to ChangeProposalsStatusDefault (20100730230521)
+Migrating to RenameColumUserIdToVoterIdInVotes (20100807114453)
+Migrating to DropDefaultDatesOnProposal (20100807131612)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE TEMPORARY TABLE "altered_proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '2010-08-07 15:46:16' NOT NULL, "closing_at" datetime DEFAULT '2010-08-14 15:46:16' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("proposals")[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mDROP TABLE "proposals"[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '--- 
+:null: false
+:default: 1970-01-01 00:00:00
+' NOT NULL, "closing_at" datetime DEFAULT '2010-08-14 15:46:16' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_proposals")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mDROP TABLE "altered_proposals"[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE TEMPORARY TABLE "altered_proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '1970-01-01 00:00:00' NOT NULL, "closing_at" datetime DEFAULT '2010-08-14 15:46:16' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("proposals")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mDROP TABLE "proposals"[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '1970-01-01 00:00:00' NOT NULL, "closing_at" datetime DEFAULT '--- 
+:null: false
+:default: 1970-01-01 00:00:00
+' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_proposals")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDROP TABLE "altered_proposals"[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100807131612')[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("open_id_associations")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("open_id_nonces")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("proposals")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("signatures")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("votes")[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to DropDefaultDatesOnProposal (20100807131612)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCREATE TEMPORARY TABLE "altered_proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '1970-01-01 00:00:00' NOT NULL, "closing_at" datetime DEFAULT '1970-01-01 00:00:00' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("proposals")[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mDROP TABLE "proposals"[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '2010-08-07 17:20:31' NOT NULL, "closing_at" datetime DEFAULT '1970-01-01 00:00:00' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_proposals")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mDROP TABLE "altered_proposals"[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCREATE TEMPORARY TABLE "altered_proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '2010-08-07 17:20:31' NOT NULL, "closing_at" datetime DEFAULT '1970-01-01 00:00:00' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("proposals")[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mDROP TABLE "proposals"[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '2010-08-07 17:20:31' NOT NULL, "closing_at" datetime DEFAULT '2010-08-14 17:20:31' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_proposals")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mDROP TABLE "altered_proposals"[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mDELETE FROM schema_migrations WHERE version = '20100807131612'[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("open_id_associations")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("open_id_nonces")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("proposals")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("signatures")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("votes")[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to AddOpenidStoreToDb (20100219130200)
+Migrating to CreateProposals (20100727113323)
+Migrating to CreateVotes (20100727113405)
+Migrating to CreateSignatures (20100727113436)
+Migrating to CreateUsers (20100727113534)
+Migrating to AddProposalIdToVotes (20100727115743)
+Migrating to AddDefaultToOpeningAtAndClosedAtProposal (20100730225457)
+Migrating to ChangeProposalsStatusDefault (20100730230521)
+Migrating to RenameColumUserIdToVoterIdInVotes (20100807114453)
+Migrating to DropDefaultDatesOnProposal (20100807131612)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCREATE TEMPORARY TABLE "altered_proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '2010-08-07 17:20:31' NOT NULL, "closing_at" datetime DEFAULT '2010-08-14 17:20:31' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("proposals")[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mDROP TABLE "proposals"[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime NOT NULL, "closing_at" datetime DEFAULT '2010-08-14 17:20:31' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_proposals")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mDROP TABLE "altered_proposals"[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCREATE TEMPORARY TABLE "altered_proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime NOT NULL, "closing_at" datetime DEFAULT '2010-08-14 17:20:31' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("proposals")[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mDROP TABLE "proposals"[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime NOT NULL, "closing_at" datetime NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_proposals")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDROP TABLE "altered_proposals"[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100807131612')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("open_id_associations")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("open_id_nonces")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("proposals")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("signatures")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("votes")[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to AddOpenidStoreToDb (20100219130200)
+Migrating to CreateProposals (20100727113323)
+Migrating to CreateVotes (20100727113405)
+Migrating to CreateSignatures (20100727113436)
+Migrating to CreateUsers (20100727113534)
+Migrating to AddProposalIdToVotes (20100727115743)
+Migrating to AddDefaultToOpeningAtAndClosedAtProposal (20100730225457)
+Migrating to ChangeProposalsStatusDefault (20100730230521)
+Migrating to RenameColumUserIdToVoterIdInVotes (20100807114453)
+Migrating to DropDefaultDatesOnProposal (20100807131612)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("open_id_associations")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("open_id_nonces")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("proposals")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("signatures")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("users")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("votes")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (125.3ms)[0m   [0;1mCREATE TABLE "open_id_associations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "server_url" blob NOT NULL, "handle" varchar(255) NOT NULL, "secret" blob NOT NULL, "issued" integer NOT NULL, "lifetime" integer NOT NULL, "assoc_type" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (88.4ms)[0m   [0;1mCREATE TABLE "open_id_nonces" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "server_url" varchar(255) NOT NULL, "timestamp" integer NOT NULL, "salt" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.7ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (113.0ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime NOT NULL, "closing_at" datetime NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.8ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (84.4ms)[0m   [0;1mCREATE TABLE "signatures" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "proposal_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.9ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (101.3ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar(255), "email" varchar(255), "openid" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (1.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (87.3ms)[0m   [0;1mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "value" varchar(255), "voter_id" integer, "comment" text, "created_at" datetime, "updated_at" datetime, "proposal_id" integer) [0m
+  [4;35;1mSQL (1.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (71.6ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (65.2ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (1.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (70.9ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100807131612')[0m
+  [4;36;1mSQL (66.2ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100807114453')[0m
+  [4;35;1mSQL (66.2ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100730230521')[0m
+  [4;36;1mSQL (65.7ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727113323')[0m
+  [4;35;1mSQL (74.8ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100219130200')[0m
+  [4;36;1mSQL (66.7ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727113534')[0m
+  [4;35;1mSQL (57.7ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100730225457')[0m
+  [4;36;1mSQL (57.8ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727113405')[0m
+  [4;35;1mSQL (66.2ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100727113436')[0m
+  [4;36;1mSQL (66.2ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727115743')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (143.5ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (70.8ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (0.7ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to AddOpenidStoreToDb (20100219130200)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE TABLE "open_id_associations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "server_url" blob NOT NULL, "handle" varchar(255) NOT NULL, "secret" blob NOT NULL, "issued" integer NOT NULL, "lifetime" integer NOT NULL, "assoc_type" varchar(255) NOT NULL) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCREATE TABLE "open_id_nonces" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "server_url" varchar(255) NOT NULL, "timestamp" integer NOT NULL, "salt" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100219130200')[0m
+Migrating to CreateProposals (20100727113323)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255), "opening_at" datetime, "closing_at" datetime, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100727113323')[0m
+Migrating to CreateVotes (20100727113405)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "value" varchar(255), "user_id" integer, "comment" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100727113405')[0m
+Migrating to CreateSignatures (20100727113436)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE TABLE "signatures" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "proposal_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100727113436')[0m
+Migrating to CreateUsers (20100727113534)
+  [4;36;1mSQL (1.1ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar(255), "email" varchar(255), "openid" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.4ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100727113534')[0m
+Migrating to AddProposalIdToVotes (20100727115743)
+  [4;36;1mSQL (1.0ms)[0m   [0;1mALTER TABLE "votes" ADD "proposal_id" integer[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100727115743')[0m
+Migrating to AddDefaultToOpeningAtAndClosedAtProposal (20100730225457)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCREATE TEMPORARY TABLE "altered_proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255), "opening_at" datetime, "closing_at" datetime, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("proposals")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mDROP TABLE "proposals"[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255), "opening_at" datetime DEFAULT '2010-08-07 17:23:01' NOT NULL, "closing_at" datetime, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("altered_proposals")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mDROP TABLE "altered_proposals"[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCREATE TEMPORARY TABLE "altered_proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255), "opening_at" datetime DEFAULT '2010-08-07 17:23:01' NOT NULL, "closing_at" datetime, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("proposals")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDROP TABLE "proposals"[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255), "opening_at" datetime DEFAULT '2010-08-07 17:23:01' NOT NULL, "closing_at" datetime DEFAULT '2010-08-14 17:23:01' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("altered_proposals")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mDROP TABLE "altered_proposals"[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100730225457')[0m
+Migrating to ChangeProposalsStatusDefault (20100730230521)
+  [4;35;1mSQL (0.3ms)[0m   [0mCREATE TEMPORARY TABLE "altered_proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255), "opening_at" datetime DEFAULT '2010-08-07 17:23:01' NOT NULL, "closing_at" datetime DEFAULT '2010-08-14 17:23:01' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("proposals")[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mDROP TABLE "proposals"[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '2010-08-07 17:23:01' NOT NULL, "closing_at" datetime DEFAULT '2010-08-14 17:23:01' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_proposals")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDROP TABLE "altered_proposals"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100730230521')[0m
+Migrating to RenameColumUserIdToVoterIdInVotes (20100807114453)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE TEMPORARY TABLE "altered_votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "value" varchar(255), "voter_id" integer, "comment" text, "created_at" datetime, "updated_at" datetime, "proposal_id" integer) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("votes")[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mDROP TABLE "votes"[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "value" varchar(255), "voter_id" integer, "comment" text, "created_at" datetime, "updated_at" datetime, "proposal_id" integer) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("altered_votes")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mDROP TABLE "altered_votes"[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100807114453')[0m
+Migrating to DropDefaultDatesOnProposal (20100807131612)
+  [4;35;1mSQL (0.4ms)[0m   [0mCREATE TEMPORARY TABLE "altered_proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime DEFAULT '2010-08-07 17:23:01' NOT NULL, "closing_at" datetime DEFAULT '2010-08-14 17:23:01' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("proposals")[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mDROP TABLE "proposals"[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime NOT NULL, "closing_at" datetime DEFAULT '2010-08-14 17:23:01' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_proposals")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDROP TABLE "altered_proposals"[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mCREATE TEMPORARY TABLE "altered_proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime NOT NULL, "closing_at" datetime DEFAULT '2010-08-14 17:23:01' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("proposals")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mDROP TABLE "proposals"[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime NOT NULL, "closing_at" datetime NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_proposals")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDROP TABLE "altered_proposals"[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100807131612')[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("open_id_associations")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("open_id_nonces")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("proposals")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("signatures")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("votes")[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (142.1ms)[0m   [0;1mCREATE TABLE "open_id_associations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "server_url" blob NOT NULL, "handle" varchar(255) NOT NULL, "secret" blob NOT NULL, "issued" integer NOT NULL, "lifetime" integer NOT NULL, "assoc_type" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (74.8ms)[0m   [0;1mCREATE TABLE "open_id_nonces" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "server_url" varchar(255) NOT NULL, "timestamp" integer NOT NULL, "salt" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.7ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (91.5ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime NOT NULL, "closing_at" datetime NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.9ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (71.6ms)[0m   [0;1mCREATE TABLE "signatures" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "proposal_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (86.1ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar(255), "email" varchar(255), "openid" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (1.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (67.4ms)[0m   [0;1mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "value" varchar(255), "voter_id" integer, "comment" text, "created_at" datetime, "updated_at" datetime, "proposal_id" integer) [0m
+  [4;35;1mSQL (0.5ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (65.3ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (64.8ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (1.7ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (61.8ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100807131612')[0m
+  [4;36;1mSQL (66.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100807114453')[0m
+  [4;35;1mSQL (66.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100730230521')[0m
+  [4;36;1mSQL (66.2ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727113323')[0m
+  [4;35;1mSQL (65.8ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100219130200')[0m
+  [4;36;1mSQL (66.8ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727113534')[0m
+  [4;35;1mSQL (57.5ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100730225457')[0m
+  [4;36;1mSQL (57.8ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727113405')[0m
+  [4;35;1mSQL (66.2ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100727113436')[0m
+  [4;36;1mSQL (66.1ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727115743')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (105.9ms)[0m   [0;1mCREATE TABLE "open_id_associations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "server_url" blob NOT NULL, "handle" varchar(255) NOT NULL, "secret" blob NOT NULL, "issued" integer NOT NULL, "lifetime" integer NOT NULL, "assoc_type" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (62.5ms)[0m   [0;1mCREATE TABLE "open_id_nonces" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "server_url" varchar(255) NOT NULL, "timestamp" integer NOT NULL, "salt" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.7ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (88.0ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime NOT NULL, "closing_at" datetime NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.9ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (67.0ms)[0m   [0;1mCREATE TABLE "signatures" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "proposal_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (91.5ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar(255), "email" varchar(255), "openid" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.8ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (72.4ms)[0m   [0;1mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "value" varchar(255), "voter_id" integer, "comment" text, "created_at" datetime, "updated_at" datetime, "proposal_id" integer) [0m
+  [4;35;1mSQL (1.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (63.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (57.2ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (1.5ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (61.8ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100807131612')[0m
+  [4;36;1mSQL (66.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100807114453')[0m
+  [4;35;1mSQL (57.7ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100730230521')[0m
+  [4;36;1mSQL (66.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727113323')[0m
+  [4;35;1mSQL (66.1ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100219130200')[0m
+  [4;36;1mSQL (65.8ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727113534')[0m
+  [4;35;1mSQL (75.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100730225457')[0m
+  [4;36;1mSQL (57.9ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727113405')[0m
+  [4;35;1mSQL (57.7ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100727113436')[0m
+  [4;36;1mSQL (57.7ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727115743')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (121.0ms)[0m   [0;1mCREATE TABLE "open_id_associations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "server_url" blob NOT NULL, "handle" varchar(255) NOT NULL, "secret" blob NOT NULL, "issued" integer NOT NULL, "lifetime" integer NOT NULL, "assoc_type" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (64.4ms)[0m   [0;1mCREATE TABLE "open_id_nonces" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "server_url" varchar(255) NOT NULL, "timestamp" integer NOT NULL, "salt" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.8ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (78.0ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime NOT NULL, "closing_at" datetime NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.9ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (68.0ms)[0m   [0;1mCREATE TABLE "signatures" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "proposal_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (89.5ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar(255), "email" varchar(255), "openid" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (1.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (81.1ms)[0m   [0;1mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "value" varchar(255), "voter_id" integer, "comment" text, "created_at" datetime, "updated_at" datetime, "proposal_id" integer) [0m
+  [4;35;1mSQL (1.5ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (63.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.6ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (64.9ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (1.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (54.2ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100807131612')[0m
+  [4;36;1mSQL (57.5ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100807114453')[0m
+  [4;35;1mSQL (57.7ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100730230521')[0m
+  [4;36;1mSQL (57.8ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727113323')[0m
+  [4;35;1mSQL (57.7ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100219130200')[0m
+  [4;36;1mSQL (57.3ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727113534')[0m
+  [4;35;1mSQL (66.4ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100730225457')[0m
+  [4;36;1mSQL (50.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727113405')[0m
+  [4;35;1mSQL (57.9ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100727113436')[0m
+  [4;36;1mSQL (57.7ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727115743')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (110.7ms)[0m   [0;1mCREATE TABLE "open_id_associations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "server_url" blob NOT NULL, "handle" varchar(255) NOT NULL, "secret" blob NOT NULL, "issued" integer NOT NULL, "lifetime" integer NOT NULL, "assoc_type" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (72.8ms)[0m   [0;1mCREATE TABLE "open_id_nonces" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "server_url" varchar(255) NOT NULL, "timestamp" integer NOT NULL, "salt" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.7ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (85.7ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime NOT NULL, "closing_at" datetime NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.9ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (69.3ms)[0m   [0;1mCREATE TABLE "signatures" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "proposal_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (89.6ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar(255), "email" varchar(255), "openid" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (1.8ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (71.1ms)[0m   [0;1mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "value" varchar(255), "voter_id" integer, "comment" text, "created_at" datetime, "updated_at" datetime, "proposal_id" integer) [0m
+  [4;35;1mSQL (1.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (63.4ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.6ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (65.0ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (1.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (62.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100807131612')[0m
+  [4;36;1mSQL (66.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100807114453')[0m
+  [4;35;1mSQL (66.1ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100730230521')[0m
+  [4;36;1mSQL (66.2ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727113323')[0m
+  [4;35;1mSQL (57.6ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100219130200')[0m
+  [4;36;1mSQL (65.7ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727113534')[0m
+  [4;35;1mSQL (66.9ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100730225457')[0m
+  [4;36;1mSQL (57.8ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727113405')[0m
+  [4;35;1mSQL (57.9ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100727113436')[0m
+  [4;36;1mSQL (57.8ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727115743')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (110.1ms)[0m   [0;1mCREATE TABLE "open_id_associations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "server_url" blob NOT NULL, "handle" varchar(255) NOT NULL, "secret" blob NOT NULL, "issued" integer NOT NULL, "lifetime" integer NOT NULL, "assoc_type" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (65.8ms)[0m   [0;1mCREATE TABLE "open_id_nonces" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "server_url" varchar(255) NOT NULL, "timestamp" integer NOT NULL, "salt" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (82.4ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime NOT NULL, "closing_at" datetime NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.9ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (68.0ms)[0m   [0;1mCREATE TABLE "signatures" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "proposal_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.9ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (81.5ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar(255), "email" varchar(255), "openid" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (1.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (72.9ms)[0m   [0;1mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "value" varchar(255), "voter_id" integer, "comment" text, "created_at" datetime, "updated_at" datetime, "proposal_id" integer) [0m
+  [4;35;1mSQL (3.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (69.2ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (73.9ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (1.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (70.5ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100807131612')[0m
+  [4;36;1mSQL (66.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100807114453')[0m
+  [4;35;1mSQL (66.3ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100730230521')[0m
+  [4;36;1mSQL (66.1ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727113323')[0m
+  [4;35;1mSQL (57.7ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100219130200')[0m
+  [4;36;1mSQL (74.2ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727113534')[0m
+  [4;35;1mSQL (66.7ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100730225457')[0m
+  [4;36;1mSQL (66.2ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727113405')[0m
+  [4;35;1mSQL (66.1ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100727113436')[0m
+  [4;36;1mSQL (66.1ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727115743')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (107.9ms)[0m   [0;1mCREATE TABLE "open_id_associations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "server_url" blob NOT NULL, "handle" varchar(255) NOT NULL, "secret" blob NOT NULL, "issued" integer NOT NULL, "lifetime" integer NOT NULL, "assoc_type" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.7ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (67.1ms)[0m   [0;1mCREATE TABLE "open_id_nonces" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "server_url" varchar(255) NOT NULL, "timestamp" integer NOT NULL, "salt" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.7ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (82.3ms)[0m   [0;1mCREATE TABLE "proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime NOT NULL, "closing_at" datetime NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (1.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (62.3ms)[0m   [0;1mCREATE TABLE "signatures" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "proposal_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (69.4ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nickname" varchar(255), "email" varchar(255), "openid" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (1.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (59.6ms)[0m   [0;1mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "value" varchar(255), "voter_id" integer, "comment" text, "created_at" datetime, "updated_at" datetime, "proposal_id" integer) [0m
+  [4;35;1mSQL (0.5ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (65.4ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (57.0ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (1.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM "schema_migrations"[0m
+  [4;35;1mSQL (53.7ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100807131612')[0m
+  [4;36;1mSQL (66.3ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100807114453')[0m
+  [4;35;1mSQL (66.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100730230521')[0m
+  [4;36;1mSQL (66.2ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727113323')[0m
+  [4;35;1mSQL (66.2ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100219130200')[0m
+  [4;36;1mSQL (66.1ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727113534')[0m
+  [4;35;1mSQL (66.1ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100730225457')[0m
+  [4;36;1mSQL (58.3ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727113405')[0m
+  [4;35;1mSQL (57.8ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100727113436')[0m
+  [4;36;1mSQL (57.8ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727115743')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to AddOpenidStoreToDb (20100219130200)
+Migrating to CreateProposals (20100727113323)
+Migrating to CreateVotes (20100727113405)
+Migrating to CreateSignatures (20100727113436)
+Migrating to CreateUsers (20100727113534)
+Migrating to AddProposalIdToVotes (20100727115743)
+Migrating to AddDefaultToOpeningAtAndClosedAtProposal (20100730225457)
+Migrating to ChangeProposalsStatusDefault (20100730230521)
+Migrating to RenameColumUserIdToVoterIdInVotes (20100807114453)
+Migrating to DropDefaultDatesOnProposal (20100807131612)
+Migrating to AddIndexToSignature (20100807160847)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (2.1ms)[0m   [0mCREATE TEMPORARY TABLE "altered_proposals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" text, "status" varchar(255) DEFAULT 'open' NOT NULL, "opening_at" datetime NOT NULL, "closing_at" datetime NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("proposals")[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mDROP TABLE "proposals"[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to AddOpenidStoreToDb (20100219130200)
+Migrating to CreateProposals (20100727113323)
+Migrating to CreateVotes (20100727113405)
+Migrating to CreateSignatures (20100727113436)
+Migrating to CreateUsers (20100727113534)
+Migrating to AddProposalIdToVotes (20100727115743)
+Migrating to AddDefaultToOpeningAtAndClosedAtProposal (20100730225457)
+Migrating to ChangeProposalsStatusDefault (20100730230521)
+Migrating to RenameColumUserIdToVoterIdInVotes (20100807114453)
+Migrating to DropDefaultDatesOnProposal (20100807131612)
+Migrating to AddIndexToSignature (20100807160847)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE TEMPORARY TABLE "altered_signatures" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "proposal_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("signatures")[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mDROP TABLE "signatures"[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCREATE TABLE "signatures" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "proposal_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_signatures")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDROP TABLE "altered_signatures"[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE TEMPORARY TABLE "altered_signatures" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "proposal_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("signatures")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mDROP TABLE "signatures"[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCREATE TABLE "signatures" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "proposal_id" integer NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("altered_signatures")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDROP TABLE "altered_signatures"[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("signatures")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE UNIQUE INDEX "index_signatures_on_user_id_and_proposal_id" ON "signatures" ("user_id", "proposal_id")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100807160847')[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("open_id_associations")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("open_id_nonces")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("proposals")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mPRAGMA index_list("signatures")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mPRAGMA index_info('index_signatures_on_user_id_and_proposal_id')[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mPRAGMA index_list("users")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("votes")[0m
