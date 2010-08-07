@@ -1,0 +1,7 @@
+%h1 Votes
+
+%ul
+- @votes.each do |vote|
+  %li=link_to(h(vote.inspect), vote)
+  
+
