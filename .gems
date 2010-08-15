@@ -5,4 +5,4 @@ rails -v 2.3.8
 'units' --version '>= 0'
 'searchlogic' --version '>= 0'
 'will_paginate' --version '>= 0'
-
+'rack-openid' --version '>= 0'
