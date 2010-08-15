@@ -57,9 +57,7 @@ No proposal
           %li=vote.comment
       
   :javascript    
-    $('#link_#{proposal.id}').bind('click', function() {$('#proposal_#{proposal.id}').dialog({ modal: true, title: '#{proposal.user.nickname} proposes :' ,height:400, width:600  });return false;})
-          
-         
-
-
-
+    $('#link_#{proposal.id}').bind('click', function() {
+      $('#proposal_#{proposal.id}').dialog({ modal: true, title: '#{proposal.user.nickname} proposes :' ,height:400, width:600  });return false;
+      };
+    )
