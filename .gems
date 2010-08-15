@@ -1,0 +1,8 @@
+rails -v 2.3.8
+'inherited_resources' --version '>= 0'
+'haml' --version '>= 0'
+'formtastic' --version '>= 0'
+'units' --version '>= 0'
+'searchlogic' --version '>= 0'
+'will_paginate' --version '>= 0'
+
