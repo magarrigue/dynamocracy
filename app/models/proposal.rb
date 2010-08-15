@@ -1,6 +1,6 @@
 class Proposal < ActiveRecord::Base
   
-  attr_accessible :user_id, :text, :opening_at, :closing_at, :yes_count, :no_count, :support_count, :pass_count
+  attr_accessible :user_id, :text, :opening_at, :closing_at#, :yes_count, :no_count, :support_count, :pass_count
   def after_initialize 
     set_default_opening_and_closing
   end
@@ -14,6 +14,7 @@ class Proposal < ActiveRecord::Base
   belongs_to :user 
   has_many :signatures 
   has_many :votes 
+  belongs_to :cancelled_by, :class_name=>"User" 
 
   
   def set_default_opening_and_closing

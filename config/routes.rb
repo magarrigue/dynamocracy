@@ -2,6 +2,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :proposals do |proposal|
     proposal.resources :votes
   end
+  map.withdraw_proposal 'proposals/withdraw/:id', :controller => 'proposals',:action=>'withdraw'
+  
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:

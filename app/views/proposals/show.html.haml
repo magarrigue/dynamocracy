@@ -1,10 +1,21 @@
-%h1 View proposal
+%h1 Proposal detail
 
-%ul
-  - @proposal.attributes.each do |key, value|
-    %li
-      %span= Proposal.human_attribute_name key
-      %span= value
+
+%h2
+  =@proposal.user.nickname 
+  proposes : 
+%p
+  =@proposal.text
+
+
+
+This proposal has been scheduled to be opened at :
+%span= facebook_distance_of_time_in_words @proposal.opening_at
+%br
+and to be closed at :
+%span= facebook_distance_of_time_in_words @proposal.closing_at
+%br
+  
 = link_to 'Vote on this proposal', new_proposal_vote_path(@proposal)
 
 

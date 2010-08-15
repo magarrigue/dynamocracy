@@ -1,34 +1,65 @@
 %h2
-  Prososals
-%p
+  Proposals
+%h2
   = link_to 'All', proposals_path
-  = link_to "To Vote", proposals_path(:search=>{:opening_at_before => Time.now, :closing_at_after => Time.now, :status_equals => 'open' })
+  = link_to "Ongoing", proposals_path(:search=>{:opening_at_before => Time.now, :closing_at_after => Time.now, :status_equals => 'open' })
   = link_to "Decisions", proposals_path(:search=>{:closing_at_before => Time.now, :status_equals => 'open' })
   = link_to "Pending", proposals_path(:search=>{:opening_at_after => Time.now, :status_equals => 'open' })
   = link_to "Cancelled", proposals_path(:search=>{:status_equals => 'cancelled' })
   = link_to "Withdrawn", proposals_path(:search=>{:status_equals => 'withdrawn' })
-%table.proposals
-  %thead
-    - [:user,:text,:opening_at,:closing_at,:status].each do |attribute|
-      %th= order  @search, :by => attribute 
-    - @proposals.each do |proposal|
-      %tr
-        %td= proposal.user.nickname
-        %td= proposal.text
-        %td= facebook_distance_of_time_in_words proposal.opening_at
-        %td= facebook_distance_of_time_in_words proposal.closing_at
-        %td= proposal.full_status
-        - if proposal.full_status == 'open'
-          -if @signatures.find_all{|s| s.proposal_id==proposal.id}.empty?
-            %td= link_to 'Vote!', new_proposal_vote_path(proposal) 
-          -else
-            %td= 'Voted'
-        
-        - if proposal.full_status == 'closed'
-          %td= "Yes:#{proposal.yes_count}, Support:#{proposal.support_count}, No:#{proposal.no_count}, Pass:#{proposal.pass_count}"
+  = link_to "My proposals", proposals_path(:search=>{:user_id => current_user.id })
+-if @proposals.empty?
+No proposal
+-else
+  %table.proposals
+    %thead
+      - [:user,:text,:opening_at,:closing_at,:status].each do |attribute|
+        %th= order  @search, :by => attribute 
+      %th= 'Action'  
+      %th= 'Results'
+      - @proposals.each do |proposal|
+        %tr
           %td
-            %img(src="http://chart.apis.google.com/chart?chxt=x&chs=300x165&cht=p&chco=00FF00|3072F3|FF0000|E5ECF9&chds=5,100&chd=t:#{proposal.yes_count},#{proposal.no_count},#{proposal.support_count},#{proposal.pass_count}&chdl=Yes|Support|No|Pass&chdlp=t")
+            = proposal.user.nickname
+            proposes : 
+          %td{:id=>"link_#{proposal.id}"}
+            = link_to proposal.text[0..20]+"...","#{proposal.id}"
+            -if proposal.user_id == current_user.id && proposal.votes.any?{|v| !v.comment.empty?}
+              %br some would vote yes if...
+          %td= facebook_distance_of_time_in_words proposal.opening_at
+          %td= facebook_distance_of_time_in_words proposal.closing_at
+          %td= proposal.full_status
+          - if proposal.full_status == 'open'
+            -if @signatures.find_all{|s| s.proposal_id==proposal.id}.empty?
+              %td= link_to 'Vote!', new_proposal_vote_path(proposal) 
+            -else
+              %td= 'Voted'
+            - if proposal.user_id == current_user.id
+              %td= link_to 'Withdraw!', withdraw_proposal_path(proposal)
+          -else
+            %td=' '
+          - if proposal.full_status == 'closed'
+            %td= "Yes:#{proposal.yes_count}, Support:#{proposal.support_count}, No:#{proposal.no_count}, Pass:#{proposal.pass_count}"
+          - if proposal.full_status == 'cancelled'
+            %td= "Vetoed by #{proposal.cancelled_by.nickname}"
+          
+  =will_paginate        
 
-  = will_paginate
+- @proposals.each do |proposal|
+  %div#proposal.proposal.details{:id=>proposal.id}
+    %h3 Proposal
+    =proposal.text
+    -if proposal.user_id == current_user.id
+      %h3 Some would vote yes if :
+      %ul
+      -proposal.votes.each do |vote|
+        -if !vote.comment.empty?
+          %li=vote.comment
+      
+  :javascript    
+    $('#link_#{proposal.id}').bind('click', function() {$('#proposal_#{proposal.id}').dialog({ modal: true, title: '#{proposal.user.nickname} proposes :' ,height:400, width:600  });return false;})
+          
+         
 
-= link_to 'New proposal', new_proposal_path
+
+

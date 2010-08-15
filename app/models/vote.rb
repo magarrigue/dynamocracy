@@ -1,6 +1,6 @@
 class Vote < ActiveRecord::Base
 
-  attr_accessible :voter_id, :value, :comment
+  attr_accessible :value, :comment, :voter_id
   
   belongs_to :proposal
   validates_presence_of :proposal, :value, :voter_id
@@ -15,10 +15,11 @@ class Vote < ActiveRecord::Base
   validate :not_withdrawn_proposal?
   
   before_create :create_signature  
+  before_create :cancel_proposal!, :if => :veto?
   before_create :remove_voter, :unless => :veto?
-  after_create :cancel_proposal!, :if => :veto?
+
   after_create :update_proposal_votes
-  #attr_accessor :voter_id
+  attr_accessor :voter_id
   
   def open_proposal?
     errors.add_to_base 'This proposal is not open yet' if proposal.opening_at > Time.now
@@ -43,6 +44,7 @@ class Vote < ActiveRecord::Base
   
   def update_proposal_votes
     proposal["#{value}_count".to_sym] += 1  unless value=='veto' 
+    proposal.save!
   end
   
   
@@ -52,6 +54,8 @@ class Vote < ActiveRecord::Base
   
   def cancel_proposal!
     proposal.status ='cancelled'
+    proposal.cancelled_by_id=voter_id
+    proposal.save!
   end
   
   def veto?

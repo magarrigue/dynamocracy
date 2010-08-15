@@ -3,27 +3,30 @@
   %head
     %title= 'Dynamocracy'
     %meta(http-equiv="content-type" content="text/html; charset=utf-8")
-    /= stylesheet_link_tag  "layout", 'application' ,"scaffold", "board"
-    /= formtastic_stylesheet_link_tag
+    = stylesheet_link_tag "dynamocracy","jquery-ui-1.8.4.custom", "formtastic"
+    = javascript_include_tag "jquery-1.4.2.min","jquery-ui-1.8.4.custom.min"
+  
   %body
-    .header
-      %h1= 'Dynamocracy'
-      %header
-      .menus
-        .public_menu
-          = link_to 'Home', '/'
-        .user_menu
-          = link_to 'Logout', '/logout'
-    .wrap_content
-      .content
-        #error_div_id.flash.error(style="display:none")
-        #notice_div_id.flash.notice(style="display:none")
-        = yield
-        %br
-    .wrap_footer
-      .footer
-        %p.footer-nav
-          <a>About</a> | <a>FAQ</a> | <a>Blog</a> | <a>Contact</a> | <a>Terms</a> | <a>Privacy</a> | <a>Support</a>
-        %p.copyright Copyright © 2009-2010 Dynamocracy.org
+    .head
+      %h1
+        Dynamocracy    
       
+      %header
+        = link_to 'Home', root_path 
+        |
+        = link_to 'Logout', logout_path
+        |
+        = link_to 'New proposal', new_proposal_path
+
+    #error_div_id.flash.error
+      = flash[:error]
+    #notice_div_id.flash.notice
+      = flash[:notice]
+    = yield
+    %br
+
+    %p
+      
+    %p Copyright © 2009-2010 Dynamocracy.org
+  
   

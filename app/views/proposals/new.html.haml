@@ -1,7 +1,20 @@
 %h1 New proposal
 
-- semantic_form_for @proposal do |f|
+- form_for @proposal do |f|
   = f.error_messages
-  = f.inputs :text, :opening_at, :closing_at
-  = f.buttons
+  
+  = f.label :text, "Your proposal : "
+  %br
+  = f.text_area :text,:cols=>"120", :rows=>"20"
+  %br
+  = f.label :opening_at, "Will open at : "
+  %br
+  = f.datetime_select :opening_at
+  %br
+  = f.label :closing_at, "Will close at : "
+  %br
+  = f.datetime_select :closing_at
+  %br
+  %br
+  = submit_tag 'Save your proposal'
   

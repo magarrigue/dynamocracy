@@ -11,9 +11,9 @@ class VotesTest < ActionController::IntegrationTest
   test "cannot vote on a proposal that is not open" do
     proposal = Factory :proposal, :opening_at => 2.days.from_now
     visit new_proposal_vote_path(proposal)
-    fill_in 'Value', :with => 'yes'
+    choose 'yes'
     assert_no_difference 'Signature.count' do
-      click_button 'Create Vote'
+      click_button 'Vote!'
     end
     assert_not_contain 'Show vote'
   end
@@ -21,9 +21,9 @@ class VotesTest < ActionController::IntegrationTest
   test "cannot vote no on a proposal without a comment " do
     proposal = Factory :proposal, :opening_at => 2.days.from_now
     visit new_proposal_vote_path(proposal)
-    fill_in 'Value', :with => 'no'
+    choose 'no'
     assert_no_difference 'Signature.count' do
-      click_button 'Create Vote'
+      click_button 'Vote!'
     end
   end
 
@@ -31,7 +31,7 @@ class VotesTest < ActionController::IntegrationTest
 #    proposal = Factory :proposal, :opening_at => 2.days.from_now  
 #    visit new_proposal_vote_path(proposal)
 #    assert_not_contain 'Show vote'
-#    fill_in 'Value', :with => 'yes'
+#    fill_in 'value', :with => 'yes'
 #    fill_in 'Comment', :with => 'a comment'
 #    assert_difference 'Signature.count' do
 #      click_button 'Create Vote'
@@ -41,11 +41,11 @@ class VotesTest < ActionController::IntegrationTest
   test "can vote on a proposal that is open" do
     proposal = Factory :proposal, :opening_at => 2.days.ago
     visit new_proposal_vote_path(proposal)
-    fill_in 'Value', :with => 'yes'
+    choose 'yes'
     assert_difference 'Signature.count' do
-      click_button 'Create Vote'
+      click_button 'Vote!'
     end
-    assert_contain 'Show vote'
+    assert_contain 'You voted for this proposal'
   end
   
 end

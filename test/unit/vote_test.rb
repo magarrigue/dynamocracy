@@ -25,12 +25,6 @@ class VoteTest < ActiveSupport::TestCase
     assert voted.save
   end
   
-  test 'a veto save the voter' do
-    voted=Factory.build :vote
-    voted.value='veto'
-    assert voted.save
-    assert !voted.voter_id.nil?
-  end
   
    
   test 'dont vote crap boy' do
@@ -94,10 +88,10 @@ class VoteTest < ActiveSupport::TestCase
     end
   end
   
-  test 'assert vote veto is claimed and vote is cancelled' do
-    vote = Factory(:vote, :value=>'veto', :comment=>'for no case')
-    assert !vote.voter_id.nil?
+  test 'assert vote veto is claimed and proposal is cancelled' do
+    vote = Factory(:vote, :value=>'veto', :comment=>'for no case') 
     assert 'cancelled', vote.proposal.status
+    assert !vote.proposal.cancelled_by_id.nil?
   end
   
   
