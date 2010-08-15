@@ -99,6 +99,16 @@ class VoteTest < ActiveSupport::TestCase
     assert !vote.voter_id.nil?
     assert 'cancelled', vote.proposal.status
   end
+  
+  
+  test 'assert vote update proposal count' do
+    %w(yes no support pass).each do  |t|
+      proposal = Factory :proposal
+      assert_equal 0, proposal.send("#{t}_count".to_sym)
+      vote = Factory(:vote, :proposal => proposal, :value=>t, :comment=>"a comment")
+      assert_equal 1, proposal["#{t}_count".to_sym] 
+    end
+  end 
 
   
 end

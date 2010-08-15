@@ -6,7 +6,7 @@ end
 
 Factory.define :proposal do |p|
   p.text "Superbe proposition assez longue pour avoir un sens"
-  p.user_id Factory(:user).id
+  p.association :user, :factory => :user
 end
 
 Factory.define :vote do |v|

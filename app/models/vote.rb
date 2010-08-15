@@ -1,4 +1,6 @@
 class Vote < ActiveRecord::Base
+
+  attr_accessible :voter_id, :value, :comment
   
   belongs_to :proposal
   validates_presence_of :proposal, :value, :voter_id
@@ -15,6 +17,7 @@ class Vote < ActiveRecord::Base
   before_create :create_signature  
   before_create :remove_voter, :unless => :veto?
   after_create :cancel_proposal!, :if => :veto?
+  after_create :update_proposal_votes
   #attr_accessor :voter_id
   
   def open_proposal?
@@ -36,6 +39,12 @@ class Vote < ActiveRecord::Base
   def create_signature
     Signature.create :user_id => voter_id, :proposal_id => proposal_id
   end
+  
+  
+  def update_proposal_votes
+    proposal["#{value}_count".to_sym] += 1  unless value=='veto' 
+  end
+  
   
   def hasnt_voted_yet?
    errors.add_to_base 'already voted this proposal' if Signature.exists? :user_id => voter_id, :proposal_id => proposal_id

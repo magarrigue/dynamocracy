@@ -1,6 +1,6 @@
 class Proposal < ActiveRecord::Base
   
-  attr_accessible :user_id, :text, :opening_at, :closing_at
+  attr_accessible :user_id, :text, :opening_at, :closing_at, :yes_count, :no_count, :support_count, :pass_count
   def after_initialize 
     set_default_opening_and_closing
   end
@@ -14,8 +14,7 @@ class Proposal < ActiveRecord::Base
   belongs_to :user 
   has_many :signatures 
   has_many :votes 
-  
-  attr_accessor :user_id
+
   
   def set_default_opening_and_closing
     self.opening_at = Time.now if self.opening_at == nil
@@ -28,19 +27,14 @@ class Proposal < ActiveRecord::Base
   def closing_in_the_futur
     errors.add :closing_at,'closing must happen in the future' unless closing_at.future?
   end
-  
-  
-  def self.votables
-    all(:conditions => ["status = ? AND expiring_at > ? AND opening_at < ?",'open',Time.now.to_i, Time.now.to_i])
-  end 
-  
-  def self.cancels
-    all(:conditions => ["status = ?",'cancelled'])
-  end
-  
-  
-  def self.withdraws
-    all(:conditions => ["status = ?", 'withdrawn'])
-  end
+
+
+  def full_status
+    return status unless status == 'open'
+    return 'open' if closing_at.future? && opening_at.past?
+    return 'closed' if closing_at.past?
+    return 'pending' if opening_at.future?
+    return 'unknown'
+  end  
   
 end

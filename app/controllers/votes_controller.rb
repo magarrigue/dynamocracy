@@ -3,7 +3,7 @@ class VotesController < ApplicationController
   before_filter :set_user, :only =>:create
   inherit_resources
   belongs_to :proposal
-  actions :show, :create, :new, :index
+  actions :show, :create, :new
   
   
   private

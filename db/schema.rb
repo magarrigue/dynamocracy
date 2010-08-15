@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100807160847) do
+ActiveRecord::Schema.define(:version => 20100814225723) do
 
   create_table "open_id_associations", :force => true do |t|
     t.binary  "server_url", :null => false
@@ -28,11 +28,16 @@ ActiveRecord::Schema.define(:version => 20100807160847) do
 
   create_table "proposals", :force => true do |t|
     t.text     "text"
-    t.string   "status",     :default => "open", :null => false
-    t.datetime "opening_at",                     :null => false
-    t.datetime "closing_at",                     :null => false
+    t.string   "status",        :default => "open", :null => false
+    t.datetime "opening_at",                        :null => false
+    t.datetime "closing_at",                        :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "yes_count",     :default => 0
+    t.integer  "no_count",      :default => 0
+    t.integer  "support_count", :default => 0
+    t.integer  "pass_count",    :default => 0
   end
 
   create_table "signatures", :force => true do |t|

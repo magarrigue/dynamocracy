@@ -7,4 +7,5 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
+  layout "main"
 end

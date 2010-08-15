@@ -1,7 +1,34 @@
-%h1 Proposals
+%h2
+  Prososals
+%p
+  = link_to 'All', proposals_path
+  = link_to "To Vote", proposals_path(:search=>{:opening_at_before => Time.now, :closing_at_after => Time.now, :status_equals => 'open' })
+  = link_to "Decisions", proposals_path(:search=>{:closing_at_before => Time.now, :status_equals => 'open' })
+  = link_to "Pending", proposals_path(:search=>{:opening_at_after => Time.now, :status_equals => 'open' })
+  = link_to "Cancelled", proposals_path(:search=>{:status_equals => 'cancelled' })
+  = link_to "Withdrawn", proposals_path(:search=>{:status_equals => 'withdrawn' })
+%table.proposals
+  %thead
+    - [:user,:text,:opening_at,:closing_at,:status].each do |attribute|
+      %th= order  @search, :by => attribute 
+    - @proposals.each do |proposal|
+      %tr
+        %td= proposal.user.nickname
+        %td= proposal.text
+        %td= facebook_distance_of_time_in_words proposal.opening_at
+        %td= facebook_distance_of_time_in_words proposal.closing_at
+        %td= proposal.full_status
+        - if proposal.full_status == 'open'
+          -if @signatures.find_all{|s| s.proposal_id==proposal.id}.empty?
+            %td= link_to 'Vote!', new_proposal_vote_path(proposal) 
+          -else
+            %td= 'Voted'
+        
+        - if proposal.full_status == 'closed'
+          %td= "Yes:#{proposal.yes_count}, Support:#{proposal.support_count}, No:#{proposal.no_count}, Pass:#{proposal.pass_count}"
+          %td
+            %img(src="http://chart.apis.google.com/chart?chxt=x&chs=300x165&cht=p&chco=00FF00|3072F3|FF0000|E5ECF9&chds=5,100&chd=t:#{proposal.yes_count},#{proposal.no_count},#{proposal.support_count},#{proposal.pass_count}&chdl=Yes|Support|No|Pass&chdlp=t")
 
-%ul
-- @proposals.each do |proposal|
-  %li=link_to(h(proposal.inspect), proposal)
-  
+  = will_paginate
+
 = link_to 'New proposal', new_proposal_path

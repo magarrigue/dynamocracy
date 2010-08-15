@@ -1,6 +1,29 @@
-%head
-    - formtastic_stylesheet_link_tag
-    
-%body
-    - notice
-    - yield
+!!! html 5
+%html
+  %head
+    %title= 'Dynamocracy'
+    %meta(http-equiv="content-type" content="text/html; charset=utf-8")
+    /= stylesheet_link_tag  "layout", 'application' ,"scaffold", "board"
+    /= formtastic_stylesheet_link_tag
+  %body
+    .header
+      %h1= 'Dynamocracy'
+      %header
+      .menus
+        .public_menu
+          = link_to 'Home', '/'
+        .user_menu
+          = link_to 'Logout', '/logout'
+    .wrap_content
+      .content
+        #error_div_id.flash.error(style="display:none")
+        #notice_div_id.flash.notice(style="display:none")
+        = yield
+        %br
+    .wrap_footer
+      .footer
+        %p.footer-nav
+          <a>About</a> | <a>FAQ</a> | <a>Blog</a> | <a>Contact</a> | <a>Terms</a> | <a>Privacy</a> | <a>Support</a>
+        %p.copyright Copyright © 2009-2010 Dynamocracy.org
+      
+  

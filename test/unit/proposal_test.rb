@@ -9,6 +9,13 @@ class ProposalTest < ActiveSupport::TestCase
     assert ! proposal.save
   end
   
+ test "a proposal belongs to a user" do
+    proposal = Factory :proposal
+    assert  proposal.save
+    assert !proposal.user_id.nil?
+    assert !proposal.user.nil? 
+  end
+  
   test "should save proposal a  proposal with a user and a proposal" do
     proposal = Factory :proposal
     assert proposal.save
