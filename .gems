@@ -1,8 +1,8 @@
 rails -v 2.3.8
-'inherited_resources' --version 1.0.6
-'haml' --version '>= 0'
-'formtastic' --version '>= 0'
-'units' --version '>= 0'
-'searchlogic' --version '>= 0'
-'will_paginate' --version '>= 0'
-'rack-openid' --version '>= 0'
+inherited_resources -v 1.0.6
+haml -v 3.0.8
+formtastic -v 0.9.10
+units -v 1.0.1
+searchlogic -v 2.4.19
+will_paginate -v 2.3.14
+rack-openid -v 1.1.1
