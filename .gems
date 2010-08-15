@@ -1,5 +1,5 @@
 rails -v 2.3.8
-"inherited_resources" --version 1.0.0
+"inherited_resources" --version 1.0.3
 "responders" --version 0.4.0
 'haml' --version '>= 0'
 'formtastic' --version '>= 0'
