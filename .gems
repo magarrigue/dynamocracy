@@ -1,6 +1,6 @@
 rails -v 2.3.8
 inherited_resources -v 1.0.6
-haml -v 3.0.8
+haml -v 3.0.12
 formtastic -v 0.9.10
 units -v 1.0.1
 searchlogic -v 2.4.19
