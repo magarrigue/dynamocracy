@@ -31403,3 +31403,521 @@ Completed in 21ms (View: 20, DB: 0) | 200 OK [http://localhost/]
   [4;36;1mSQL (74.7ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727113405')[0m
   [4;35;1mSQL (74.0ms)[0m   [0mINSERT INTO "schema_migrations" (version) VALUES ('20100727113436')[0m
   [4;36;1mSQL (230.9ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20100727115743')[0m
+
+
+Processing ProposalsController#index (for 127.0.0.1 at 2010-08-16 01:08:47) [GET]
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mProposal Load (2.3ms)[0m   [0mSELECT * FROM "proposals" LIMIT 10 OFFSET 0[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mVote Load (1.1ms)[0m   [0mSELECT "votes".* FROM "votes" WHERE ("votes".proposal_id IN (1,2,3,4,5,6,7,8,9,10)) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM "proposals" [0m
+  [4;36;1mSignature Load (0.4ms)[0m   [0;1mSELECT * FROM "signatures" WHERE ((signatures.proposal_id = 1 OR signatures.proposal_id = 2 OR signatures.proposal_id = 3 OR signatures.proposal_id = 4 OR signatures.proposal_id = 5 OR signatures.proposal_id = 6 OR signatures.proposal_id = 7 OR signatures.proposal_id = 8 OR signatures.proposal_id = 9 OR signatures.proposal_id = 10) AND (signatures.user_id = 1)) [0m
+Rendering template within layouts/main
+Rendering proposals/index
+Completed in 177ms (View: 65, DB: 5) | 200 OK [http://localhost/]
+
+
+Processing ProposalsController#new (for 127.0.0.1 at 2010-08-16 01:08:54) [GET]
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/main
+Rendering proposals/new
+Completed in 48ms (View: 33, DB: 0) | 200 OK [http://localhost/proposals/new]
+
+
+Processing ProposalsController#create (for 127.0.0.1 at 2010-08-16 01:09:19) [POST]
+  Parameters: {"commit"=>"Save your proposal", "authenticity_token"=>"0oOWAZpejhYuRG5AvIkgBHueWOYKz/OKmhqKjaVniL0=", "proposal"=>{"closing_at(4i)"=>"23", "closing_at(5i)"=>"10", "text"=>"azelfkmzaelkfez\r\nazelfkmzaelkfez\r\nezfmlkfezmzlaekfezamflkzaemlfkzmaelfk\r\nfezmlfkzmaeflkmzekfmzkefmlzefk\r\nzaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez\r\nezfmlkfezmzlaekfezamflkzaemlfkzmaelfk\r\nfezmlfkzmaeflkmzekfmzkefmlzefk\r\nzaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez\r\nezfmlkfezmzlaekfezamflkzaemlfkzmaelfk\r\nfezmlfkzmaeflkmzekfmzkefmlzefk\r\nzaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez\r\nezfmlkfezmzlaekfezamflkzaemlfkzmaelfk\r\nfezmlfkzmaeflkmzekfmzkefmlzefk\r\nzaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez\r\nezfmlkfezmzlaekfezamflkzaemlfkzmaelfk\r\nfezmlfkzmaeflkmzekfmzkefmlzefk\r\nzaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez\r\nezfmlkfezmzlaekfezamflkzaemlfkzmaelfk\r\nfezmlfkzmaeflkmzekfmzkefmlzefk\r\nzaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez\r\nezfmlkfezmzlaekfezamflkzaemlfkzmaelfk\r\nfezmlfkzmaeflkmzekfmzkefmlzefk\r\nzaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez\r\nezfmlkfezmzlaekfezamflkzaemlfkzmaelfk\r\nfezmlfkzmaeflkmzekfmzkefmlzefk\r\nzaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez\r\nezfmlkfezmzlaekfezamflkzaemlfkzmaelfk\r\nfezmlfkzmaeflkmzekfmzkefmlzefk\r\nzaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez\r\nezfmlkfezmzlaekfezamflkzaemlfkzmaelfk\r\nfezmlfkzmaeflkmzekfmzkefmlzefk\r\nzaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez\r\nezfmlkfezmzlaekfezamflkzaemlfkzmaelfk\r\nfezmlfkzmaeflkmzekfmzkefmlzefk\r\nzaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez\r\nezfmlkfezmzlaekfezamflkzaemlfkzmaelfk\r\nfezmlfkzmaeflkmzekfmzkefmlzefk\r\nzaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez\r\nezfmlkfezmzlaekfezamflkzaemlfkzmaelfk\r\nfezmlfkzmaeflkmzekfmzkefmlzefk\r\nzaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez\r\nezfmlkfezmzlaekfezamflkzaemlfkzmaelfk\r\nfezmlfkzmaeflkmzekfmzkefmlzefk\r\nzaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez\r\nezfmlkfezmzlaekfezamflkzaemlfkzmaelfk\r\nfezmlfkzmaeflkmzekfmzkefmlzefk\r\nzaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez\r\nezfmlkfezmzlaekfezamflkzaemlfkzmaelfk\r\nfezmlfkzmaeflkmzekfmzkefmlzefk\r\nzaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez\r\nezfmlkfezmzlaekfezamflkzaemlfkzmaelfk\r\nfezmlfkzmaeflkmzekfmzkefmlzefk\r\nzaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez\r\nezfmlkfezmzlaekfezamflkzaemlfkzmaelfk\r\nfezmlfkzmaeflkmzekfmzkefmlzefk\r\nzaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez\r\nezfmlkfezmzlaekfezamflkzaemlfkzmaelfk\r\nfezmlfkzmaeflkmzekfmzkefmlzefk\r\nzaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez\r\nezfmlkfezmzlaekfezamflkzaemlfkzmaelfk\r\nfezmlfkzmaeflkmzekfmzkefmlzefk\r\nzaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez\r\nezfmlkfezmzlaekfezamflkzaemlfkzmaelfk\r\nfezmlfkzmaeflkmzekfmzkefmlzefk\r\nzaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez\r\nezfmlkfezmzlaekfezamflkzaemlfkzmaelfk\r\nfezmlfkzmaeflkmzekfmzkefmlzefk\r\nzaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez\r\nezfmlkfezmzlaekfezamflkzaemlfkzmaelfk\r\nfezmlfkzmaeflkmzekfmzkefmlzefk\r\nzaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez\r\nezfmlkfezmzlaekfezamflkzaemlfkzmaelfk\r\nfezmlfkzmaeflkmzekfmzkefmlzefk\r\nzaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez\r\nezfmlkfezmzlaekfezamflkzaemlfkzmaelfk\r\nfezmlfkzmaeflkmzekfmzkefmlzefk\r\nzaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez\r\nezfmlkfezmzlaekfezamflkzaemlfkzmaelfk\r\nfezmlfkzmaeflkmzekfmzkefmlzefk\r\nzaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez\r\nezfmlkfezmzlaekfezamflkzaemlfkzmaelfk\r\nfezmlfkzmaeflkmzekfmzkefmlzefk\r\nzaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez\r\nezfmlkfezmzlaekfezamflkzaemlfkzmaelfk\r\nfezmlfkzmaeflkmzekfmzkefmlzefk\r\nzaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez\r\nezfmlkfezmzlaekfezamflkzaemlfkzmaelfk\r\nfezmlfkzmaeflkmzekfmzkefmlzefk\r\nzaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez\r\nezfmlkfezmzlaekfezamflkzaemlfkzmaelfk\r\nfezmlfkzmaeflkmzekfmzkefmlzefk\r\nzaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez\r\nezfmlkfezmzlaekfezamflkzaemlfkzmaelfk\r\nfezmlfkzmaeflkmzekfmzkefmlzefk\r\nzaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez\r\nezfmlkfezmzlaekfezamflkzaemlfkzmaelfk\r\nfezmlfkzmaeflkmzekfmzkefmlzefk\r\nzaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez\r\nezfmlkfezmzlaekfezamflkzaemlfkzmaelfk\r\nfezmlfkzmaeflkmzekfmzkefmlzefk\r\nzaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez\r\nezfmlkfezmzlaekfezamflkzaemlfkzmaelfk\r\nfezmlfkzmaeflkmzekfmzkefmlzefk\r\nzaefkmzaeklfmzalekfmflzkeezfmlkfezmzlaekfezamflkzaemlfkzmaelfk\r\nfezmlfkzmaeflkmzekfmzkefmlzefk\r\nzaefkmzaeklfmzalekfmflzke", "opening_at(1i)"=>"2010", "opening_at(2i)"=>"8", "opening_at(3i)"=>"15", "closing_at(1i)"=>"2010", "opening_at(4i)"=>"23", "closing_at(2i)"=>"8", "opening_at(5i)"=>"08", "closing_at(3i)"=>"22"}}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mProposal Create (0.5ms)[0m   [0mINSERT INTO "proposals" ("support_count", "created_at", "yes_count", "cancelled_by_id", "updated_at", "text", "pass_count", "user_id", "opening_at", "status", "closing_at", "no_count") VALUES(0, '2010-08-15 23:09:19', 0, NULL, '2010-08-15 23:09:19', 'azelfkmzaelkfez
+azelfkmzaelkfez
+ezfmlkfezmzlaekfezamflkzaemlfkzmaelfk
+fezmlfkzmaeflkmzekfmzkefmlzefk
+zaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez
+ezfmlkfezmzlaekfezamflkzaemlfkzmaelfk
+fezmlfkzmaeflkmzekfmzkefmlzefk
+zaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez
+ezfmlkfezmzlaekfezamflkzaemlfkzmaelfk
+fezmlfkzmaeflkmzekfmzkefmlzefk
+zaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez
+ezfmlkfezmzlaekfezamflkzaemlfkzmaelfk
+fezmlfkzmaeflkmzekfmzkefmlzefk
+zaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez
+ezfmlkfezmzlaekfezamflkzaemlfkzmaelfk
+fezmlfkzmaeflkmzekfmzkefmlzefk
+zaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez
+ezfmlkfezmzlaekfezamflkzaemlfkzmaelfk
+fezmlfkzmaeflkmzekfmzkefmlzefk
+zaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez
+ezfmlkfezmzlaekfezamflkzaemlfkzmaelfk
+fezmlfkzmaeflkmzekfmzkefmlzefk
+zaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez
+ezfmlkfezmzlaekfezamflkzaemlfkzmaelfk
+fezmlfkzmaeflkmzekfmzkefmlzefk
+zaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez
+ezfmlkfezmzlaekfezamflkzaemlfkzmaelfk
+fezmlfkzmaeflkmzekfmzkefmlzefk
+zaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez
+ezfmlkfezmzlaekfezamflkzaemlfkzmaelfk
+fezmlfkzmaeflkmzekfmzkefmlzefk
+zaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez
+ezfmlkfezmzlaekfezamflkzaemlfkzmaelfk
+fezmlfkzmaeflkmzekfmzkefmlzefk
+zaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez
+ezfmlkfezmzlaekfezamflkzaemlfkzmaelfk
+fezmlfkzmaeflkmzekfmzkefmlzefk
+zaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez
+ezfmlkfezmzlaekfezamflkzaemlfkzmaelfk
+fezmlfkzmaeflkmzekfmzkefmlzefk
+zaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez
+ezfmlkfezmzlaekfezamflkzaemlfkzmaelfk
+fezmlfkzmaeflkmzekfmzkefmlzefk
+zaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez
+ezfmlkfezmzlaekfezamflkzaemlfkzmaelfk
+fezmlfkzmaeflkmzekfmzkefmlzefk
+zaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez
+ezfmlkfezmzlaekfezamflkzaemlfkzmaelfk
+fezmlfkzmaeflkmzekfmzkefmlzefk
+zaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez
+ezfmlkfezmzlaekfezamflkzaemlfkzmaelfk
+fezmlfkzmaeflkmzekfmzkefmlzefk
+zaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez
+ezfmlkfezmzlaekfezamflkzaemlfkzmaelfk
+fezmlfkzmaeflkmzekfmzkefmlzefk
+zaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez
+ezfmlkfezmzlaekfezamflkzaemlfkzmaelfk
+fezmlfkzmaeflkmzekfmzkefmlzefk
+zaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez
+ezfmlkfezmzlaekfezamflkzaemlfkzmaelfk
+fezmlfkzmaeflkmzekfmzkefmlzefk
+zaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez
+ezfmlkfezmzlaekfezamflkzaemlfkzmaelfk
+fezmlfkzmaeflkmzekfmzkefmlzefk
+zaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez
+ezfmlkfezmzlaekfezamflkzaemlfkzmaelfk
+fezmlfkzmaeflkmzekfmzkefmlzefk
+zaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez
+ezfmlkfezmzlaekfezamflkzaemlfkzmaelfk
+fezmlfkzmaeflkmzekfmzkefmlzefk
+zaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez
+ezfmlkfezmzlaekfezamflkzaemlfkzmaelfk
+fezmlfkzmaeflkmzekfmzkefmlzefk
+zaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez
+ezfmlkfezmzlaekfezamflkzaemlfkzmaelfk
+fezmlfkzmaeflkmzekfmzkefmlzefk
+zaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez
+ezfmlkfezmzlaekfezamflkzaemlfkzmaelfk
+fezmlfkzmaeflkmzekfmzkefmlzefk
+zaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez
+ezfmlkfezmzlaekfezamflkzaemlfkzmaelfk
+fezmlfkzmaeflkmzekfmzkefmlzefk
+zaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez
+ezfmlkfezmzlaekfezamflkzaemlfkzmaelfk
+fezmlfkzmaeflkmzekfmzkefmlzefk
+zaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez
+ezfmlkfezmzlaekfezamflkzaemlfkzmaelfk
+fezmlfkzmaeflkmzekfmzkefmlzefk
+zaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez
+ezfmlkfezmzlaekfezamflkzaemlfkzmaelfk
+fezmlfkzmaeflkmzekfmzkefmlzefk
+zaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez
+ezfmlkfezmzlaekfezamflkzaemlfkzmaelfk
+fezmlfkzmaeflkmzekfmzkefmlzefk
+zaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez
+ezfmlkfezmzlaekfezamflkzaemlfkzmaelfk
+fezmlfkzmaeflkmzekfmzkefmlzefk
+zaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez
+ezfmlkfezmzlaekfezamflkzaemlfkzmaelfk
+fezmlfkzmaeflkmzekfmzkefmlzefk
+zaefkmzaeklfmzalekfmflzkeazelfkmzaelkfez
+ezfmlkfezmzlaekfezamflkzaemlfkzmaelfk
+fezmlfkzmaeflkmzekfmzkefmlzefk
+zaefkmzaeklfmzalekfmflzkeezfmlkfezmzlaekfezamflkzaemlfkzmaelfk
+fezmlfkzmaeflkmzekfmzkefmlzefk
+zaefkmzaeklfmzalekfmflzke', 0, 1, '2010-08-15 23:08:00', 'open', '2010-08-22 23:10:00', 0)[0m
+Redirected to http://localhost:3000/proposals/12
+Completed in 175ms (DB: 0) | 302 Found [http://localhost/proposals]
+
+
+Processing ProposalsController#show (for 127.0.0.1 at 2010-08-16 01:09:19) [GET]
+  Parameters: {"id"=>"12"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mProposal Load (0.5ms)[0m   [0mSELECT * FROM "proposals" WHERE ("proposals"."id" = 12) [0m
+Rendering template within layouts/main
+Rendering proposals/show
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Completed in 32ms (View: 15, DB: 1) | 200 OK [http://localhost/proposals/12]
+
+
+Processing VotesController#new (for 127.0.0.1 at 2010-08-16 01:09:23) [GET]
+  Parameters: {"proposal_id"=>"12"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mProposal Load (0.5ms)[0m   [0;1mSELECT * FROM "proposals" WHERE ("proposals"."id" = 12) [0m
+Rendering template within layouts/main
+Rendering votes/new
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "proposals" WHERE ("proposals"."id" = 12) [0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Completed in 40ms (View: 19, DB: 1) | 200 OK [http://localhost/proposals/12/votes/new]
+
+
+Processing VotesController#create (for 127.0.0.1 at 2010-08-16 01:09:29) [POST]
+  Parameters: {"vote"=>{"comment"=>"", "value"=>"no"}, "commit"=>"Vote!", "authenticity_token"=>"0oOWAZpejhYuRG5AvIkgBHueWOYKz/OKmhqKjaVniL0=", "proposal_id"=>"12"}
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mProposal Load (0.5ms)[0m   [0;1mSELECT * FROM "proposals" WHERE ("proposals"."id" = 12) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "proposals" WHERE ("proposals"."id" = 12) [0m
+  [4;36;1mSignature Load (0.2ms)[0m   [0;1mSELECT "signatures".id FROM "signatures" WHERE ("signatures"."user_id" = 1 AND "signatures"."proposal_id" = 12) LIMIT 1[0m
+Rendering template within layouts/main
+Rendering votes/new
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Completed in 46ms (View: 13, DB: 0) | 200 OK [http://localhost/proposals/12/votes]
+
+
+Processing VotesController#create (for 127.0.0.1 at 2010-08-16 01:09:44) [POST]
+  Parameters: {"vote"=>{"comment"=>"You shut the fuck up", "value"=>"no"}, "commit"=>"Vote!", "authenticity_token"=>"0oOWAZpejhYuRG5AvIkgBHueWOYKz/OKmhqKjaVniL0=", "proposal_id"=>"12"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mProposal Load (3.0ms)[0m   [0mSELECT * FROM "proposals" WHERE ("proposals"."id" = 12) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "proposals" WHERE ("proposals"."id" = 12) [0m
+  [4;35;1mSignature Load (0.2ms)[0m   [0mSELECT "signatures".id FROM "signatures" WHERE ("signatures"."user_id" = 1 AND "signatures"."proposal_id" = 12) LIMIT 1[0m
+  [4;36;1mSignature Create (0.3ms)[0m   [0;1mINSERT INTO "signatures" ("created_at", "updated_at", "user_id", "proposal_id") VALUES('2010-08-15 23:09:44', '2010-08-15 23:09:44', 1, 12)[0m
+  [4;35;1mVote Create (0.2ms)[0m   [0mINSERT INTO "votes" ("comment", "created_at", "updated_at", "value", "proposal_id") VALUES('You shut the fuck up', '2010-08-15 23:09:44', '2010-08-15 23:09:44', 'no', 12)[0m
+  [4;36;1mProposal Update (0.4ms)[0m   [0;1mUPDATE "proposals" SET "updated_at" = '2010-08-15 23:09:44', "no_count" = 1 WHERE "id" = 12[0m
+Redirected to http://localhost:3000/proposals/12/votes/24
+Completed in 190ms (DB: 0) | 302 Found [http://localhost/proposals/12/votes]
+
+
+Processing VotesController#show (for 127.0.0.1 at 2010-08-16 01:09:44) [GET]
+  Parameters: {"id"=>"24", "proposal_id"=>"12"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mProposal Load (0.5ms)[0m   [0;1mSELECT * FROM "proposals" WHERE ("proposals"."id" = 12) [0m
+  [4;35;1mVote Load (0.3ms)[0m   [0mSELECT * FROM "votes" WHERE ("votes"."id" = 24 AND ("votes".proposal_id = 12)) [0m
+Rendering template within layouts/main
+Rendering votes/show
+Completed in 84ms (View: 8, DB: 1) | 200 OK [http://localhost/proposals/12/votes/24]
+
+
+Processing ProposalsController#index (for 127.0.0.1 at 2010-08-16 01:09:47) [GET]
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mProposal Load (2.2ms)[0m   [0mSELECT * FROM "proposals" LIMIT 10 OFFSET 0[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mVote Load (0.9ms)[0m   [0mSELECT "votes".* FROM "votes" WHERE ("votes".proposal_id IN (1,2,3,4,5,6,7,8,9,10)) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM "proposals" [0m
+  [4;36;1mSignature Load (0.4ms)[0m   [0;1mSELECT * FROM "signatures" WHERE ((signatures.proposal_id = 1 OR signatures.proposal_id = 2 OR signatures.proposal_id = 3 OR signatures.proposal_id = 4 OR signatures.proposal_id = 5 OR signatures.proposal_id = 6 OR signatures.proposal_id = 7 OR signatures.proposal_id = 8 OR signatures.proposal_id = 9 OR signatures.proposal_id = 10) AND (signatures.user_id = 1)) [0m
+Rendering template within layouts/main
+Rendering proposals/index
+Completed in 88ms (View: 42, DB: 4) | 200 OK [http://localhost/proposals]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-16 01:09:53) [GET]
+
+ActionController::RoutingError (No route matches "/1" with {:method=>:get}):
+  haml (3.0.12) rails/./lib/sass/plugin/rack.rb:41:in `call'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-16 01:10:01) [GET]
+
+ActionController::RoutingError (No route matches "/2" with {:method=>:get}):
+  haml (3.0.12) rails/./lib/sass/plugin/rack.rb:41:in `call'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ProposalsController#index (for 127.0.0.1 at 2010-08-16 01:10:27) [GET]
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mProposal Load (2.6ms)[0m   [0;1mSELECT * FROM "proposals" LIMIT 10 OFFSET 0[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mVote Load (0.9ms)[0m   [0;1mSELECT "votes".* FROM "votes" WHERE ("votes".proposal_id IN (1,2,3,4,5,6,7,8,9,10)) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM "proposals" [0m
+  [4;35;1mSignature Load (0.4ms)[0m   [0mSELECT * FROM "signatures" WHERE ((signatures.proposal_id = 1 OR signatures.proposal_id = 2 OR signatures.proposal_id = 3 OR signatures.proposal_id = 4 OR signatures.proposal_id = 5 OR signatures.proposal_id = 6 OR signatures.proposal_id = 7 OR signatures.proposal_id = 8 OR signatures.proposal_id = 9 OR signatures.proposal_id = 10) AND (signatures.user_id = 1)) [0m
+Rendering template within layouts/main
+Rendering proposals/index
+Completed in 117ms (View: 67, DB: 5) | 200 OK [http://localhost/proposals]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-08-16 01:10:29) [GET]
+
+ActionController::RoutingError (No route matches "/2" with {:method=>:get}):
+  haml (3.0.12) rails/./lib/sass/plugin/rack.rb:41:in `call'
+
+Rendering rescues/layout (not_found)
+
+
+Processing ProposalsController#index (for 127.0.0.1 at 2010-08-16 01:10:59) [GET]
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mProposal Load (2.1ms)[0m   [0mSELECT * FROM "proposals" LIMIT 10 OFFSET 0[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mVote Load (0.9ms)[0m   [0mSELECT "votes".* FROM "votes" WHERE ("votes".proposal_id IN (1,2,3,4,5,6,7,8,9,10)) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM "proposals" [0m
+  [4;36;1mSignature Load (11.9ms)[0m   [0;1mSELECT * FROM "signatures" WHERE ((signatures.proposal_id = 1 OR signatures.proposal_id = 2 OR signatures.proposal_id = 3 OR signatures.proposal_id = 4 OR signatures.proposal_id = 5 OR signatures.proposal_id = 6 OR signatures.proposal_id = 7 OR signatures.proposal_id = 8 OR signatures.proposal_id = 9 OR signatures.proposal_id = 10) AND (signatures.user_id = 1)) [0m
+Rendering template within layouts/main
+Rendering proposals/index
+Completed in 164ms (View: 57, DB: 16) | 200 OK [http://localhost/proposals]
+
+
+Processing ProposalsController#index (for 127.0.0.1 at 2010-08-16 01:11:19) [GET]
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mProposal Load (2.2ms)[0m   [0;1mSELECT * FROM "proposals" LIMIT 10 OFFSET 0[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mVote Load (1.0ms)[0m   [0;1mSELECT "votes".* FROM "votes" WHERE ("votes".proposal_id IN (1,2,3,4,5,6,7,8,9,10)) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM "proposals" [0m
+  [4;35;1mSignature Load (0.4ms)[0m   [0mSELECT * FROM "signatures" WHERE ((signatures.proposal_id = 1 OR signatures.proposal_id = 2 OR signatures.proposal_id = 3 OR signatures.proposal_id = 4 OR signatures.proposal_id = 5 OR signatures.proposal_id = 6 OR signatures.proposal_id = 7 OR signatures.proposal_id = 8 OR signatures.proposal_id = 9 OR signatures.proposal_id = 10) AND (signatures.user_id = 1)) [0m
+Rendering template within layouts/main
+Rendering proposals/index
+Completed in 86ms (View: 40, DB: 4) | 200 OK [http://localhost/proposals]
+
+
+Processing ProposalsController#index (for 127.0.0.1 at 2010-08-16 01:11:23) [GET]
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mProposal Load (2.2ms)[0m   [0mSELECT * FROM "proposals" LIMIT 10 OFFSET 0[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mVote Load (1.0ms)[0m   [0mSELECT "votes".* FROM "votes" WHERE ("votes".proposal_id IN (1,2,3,4,5,6,7,8,9,10)) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM "proposals" [0m
+  [4;36;1mSignature Load (0.4ms)[0m   [0;1mSELECT * FROM "signatures" WHERE ((signatures.proposal_id = 1 OR signatures.proposal_id = 2 OR signatures.proposal_id = 3 OR signatures.proposal_id = 4 OR signatures.proposal_id = 5 OR signatures.proposal_id = 6 OR signatures.proposal_id = 7 OR signatures.proposal_id = 8 OR signatures.proposal_id = 9 OR signatures.proposal_id = 10) AND (signatures.user_id = 1)) [0m
+Rendering template within layouts/main
+Rendering proposals/index
+Completed in 101ms (View: 52, DB: 5) | 200 OK [http://localhost/proposals]
+
+
+Processing ProposalsController#index (for 127.0.0.1 at 2010-08-16 01:11:27) [GET]
+  Parameters: {"search"=>{"status_equals"=>"open", "closing_at_before"=>"Mon Aug 16 01:11:23 +0200 2010"}}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mProposal Load (1.3ms)[0m   [0;1mSELECT * FROM "proposals" WHERE ((proposals.closing_at < '2010-08-16 01:11:23') AND (proposals.status = 'open')) LIMIT 10 OFFSET 0[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mVote Load (0.2ms)[0m   [0;1mSELECT "votes".* FROM "votes" WHERE ("votes".proposal_id IN (2,3,4,5,7)) [0m
+  [4;35;1mSignature Load (0.2ms)[0m   [0mSELECT * FROM "signatures" WHERE ((signatures.proposal_id = 2 OR signatures.proposal_id = 3 OR signatures.proposal_id = 4 OR signatures.proposal_id = 5 OR signatures.proposal_id = 7) AND (signatures.user_id = 1)) [0m
+Rendering template within layouts/main
+Rendering proposals/index
+Completed in 133ms (View: 93, DB: 2) | 200 OK [http://localhost/proposals?search%5Bclosing_at_before%5D=Mon+Aug+16+01%3A11%3A23+%2B0200+2010&search%5Bstatus_equals%5D=open]
+
+
+Processing ProposalsController#index (for 127.0.0.1 at 2010-08-16 01:11:33) [GET]
+  Parameters: {"search"=>{"status_equals"=>"open", "closing_at_before"=>"Mon Aug 16 01:11:23 +0200 2010"}}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mProposal Load (1.3ms)[0m   [0mSELECT * FROM "proposals" WHERE ((proposals.closing_at < '2010-08-16 01:11:23') AND (proposals.status = 'open')) LIMIT 10 OFFSET 0[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mVote Load (0.2ms)[0m   [0mSELECT "votes".* FROM "votes" WHERE ("votes".proposal_id IN (2,3,4,5,7)) [0m
+  [4;36;1mSignature Load (0.2ms)[0m   [0;1mSELECT * FROM "signatures" WHERE ((signatures.proposal_id = 2 OR signatures.proposal_id = 3 OR signatures.proposal_id = 4 OR signatures.proposal_id = 5 OR signatures.proposal_id = 7) AND (signatures.user_id = 1)) [0m
+Rendering template within layouts/main
+Rendering proposals/index
+Completed in 68ms (View: 26, DB: 2) | 200 OK [http://localhost/proposals?search%5Bclosing_at_before%5D=Mon+Aug+16+01%3A11%3A23+%2B0200+2010&search%5Bstatus_equals%5D=open]
+
+
+Processing ProposalsController#index (for 127.0.0.1 at 2010-08-16 01:12:23) [GET]
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mProposal Load (2.1ms)[0m   [0;1mSELECT * FROM "proposals" LIMIT 10 OFFSET 0[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mVote Load (0.9ms)[0m   [0;1mSELECT "votes".* FROM "votes" WHERE ("votes".proposal_id IN (1,2,3,4,5,6,7,8,9,10)) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM "proposals" [0m
+  [4;35;1mSignature Load (0.4ms)[0m   [0mSELECT * FROM "signatures" WHERE ((signatures.proposal_id = 1 OR signatures.proposal_id = 2 OR signatures.proposal_id = 3 OR signatures.proposal_id = 4 OR signatures.proposal_id = 5 OR signatures.proposal_id = 6 OR signatures.proposal_id = 7 OR signatures.proposal_id = 8 OR signatures.proposal_id = 9 OR signatures.proposal_id = 10) AND (signatures.user_id = 1)) [0m
+Rendering template within layouts/main
+Rendering proposals/index
+Completed in 154ms (View: 110, DB: 4) | 200 OK [http://localhost/proposals]
+
+
+Processing ProposalsController#index (for 127.0.0.1 at 2010-08-16 01:12:28) [GET]
+  Parameters: {"page"=>"2"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mProposal Load (0.7ms)[0m   [0mSELECT * FROM "proposals" LIMIT 10 OFFSET 10[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mVote Load (1.3ms)[0m   [0mSELECT "votes".* FROM "votes" WHERE ("votes".proposal_id IN (11,12)) [0m
+  [4;36;1mSignature Load (0.5ms)[0m   [0;1mSELECT * FROM "signatures" WHERE ((signatures.proposal_id = 11 OR signatures.proposal_id = 12) AND (signatures.user_id = 1)) [0m
+Rendering template within layouts/main
+Rendering proposals/index
+Completed in 61ms (View: 22, DB: 3) | 200 OK [http://localhost/proposals?page=2]
+
+
+Processing ProposalsController#index (for 127.0.0.1 at 2010-08-16 01:12:45) [GET]
+  Parameters: {"page"=>"2"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mProposal Load (0.7ms)[0m   [0;1mSELECT * FROM "proposals" LIMIT 10 OFFSET 10[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mVote Load (1.2ms)[0m   [0;1mSELECT "votes".* FROM "votes" WHERE ("votes".proposal_id IN (11,12)) [0m
+  [4;35;1mSignature Load (0.5ms)[0m   [0mSELECT * FROM "signatures" WHERE ((signatures.proposal_id = 11 OR signatures.proposal_id = 12) AND (signatures.user_id = 1)) [0m
+Rendering template within layouts/main
+Rendering proposals/index
+Completed in 127ms (View: 24, DB: 3) | 200 OK [http://localhost/proposals?page=2]
+
+
+Processing ProposalsController#index (for 127.0.0.1 at 2010-08-16 01:12:51) [GET]
+  Parameters: {"page"=>"2"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mProposal Load (0.7ms)[0m   [0mSELECT * FROM "proposals" LIMIT 10 OFFSET 10[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mVote Load (1.3ms)[0m   [0mSELECT "votes".* FROM "votes" WHERE ("votes".proposal_id IN (11,12)) [0m
+  [4;36;1mSignature Load (0.7ms)[0m   [0;1mSELECT * FROM "signatures" WHERE ((signatures.proposal_id = 11 OR signatures.proposal_id = 12) AND (signatures.user_id = 1)) [0m
+Rendering template within layouts/main
+Rendering proposals/index
+Completed in 63ms (View: 23, DB: 3) | 200 OK [http://localhost/proposals?page=2]
+
+
+Processing ProposalsController#index (for 127.0.0.1 at 2010-08-16 01:12:53) [GET]
+  Parameters: {"page"=>"2"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mProposal Load (0.6ms)[0m   [0;1mSELECT * FROM "proposals" LIMIT 10 OFFSET 10[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mVote Load (1.2ms)[0m   [0;1mSELECT "votes".* FROM "votes" WHERE ("votes".proposal_id IN (11,12)) [0m
+  [4;35;1mSignature Load (0.5ms)[0m   [0mSELECT * FROM "signatures" WHERE ((signatures.proposal_id = 11 OR signatures.proposal_id = 12) AND (signatures.user_id = 1)) [0m
+Rendering template within layouts/main
+Rendering proposals/index
+Completed in 136ms (View: 24, DB: 3) | 200 OK [http://localhost/proposals?page=2]
+
+
+Processing ProposalsController#index (for 127.0.0.1 at 2010-08-16 01:12:54) [GET]
+  Parameters: {"page"=>"2"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mProposal Load (0.7ms)[0m   [0mSELECT * FROM "proposals" LIMIT 10 OFFSET 10[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mVote Load (1.2ms)[0m   [0mSELECT "votes".* FROM "votes" WHERE ("votes".proposal_id IN (11,12)) [0m
+  [4;36;1mSignature Load (0.4ms)[0m   [0;1mSELECT * FROM "signatures" WHERE ((signatures.proposal_id = 11 OR signatures.proposal_id = 12) AND (signatures.user_id = 1)) [0m
+Rendering template within layouts/main
+Rendering proposals/index
+Completed in 61ms (View: 22, DB: 3) | 200 OK [http://localhost/proposals?page=2]
+
+
+Processing ProposalsController#index (for 127.0.0.1 at 2010-08-16 01:12:55) [GET]
+  Parameters: {"page"=>"2"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mProposal Load (0.7ms)[0m   [0;1mSELECT * FROM "proposals" LIMIT 10 OFFSET 10[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mVote Load (1.3ms)[0m   [0;1mSELECT "votes".* FROM "votes" WHERE ("votes".proposal_id IN (11,12)) [0m
+  [4;35;1mSignature Load (0.5ms)[0m   [0mSELECT * FROM "signatures" WHERE ((signatures.proposal_id = 11 OR signatures.proposal_id = 12) AND (signatures.user_id = 1)) [0m
+Rendering template within layouts/main
+Rendering proposals/index
+Completed in 127ms (View: 23, DB: 3) | 200 OK [http://localhost/proposals?page=2]
+
+
+Processing ProposalsController#index (for 127.0.0.1 at 2010-08-16 01:13:03) [GET]
+  Parameters: {"page"=>"1"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mProposal Load (2.0ms)[0m   [0mSELECT * FROM "proposals" LIMIT 10 OFFSET 0[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mVote Load (0.9ms)[0m   [0mSELECT "votes".* FROM "votes" WHERE ("votes".proposal_id IN (1,2,3,4,5,6,7,8,9,10)) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM "proposals" [0m
+  [4;36;1mSignature Load (0.4ms)[0m   [0;1mSELECT * FROM "signatures" WHERE ((signatures.proposal_id = 1 OR signatures.proposal_id = 2 OR signatures.proposal_id = 3 OR signatures.proposal_id = 4 OR signatures.proposal_id = 5 OR signatures.proposal_id = 6 OR signatures.proposal_id = 7 OR signatures.proposal_id = 8 OR signatures.proposal_id = 9 OR signatures.proposal_id = 10) AND (signatures.user_id = 1)) [0m
+Rendering template within layouts/main
+Rendering proposals/index
+Completed in 87ms (View: 41, DB: 4) | 200 OK [http://localhost/proposals?page=1]
+
+
+Processing ProposalsController#index (for 127.0.0.1 at 2010-08-16 01:13:07) [GET]
+  Parameters: {"page"=>"2"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mProposal Load (0.9ms)[0m   [0;1mSELECT * FROM "proposals" LIMIT 10 OFFSET 10[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mVote Load (1.5ms)[0m   [0;1mSELECT "votes".* FROM "votes" WHERE ("votes".proposal_id IN (11,12)) [0m
+  [4;35;1mSignature Load (0.5ms)[0m   [0mSELECT * FROM "signatures" WHERE ((signatures.proposal_id = 11 OR signatures.proposal_id = 12) AND (signatures.user_id = 1)) [0m
+Rendering template within layouts/main
+Rendering proposals/index
+Completed in 64ms (View: 23, DB: 4) | 200 OK [http://localhost/proposals?page=2]
+
+
+Processing ProposalsController#index (for 127.0.0.1 at 2010-08-16 01:13:10) [GET]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mProposal Load (2.1ms)[0m   [0mSELECT * FROM "proposals" LIMIT 10 OFFSET 0[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mVote Load (1.0ms)[0m   [0mSELECT "votes".* FROM "votes" WHERE ("votes".proposal_id IN (1,2,3,4,5,6,7,8,9,10)) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM "proposals" [0m
+  [4;36;1mSignature Load (0.4ms)[0m   [0;1mSELECT * FROM "signatures" WHERE ((signatures.proposal_id = 1 OR signatures.proposal_id = 2 OR signatures.proposal_id = 3 OR signatures.proposal_id = 4 OR signatures.proposal_id = 5 OR signatures.proposal_id = 6 OR signatures.proposal_id = 7 OR signatures.proposal_id = 8 OR signatures.proposal_id = 9 OR signatures.proposal_id = 10) AND (signatures.user_id = 1)) [0m
+Rendering template within layouts/main
+Rendering proposals/index
+Completed in 86ms (View: 40, DB: 4) | 200 OK [http://localhost/proposals]
+
+
+Processing ProposalsController#index (for 127.0.0.1 at 2010-08-16 01:13:14) [GET]
+  Parameters: {"page"=>"2"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mProposal Load (0.8ms)[0m   [0;1mSELECT * FROM "proposals" LIMIT 10 OFFSET 10[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mVote Load (1.2ms)[0m   [0;1mSELECT "votes".* FROM "votes" WHERE ("votes".proposal_id IN (11,12)) [0m
+  [4;35;1mSignature Load (0.5ms)[0m   [0mSELECT * FROM "signatures" WHERE ((signatures.proposal_id = 11 OR signatures.proposal_id = 12) AND (signatures.user_id = 1)) [0m
+Rendering template within layouts/main
+Rendering proposals/index
+Completed in 62ms (View: 22, DB: 3) | 200 OK [http://localhost/proposals?page=2]
+  [4;36;1mProposal Load (0.5ms)[0m   [0;1mSELECT * FROM "proposals" WHERE ("proposals"."id" = 12) [0m
+  [4;35;1mProposal Load (1.5ms)[0m   [0mSELECT * FROM "proposals" WHERE ("proposals"."id" = 12) [0m
+  [4;36;1mProposal Load (1.4ms)[0m   [0;1mSELECT * FROM "proposals" WHERE ("proposals"."id" = 12) [0m
+
+
+Processing ProposalsController#withdraw (for 127.0.0.1 at 2010-08-16 01:14:21) [GET]
+  Parameters: {"id"=>"12"}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mProposal Load (0.5ms)[0m   [0mSELECT * FROM "proposals" WHERE ("proposals"."id" = 12) [0m
+  [4;36;1mProposal Update (0.4ms)[0m   [0;1mUPDATE "proposals" SET "updated_at" = '2010-08-15 23:14:21', "status" = 'withdrawn' WHERE "id" = 12[0m
+Redirected to http://localhost:3000/proposals
+Completed in 122ms (DB: 1) | 302 Found [http://localhost/proposals/withdraw/12]
+
+
+Processing ProposalsController#index (for 127.0.0.1 at 2010-08-16 01:14:21) [GET]
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mProposal Load (2.1ms)[0m   [0;1mSELECT * FROM "proposals" LIMIT 10 OFFSET 0[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mVote Load (0.9ms)[0m   [0;1mSELECT "votes".* FROM "votes" WHERE ("votes".proposal_id IN (1,2,3,4,5,6,7,8,9,10)) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM "proposals" [0m
+  [4;35;1mSignature Load (0.4ms)[0m   [0mSELECT * FROM "signatures" WHERE ((signatures.proposal_id = 1 OR signatures.proposal_id = 2 OR signatures.proposal_id = 3 OR signatures.proposal_id = 4 OR signatures.proposal_id = 5 OR signatures.proposal_id = 6 OR signatures.proposal_id = 7 OR signatures.proposal_id = 8 OR signatures.proposal_id = 9 OR signatures.proposal_id = 10) AND (signatures.user_id = 1)) [0m
+Rendering template within layouts/main
+Rendering proposals/index
+Completed in 155ms (View: 44, DB: 4) | 200 OK [http://localhost/proposals]
+
+
+Processing ProposalsController#index (for 127.0.0.1 at 2010-08-16 01:14:27) [GET]
+  Parameters: {"search"=>{"status_equals"=>"withdrawn"}}
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mProposal Load (0.5ms)[0m   [0mSELECT * FROM "proposals" WHERE (proposals.status = 'withdrawn') LIMIT 10 OFFSET 0[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mVote Load (0.4ms)[0m   [0mSELECT "votes".* FROM "votes" WHERE ("votes".proposal_id = 12) [0m
+  [4;36;1mSignature Load (0.3ms)[0m   [0;1mSELECT * FROM "signatures" WHERE ((signatures.proposal_id = 12) AND (signatures.user_id = 1)) [0m
+Rendering template within layouts/main
+Rendering proposals/index
+Completed in 52ms (View: 17, DB: 2) | 200 OK [http://localhost/proposals?search%5Bstatus_equals%5D=withdrawn]
+
+
+Processing ProposalsController#index (for 127.0.0.1 at 2010-08-16 14:06:52) [GET]
+Rendering template within layouts/sessions
+Rendering /sessions/new
+Filter chain halted as [:authenticate] rendered_or_redirected.
+Completed in 250ms (View: 205, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing ProposalsController#index (for 127.0.0.1 at 2010-08-16 14:06:58) [GET]
+  Parameters: {"openid_username"=>"mag", "openid_identifier"=>"https://openid.octo.com/users/mag"}
+Filter chain halted as [:handle_openid] rendered_or_redirected.
+Completed in 1ms (View: 1, DB: 0) | 401 Unauthorized [http://localhost/?openid_username=mag&openid_identifier=https%3A%2F%2Fopenid.octo.com%2Fusers%2Fmag]
+  [4;36;1mAssociation Load (0.5ms)[0m   [0;1mSELECT * FROM "open_id_associations" WHERE ("open_id_associations"."server_url" = 'https://openid.octo.com/server.openid') [0m
+  [4;35;1mAssociation Destroy (0.3ms)[0m   [0mDELETE FROM "open_id_associations" WHERE "id" = 2[0m
+  [4;36;1mAssociation Delete all (0.3ms)[0m   [0;1mDELETE FROM "open_id_associations" WHERE (server_url = 'https://openid.octo.com/server.openid' AND handle = '1279834756437-189') [0m
+  [4;35;1mAssociation Create (0.2ms)[0m   [0mINSERT INTO "open_id_associations" ("lifetime", "server_url", "handle", "issued", "assoc_type", "secret") VALUES(1800, 'https://openid.octo.com/server.openid', '1279834756437-189', 1281960420, 'HMAC-SHA1', 'Æ
+þ*û²8ŒÇSÅôh%00‡')[0m
+  [4;36;1mAssociation Load (0.6ms)[0m   [0;1mSELECT * FROM "open_id_associations" WHERE ("open_id_associations"."handle" = '1279834756437-189' AND "open_id_associations"."server_url" = 'https://openid.octo.com/server.openid') [0m
+  [4;35;1mNonce Load (0.1ms)[0m   [0mSELECT * FROM "open_id_nonces" WHERE ("open_id_nonces"."timestamp" = 1281960420 AND "open_id_nonces"."server_url" = '' AND "open_id_nonces"."salt" = 'O0kvdg') LIMIT 1[0m
+  [4;36;1mNonce Create (0.2ms)[0m   [0;1mINSERT INTO "open_id_nonces" ("salt", "server_url", "timestamp") VALUES('O0kvdg', '', 1281960420)[0m
+
+
+Processing ProposalsController#index (for 127.0.0.1 at 2010-08-16 14:07:09) [GET]
+  Parameters: {"rp_nonce"=>"2010-08-16T12:07:00ZO0kvdg", "openid1_claimed_id"=>"https://openid.octo.com/users/mag"}
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."openid" = 'https://openid.octo.com/users/mag') LIMIT 1[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Redirected to http://localhost:3000/
+Filter chain halted as [:handle_openid] rendered_or_redirected.
+Completed in 19ms (DB: 2) | 302 Found [http://localhost/?rp_nonce=2010-08-16T12%3A07%3A00ZO0kvdg&openid1_claimed_id=https%3A%2F%2Fopenid.octo.com%2Fusers%2Fmag]
+
+
+Processing ProposalsController#index (for 127.0.0.1 at 2010-08-16 14:07:09) [GET]
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mProposal Load (2.1ms)[0m   [0;1mSELECT * FROM "proposals" LIMIT 10 OFFSET 0[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mVote Load (0.9ms)[0m   [0;1mSELECT "votes".* FROM "votes" WHERE ("votes".proposal_id IN (1,2,3,4,5,6,7,8,9,10)) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM "proposals" [0m
+  [4;35;1mSignature Load (0.4ms)[0m   [0mSELECT * FROM "signatures" WHERE ((signatures.proposal_id = 1 OR signatures.proposal_id = 2 OR signatures.proposal_id = 3 OR signatures.proposal_id = 4 OR signatures.proposal_id = 5 OR signatures.proposal_id = 6 OR signatures.proposal_id = 7 OR signatures.proposal_id = 8 OR signatures.proposal_id = 9 OR signatures.proposal_id = 10) AND (signatures.user_id = 1)) [0m
+Rendering template within layouts/main
+Rendering proposals/index
+Completed in 189ms (View: 76, DB: 5) | 200 OK [http://localhost/]

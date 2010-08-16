@@ -23,7 +23,7 @@ No proposal
             = proposal.user.nickname
             proposes : 
           %td{:id=>"link_#{proposal.id}"}
-            = link_to proposal.text[0..20]+"...","#{proposal.id}"
+            = link_to proposal.text[0..20]+"...","#"
             -if proposal.user_id == current_user.id && proposal.votes.any?{|v| !v.comment.empty?}
               %br some would vote yes if...
           %td= facebook_distance_of_time_in_words proposal.opening_at
@@ -57,7 +57,4 @@ No proposal
           %li=vote.comment
       
   :javascript    
-    $('#link_#{proposal.id}').bind('click', function() {
-      $('#proposal_#{proposal.id}').dialog({ modal: true, title: '#{proposal.user.nickname} proposes :' ,height:400, width:600  });return false;
-      };
-    )
+    $('#link_#{proposal.id}').bind('click', function() {$('#proposal_#{proposal.id}').dialog({ modal: true, title: '#{proposal.user.nickname} proposes :' ,height:400, width:600  });return false;})
