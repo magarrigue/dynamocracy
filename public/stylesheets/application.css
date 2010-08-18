@@ -120,7 +120,8 @@ form {
     padding: 10px 3px; }
   .proposals tr.closed td {
     background: #efefef;
-    color: #666666; }
+    color: #666666;
+    font-style: italic; }
   .proposals thead {
     background: #3e3e3e;
     color: white; }

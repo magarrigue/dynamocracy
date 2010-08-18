@@ -19,6 +19,7 @@
       %th= order @search, :by => :yes_count, :as=> 'Yes/Support/No/Pass '
       %th= order  @search, :by => :signatures_count, :as => 'Signatures'
       %th= 'Action'
+    %tbody
       - @proposals.each do |proposal|
         %tr(class="#{proposal.full_status}")
           %td
