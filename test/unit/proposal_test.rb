@@ -4,13 +4,13 @@ class ProposalTest < ActiveSupport::TestCase
   
   # Replace this with your real tests.
   test "should not save proposal without proposal" do
-    proposal = Factory :proposal
+    proposal = Factory.build :proposal
     proposal.text = nil
     assert ! proposal.save
   end
   
  test "a proposal belongs to a user" do
-    proposal = Factory :proposal
+    proposal = Factory.build :proposal
     assert  proposal.save
     assert !proposal.user_id.nil?
     assert !proposal.user.nil? 
@@ -18,7 +18,6 @@ class ProposalTest < ActiveSupport::TestCase
   
   test "should save proposal a  proposal with a user and a proposal" do
     proposal = Factory :proposal
-    assert proposal.save
   end
   
   test "should not save proposal a  proposal without a user" do
@@ -30,5 +29,7 @@ class ProposalTest < ActiveSupport::TestCase
     assert_equal Time.now.to_i, Proposal.new.opening_at.to_i
     assert_equal 7.day.from_now.to_i, Proposal.new.closing_at.to_i
   end
+  
+  
   
 end 

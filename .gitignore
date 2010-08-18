@@ -1,0 +1,4 @@
+log/*
+tmp/*
+test/integration/webrat*
+test/*/public/*
