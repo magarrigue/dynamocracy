@@ -15,8 +15,10 @@
     %thead
       - [:user,:text,:opening_at,:closing_at,:status].each do |attribute|
         %th= order  @search, :by => attribute 
-      %th= 'Action'  
-      %th= 'Results'
+       
+      %th= order @search, :by => :yes_count, :as=> 'Yes/Support/No/Pass '
+      %th= order  @search, :by => :signatures_count, :as => 'Signatures'
+      %th= 'Action'
       - @proposals.each do |proposal|
         %tr
           %td
@@ -24,24 +26,34 @@
             proposes : 
           %td{:id=>"link_#{proposal.id}"}
             = link_to proposal.text[0..20]+"...","#"
-            -if proposal.user_id == current_user.id && proposal.votes.any?{|v| !v.comment.empty?}
-              %br some would vote yes if...
+            - comments = proposal.votes.collect{|v| v.comment}
+            -if proposal.user_id == current_user.id && !comments.empty?
+              %br 
+                ="#{comments.size} would vote yes if..."
           %td= facebook_distance_of_time_in_words proposal.opening_at
           %td= facebook_distance_of_time_in_words proposal.closing_at
           %td= proposal.full_status
-          - if proposal.full_status == 'open'
-            -if @signatures.find_all{|s| s.proposal_id==proposal.id}.empty?
-              %td= link_to 'Vote!', new_proposal_vote_path(proposal) 
-            -else
-              %td= 'Voted'
+          %td
+            - if proposal.full_status == 'closed'
+              %font(color='lime')= proposal.yes_count
+              %font(color='gold')= proposal.support_count
+              %font(color='red')= proposal.no_count
+              %font(color='silver')= proposal.pass_count
+              
+            - elsif proposal.full_status == 'cancelled'
+              ="Vetoed by #{proposal.cancelled_by.nickname}"          
+          %td= proposal.signatures_count
+          %td
             - if proposal.user_id == current_user.id
-              %td= link_to 'Withdraw!', withdraw_proposal_path(proposal)
-          -else
-            %td=' '
-          - if proposal.full_status == 'closed'
-            %td= "Yes:#{proposal.yes_count}, Support:#{proposal.support_count}, No:#{proposal.no_count}, Pass:#{proposal.pass_count}"
-          - if proposal.full_status == 'cancelled'
-            %td= "Vetoed by #{proposal.cancelled_by.nickname}"
+              = link_to 'Withdraw!', withdraw_proposal_path(proposal)
+            - if proposal.full_status == 'open'
+              - if @signatures.find_all{|s| s.proposal_id==proposal.id}.empty?
+                = link_to 'Vote!', new_proposal_vote_path(proposal) 
+              - else
+                = 'Voted'
+          
+          
+          
           
   =will_paginate        
 
@@ -49,7 +61,7 @@
   %div#proposal.proposal.details{:id=>proposal.id}
     %h3 Proposal
     =proposal.text
-    -if proposal.user_id == current_user.id
+    -if proposal.user_id == current_user.id && !proposal.votes.all?{|v| v.comment.empty?}
       %h3 Some would vote yes if :
       %ul
       -proposal.votes.each do |vote|
