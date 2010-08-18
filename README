@@ -1,3 +1,1 @@
- -#%td
-            -#%img(src="http://chart.apis.google.com/chart?chxt=x&chbh=a,0,7&chs=260x165&cht=bhs&chco=00FF00|3072F3|FF0000|E5ECF9&chd=t:#{proposal.yes_count},#{proposal.no_count},#{proposal.support_count},#{proposal.pass_count}&chdl=Yes|Support|No|Pass&chg=-1,0&chma=5,0,5|21")
-
+Dynamocracy
