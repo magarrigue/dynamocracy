@@ -2,3 +2,5 @@ log/*
 tmp/*
 test/integration/webrat*
 test/*/public/*
+db/development.sqlite3
+
