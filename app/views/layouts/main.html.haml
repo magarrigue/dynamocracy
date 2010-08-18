@@ -3,30 +3,23 @@
   %head
     %title= 'Dynamocracy'
     %meta(http-equiv="content-type" content="text/html; charset=utf-8")
-    = stylesheet_link_tag "dynamocracy","jquery-ui-1.8.4.custom", "formtastic"
+    = stylesheet_link_tag "application","jquery-ui-1.8.4.custom", "formtastic"
+    %link(href='http://fonts.googleapis.com/css?family=Reenie+Beanie' rel='stylesheet' type='text/css')
     = javascript_include_tag "jquery-1.4.2.min","jquery-ui-1.8.4.custom.min"
   
   %body
-    .head
-      %h1
-        Dynamocracy    
-      
+    .everything
       %header
-        = link_to 'Home', root_path 
-        |
-        = link_to 'Logout', logout_path
-        |
-        = link_to 'New proposal', new_proposal_path
-
-    #error_div_id.flash.error
-      = flash[:error]
-    #notice_div_id.flash.notice
-      = flash[:notice]
-    = yield
-    %br
-
-    %p
-      
-    %p Copyright © 2009-2010 Dynamocracy.org
-  
-  
+        %h1
+          = link_to "Dynamocracy", root_path
+        %nav
+          %ul
+            %li= link_to 'Home', root_path 
+            %li= link_to 'Logout', logout_path
+            %li= link_to 'New proposal', new_proposal_path
+      .content
+        #error_div_id.flash.error= flash[:error]
+        #notice_div_id.flash.notice= flash[:notice]
+        = yield
+      .footer
+        Copyright © 2009-2010 Dynamocracy.org

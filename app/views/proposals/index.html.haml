@@ -1,15 +1,16 @@
 %h2
   Proposals
-%h2
-  = link_to 'All', proposals_path
-  = link_to "Ongoing", proposals_path(:search=>{:opening_at_before => Time.now, :closing_at_after => Time.now, :status_equals => 'open' })
-  = link_to "Decisions", proposals_path(:search=>{:closing_at_before => Time.now, :status_equals => 'open' })
-  = link_to "Pending", proposals_path(:search=>{:opening_at_after => Time.now, :status_equals => 'open' })
-  = link_to "Cancelled", proposals_path(:search=>{:status_equals => 'cancelled' })
-  = link_to "Withdrawn", proposals_path(:search=>{:status_equals => 'withdrawn' })
-  = link_to "My proposals", proposals_path(:search=>{:user_id => current_user.id })
+%ul.proposals_nav
+  %li= link_to 'All', proposals_path
+  %li= link_to "Ongoing", proposals_path(:search=>{:opening_at_before => Time.now, :closing_at_after => Time.now, :status_equals => 'open' })
+  %li= link_to "Decisions", proposals_path(:search=>{:closing_at_before => Time.now, :status_equals => 'open' })
+  %li= link_to "Pending", proposals_path(:search=>{:opening_at_after => Time.now, :status_equals => 'open' })
+  %li= link_to "Cancelled", proposals_path(:search=>{:status_equals => 'cancelled' })
+  %li= link_to "Withdrawn", proposals_path(:search=>{:status_equals => 'withdrawn' })
+  %li= link_to "My proposals", proposals_path(:search=>{:user_id => current_user.id })
 -if @proposals.empty?
-  No proposal
+  .empty
+    No proposal
 -else
   %table.proposals
     %thead
@@ -17,11 +18,11 @@
         %th= order  @search, :by => attribute 
       %th= 'Action'  
       %th= 'Results'
+    %tbody
       - @proposals.each do |proposal|
-        %tr
+        %tr(class="#{proposal.full_status}")
           %td
             = proposal.user.nickname
-            proposes : 
           %td{:id=>"link_#{proposal.id}"}
             = link_to proposal.text[0..20]+"...","#"
             -if proposal.user_id == current_user.id && proposal.votes.any?{|v| !v.comment.empty?}
@@ -43,11 +44,13 @@
           - if proposal.full_status == 'cancelled'
             %td= "Vetoed by #{proposal.cancelled_by.nickname}"
           
-  =will_paginate        
+  =will_paginate
 
 - @proposals.each do |proposal|
-  %div#proposal.proposal.details{:id=>proposal.id}
-    %h3 Proposal
+  %div#proposal.proposal.details{:id=>proposal.id,:style=>"display:none"}
+    %h3
+      Proposal
+      %span= "Nº#{proposal.id}"
     =proposal.text
     -if proposal.user_id == current_user.id
       %h3 Some would vote yes if :
@@ -57,4 +60,7 @@
           %li=vote.comment
       
   :javascript    
-    $('#link_#{proposal.id}').bind('click', function() {$('#proposal_#{proposal.id}').dialog({ modal: true, title: '#{proposal.user.nickname} proposes :' ,height:400, width:600  });return false;})
+    $($('#link_#{proposal.id}').click(function(){
+      $(".proposal").hide()
+      $('#proposal_#{proposal.id}').show()
+    }))

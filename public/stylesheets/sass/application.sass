@@ -1,394 +1,122 @@
-$error_color: #F37C60
 =rounded($size)
   -moz-border-radius: $size + px
   -webkit-border-radius: $size + px
-
-body
-  :font-family "Helvetica Neue",Helvetica,Arial,sans-serif
-  :color #333
-  
-  :font-size 0.8em
+=nav_links
   :margin 0px
-a
-  :color #666
-  &:hover
-    :color #333
-
-.wrap_content
-  :background #F0F0F0 url("/images/big-fade.png") repeat-x
-.content
-  :margin 0px auto
-  :width 900px
-  :color #666666
-  h1
-    :color #333333
-  
-label
-  :font-weight bold
-  :color #444
-  :text-align right
-  :padding-right 10px
-  
-.wrap_header
-  :overflow hidden
-  :background url("/images/sharkskin.gif") repeat-x
-  :height 50px
-  :color white
-  header
-    :display block
-    :margin 0px auto
-    :width 940px
-  h1
-    :margin 2px
-    :float left
-    :font-size 2.6em
-    a
-      :text-decoration none
-    a:hover
-      :color white
-  #user_nav
-    :position relative
-    :top -4px
-    :float right
-    #user_logged_in
-      img
-        :border 2px solid white
-        :float left
-      ul
-        :float right
-        :margin 0px
-        :padding 0px
-        :padding-left 20px
-  :padding 6px 10px
-header a, .menu a
-  :font-weight normal
-  :font-size 1.1em
-  :color white
-.menu a
-  :color #DDD
-  :margin-left 15px
-.wrap_menu
-  :display block
-  :font-size 1.2em
-  :background-color #333
-  a
-    :text-decoration none
-  .menu
-    :margin 0 auto
-    :width 940px
-    :padding 5px 0px
-.flash
-  :color white
-  :padding 10px
-  :margin-top 10px
-  +rounded(6)
-.flash.error
-  :background-color darkred
-  :font-size 1.3em
-.flash.notice
-  :background-color green
-  
-.wrap_footer
-  :border-top 1px solid #DDDDDD
-  .footer
-    :color #999
-    :font-size 1.1em
-    :margin 0 auto
-    :padding 20px 30px
-    :width 940px
-    p.footer-nav
-      :color #CCCCCC
-      a
-        :color #777777
-        :margin 5px
-        :font-weight bold
-    p.copyright
-      :font-size 0.9em
-
-.games
-  :overflow hidden
-  :padding 0px
+  :padding-left 0px
   li
-    :float left
-    :margin-right 25px
-    :margin-bottom 20px
-    :padding 0px
-    :list-style none
-    a
-      :padding-left 20px
-      :font-size 1.2em
+    :display inline
+    :margin-left 10px
+  li:first-child
+    :margin-left 0px
   
-.dribbble
-  :background url("/images/dribbble-bottom-sm.png") no-repeat scroll left bottom transparent
-  :padding 0 0 10px
-  :overflow hidden
-  :clear left
-  .dribbble-shot
+body
+  :background #E7E7DE
+  :color #3E3E3E
+  :font-family verdana,sans-serif
+a
+  :color #3E3E3E
+header
+  :display block
+  :position relative
+  :height 50px
+  h1
+    :position absolute
+    :left 50px
+    :margin 0px
+    :top -25px
+    :font-family 'Reenie Beanie', Helvetica
+    :font-size 4em
+    :text-shadow 1px 4px 6px rgba(0,0,0,0.5)
+    :letter-spacing -3px
     a
-      :padding-left 0px
-    
-    :background url("/images/dribbble-check-sm.gif") no-repeat scroll left bottom transparent
-    :padding 10px
-    .game_img
-      :width 200px
-      :height 150px
-      :overflow hidden
-      &.disabled
-        :opacity 0.2
-        
-form, .panel
-  :border 1px solid #DDDDDD
-  :background-color white
-  :padding 15px 15px 0
-  +rounded(6)
-  :margin-bottom 25px
-  input[type=text], input[type=password]
-    :border 1px solid #999999
-    :padding 3px
-.button-to
-  input
-    :background #999
-    :border none
-    :color white
+      :color inherit
+      :text-decoration inherit
+  nav
+    :position absolute
+    :right 20px
+    :top 0px
+    :background #172322
+    :padding 5px 10px
+    +rounded(10)
+    a
+      :color white
+      :text-decoration none
+      &:hover
+        :text-decoration underline
+    ul
+      +nav_links
+.everything
+  :width 980px
+  :margin 20px auto 0px
+  .content
+    :font-family Georgia
+    :background white
+    +rounded(20)
     :padding 10px 20px
-    +rounded(6)
-    :font-size 1.4em
+.footer
+  :text-align center
+  :color rgba(20,20,20, 0.5)
+  :margin-top 20px
+  :font-size 0.8em
+  
+form
+  :background #FAF9F6
+  :border-top 1px dotted #999
+  :padding 10px 50px
+  :margin 10px -20px 5px
+  label
     :font-weight bold
-    :margin-bottom 15px
+  span.hint
+    :font-weight normal
+    :color gray
+    :font-style italic
+    :font-size 0.9em
+  input[type=submit]
+    :font-size 1.1em
+    :background #172322
+    :color white
+    :font-weight bold
+    :border none
+    +rounded(5)
+    :padding 5px 20px
     :cursor pointer
     &:hover
-      :background #666
-
-=button($size)
-  font-size: $size + em
-  :font-weight bold
-  :padding 4px 10px
-  :background #666
-  :color white
-  :margin-left 20px
-  :border none
-  :text-decoration none
-  +rounded(5)
-  &:hover
-    :background #333
+      :background black
+.proposals_nav, .pagination
+  :background #FAF9F6
+  :text-align center
+  +nav_links
+  :padding 10px 30px
+  :margin 0px -20px
+.pagination
+  :border-bottom 1px dotted #999
+.proposals_nav
+  :border-top 1px dotted #999
+.empty
+  :text-align center
+  :margin 50px
+  :font-size 2em
+  :color #999
+.proposals
+  td
+    :padding 10px 3px
+  tr.closed td
+    :background #EFEFEF
+    :color #666
+  thead
+    :background #3E3E3E
     :color white
-
-input
-  &.big_button, &.create
-    +button(1.4)
-
-.competitions
-  :font-size 1.2em
-  :padding 0px
-  li
-    :list-style none
-    :margin 15px
-.competitions, section
-  a
-    +button(1.2)
-
-section
-  :background white
-  +rounded(6)
-  :border 1px solid #CCC
-  :padding 10px
-  :margin 10px 0px
-  :font-size 110%
-  &.description
-    :background #EEEEFF
-  &.big_description
-    :background lightYellow
-    :font-size 1.2em
-    
-th
-  :font bold 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif
-  :color #6D929B
-  :border-right 1px solid #C1DAD7
-  :border-bottom 1px solid #C1DAD7
-  :border-top 1px solid #C1DAD7
-  :letter-spacing 2px
-  :text-transform uppercase
-  :text-align left
-  :padding 6px 6px 6px 12px
-  :background #CAE8EA
-
-.grey
-  :background #C0C0C0
-	
-td
-  :border-right 1px solid #C1DAD7
-  :border-bottom 1px solid #C1DAD7
-  :background #fff
-  :padding 6px 6px 6px 12px
-  :color #6D929B
-
-section
-  :display block
-  
-#password-strength
-  :width 200px
-  :position relative
-  :top -5px
-  :float right
-  #password-strength-status-bar-message
-    :margin 0px
-  #password-strength-status-bar
-    :background-color #DDDDDD
-  #password-strength-status-bar-status
-    :height 4px
-    :border-right 2px solid right
-  
-input.valid
-  :border 1px solid #659161 !important
-  :border-right 3px solid #659161 !important
-input.error, .error input
-  :border 1px solid #F37C60 !important
-  :border-right 3px solid #F37C60 !important
-.inline-errors
-  :display inline
-.error .inline-hints
-  :display none
-label.error, .inline-errors
-  :color $error_color
-  :padding-left 5px
-  :font-weight normal
-label abbr
-  :color #F37C60
-  :border-bottom none
-  :padding-left 4px
-.formtastic
-  fieldset
-    :border none
-    :border-bottom 1px solid #DDD
-    &.buttons
-      :border-bottom none
-  ol
-    :padding-left 0px
-  li
-    :margin 10px 0px
-    :list-style none
-  p.inline-hints
-    :margin 1px
-    :font-style italic
-    :padding-left 100px
-.modify_link
-  :cursor pointer
-  :float right
-  &:hover
-    :color #333
-fieldset.view_zone
-  span
-    :padding 3px 0px
-  :border-bottom none
-.inputs fieldset
-  :padding 0px
-  :margin 0px
-  :border none
-  li, ol, label
-    :display inline
-  label
-    :font-weight normal
-    :color #333333
-  legend.label
-    :float left
-    label
-      :font-weight bold
-      
-.formtastic .important
-  :background #EEE
-  :padding 10px 0px 10px 10px
-  :margin -10px 40px 0px -10px
-  .inline-hints
-    :padding-left 0px
-    :padding-top 5px
-    :text-align center
-.formtastic .important
-  .inline-errors
-    :display none
-  .inline-hints
-    :display block
-.formtastic
-  .error.important
-    :color $error_color
-    
-
-a#top_banner
-  :display block
-  :text-decoration none
-  :background-color rgba(255,245,215,0.9)
-  :position fixed
-  :border-bottom 1px solid white
-  :-moz-box-shadow 0px 8px 3px rgba(0,0,0,0.2)
-  :width 100%
-  :z-index 1
-  :top 0px
-  :cursor pointer
-  &:hover
-    :background-color #333333
-    label
+    th
+      :font-weight normal
+    a
       :color white
-      :text-shadow none
-  label
-    :cursor pointer
-    :text-shadow 0px 1px 0px rgb(245, 245, 245)
-    :font-size 1.2em
-    :display block
-    :font-weight bold
-    :text-align center
-    :padding 8px
-    :margin 0px auto
-    :width 940px
-  .countdown
+  :border-collapse collapse
+  :margin 0px -20px
+  :width 100%
+  :font-family Verdana
+  :font-size 0.9em
+.proposal
+  h3 span
     :color gray
-    :font-style italic
-    :font-weight normal
-
-#ranking
-  :height 550px
-  :width 200px
-  :float left
-  :background-color black
-  :margin-top 1px
-  :text-align center
-  :color white
-  h3
-    :margin 10px
-  ol
-    :text-align left
-    
-.live_block
-  h2
-    :padding 0
-    :margin 0
-  +rounded(20)
-  :padding 20px
-  :margin 30px
-  :background rgb(255, 245, 215)
-  :font-size 1.5em
-  :width 400px
-  :text-align center
-  :-moz-box-shadow 0 8px 3px rgba(0, 0, 0, 0.2)
-  :float left
-.next_lives
-  :float right
-  :width 300px
-  ul
-    :padding-left 0px
-.live
-  :background #666
-  :border 2px solid white
-  :color white
-  :padding 10px
-  :margin 10px 0px
-  :font-size 1.2em
-  :list-style none
-.version_manager
-  :border 1px solid #BEDCE7
-  :font 12px Monaco,"Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace
-  :background #EAF2F5
-  :padding 0.7em
-  li
-    :list-style none
-  :color #333
-  i
-    :color gray
+    :font-size 0.8em
