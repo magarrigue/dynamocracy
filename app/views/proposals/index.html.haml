@@ -9,7 +9,7 @@
   = link_to "Withdrawn", proposals_path(:search=>{:status_equals => 'withdrawn' })
   = link_to "My proposals", proposals_path(:search=>{:user_id => current_user.id })
 -if @proposals.empty?
-No proposal
+  No proposal
 -else
   %table.proposals
     %thead
