@@ -95,7 +95,7 @@ class VoteTest < ActiveSupport::TestCase
   end
   
   
-  test 'assert vote update proposal count' do
+  test 'assert vote update proposal totals count' do
     %w(yes no support pass).each do  |t|
       proposal = Factory :proposal
       assert_equal 0, proposal.send("#{t}_count".to_sym)
@@ -105,4 +105,12 @@ class VoteTest < ActiveSupport::TestCase
   end 
 
   
+  
+  test 'assert vote update proposal signatures count' do
+      proposal = Factory :proposal
+      assert_equal 0, proposal.reload.signatures_count
+      vote = Factory(:vote, :proposal => proposal, :value=>'yes', :comment=>"a comment")
+      assert_equal 1, proposal.reload.signatures_count
+    
+  end 
 end
