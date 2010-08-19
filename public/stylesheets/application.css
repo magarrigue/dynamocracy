@@ -15,10 +15,11 @@ header {
     left: 50px;
     margin: 0px;
     top: -25px;
-    font-family: "Reenie Beanie", Helvetica;
+    font-family: 'Lobster', serif;
     font-size: 4em;
     text-shadow: 1px 4px 6px rgba(0, 0, 0, 0.5);
-    letter-spacing: -3px; }
+    text-transform: capitalize;
+    }
     header h1 a {
       color: inherit;
       text-decoration: inherit; }
