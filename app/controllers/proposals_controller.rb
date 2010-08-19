@@ -7,7 +7,7 @@ class ProposalsController < ApplicationController
   
   def index
      @search = Proposal.search(params[:search])
-     @proposals = @search.paginate(:page=>params[:page], :per_page=>10, :include => [:user, :votes, :cancelled_by])
+     @proposals = @search.paginate(:page=>params[:page], :per_page=>5, :include => [:user, :votes, :cancelled_by])
      @my_signatures = Signature.user_id_eq(current_user.id).proposal_id_in(@proposals).all
   end 
 

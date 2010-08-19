@@ -1,15 +1,16 @@
 %h2
   Proposals
-%h2
-  = link_to 'All', proposals_path
-  = link_to "Ongoing", proposals_path(:search=>{:opening_at_before => Time.now, :closing_at_after => Time.now, :status_equals => 'open' })
-  = link_to "Decisions", proposals_path(:search=>{:closing_at_before => Time.now, :status_equals => 'open' })
-  = link_to "Pending", proposals_path(:search=>{:opening_at_after => Time.now, :status_equals => 'open' })
-  = link_to "Cancelled", proposals_path(:search=>{:status_equals => 'cancelled' })
-  = link_to "Withdrawn", proposals_path(:search=>{:status_equals => 'withdrawn' })
-  = link_to "My proposals", proposals_path(:search=>{:user_id => current_user.id })
+%ul.proposals_nav 
+  %li= link_to 'All', proposals_path
+  %li= link_to "Ongoing", proposals_path(:search=>{:opening_at_before => Time.now, :closing_at_after => Time.now, :status_equals => 'open' })
+  %li= link_to "Decisions", proposals_path(:search=>{:closing_at_before => Time.now, :status_equals => 'open' })
+  %li= link_to "Pending", proposals_path(:search=>{:opening_at_after => Time.now, :status_equals => 'open' })
+  %li= link_to "Cancelled", proposals_path(:search=>{:status_equals => 'cancelled' })
+  %li= link_to "Withdrawn", proposals_path(:search=>{:status_equals => 'withdrawn' })
+  %li= link_to "My proposals", proposals_path(:search=>{:user_id => current_user.id })
 -if @proposals.empty?
-  No proposal
+  .empty
+    No proposal
 -else
   %table.proposals
     %thead
@@ -18,10 +19,11 @@
       %th= order  @search, :by => :signatures_count, :as => 'Signatures'
       - if actionables?
         %th='Action' 
-      - if results?
+      - if results? 
         %th= order @search, :by => :yes_count, :as=> 'Yes/Support/No/Pass ' 
+    %tbody
     - @proposals.each do |proposal|
-      %tr
+      %tr(class="#{proposal.full_status}")
         %td
           = proposal.user.nickname
           proposes : 
@@ -35,14 +37,14 @@
         %td= date_distance proposal.closing_at
         %td= proposal.full_status
         %td= proposal.signatures_count
-        - if actionable? proposal
+        - if actionables?
           %td 
             - if votable? proposal
               = link_to 'Vote!', new_proposal_vote_path(proposal) 
             - if withdrawable?(proposal)
               = link_to 'Withdraw!', withdraw_proposal_path(proposal) ,:confirm => "Do you confirm you withdraw : #{proposal.text[0..20]}... ?"  
             
-        - if result? proposal
+        - if results? 
           %td
             - if proposal.full_status == 'closed'
               %font(color='lime')= proposal.yes_count
@@ -52,15 +54,18 @@
               
             - elsif proposal.full_status == 'cancelled'
               %font(color='red')="Vetoed by #{proposal.cancelled_by.nickname}"          
-                  
+           
+              
           
           
           
-  =will_paginate        
+  =will_paginate
 
 - @proposals.each do |proposal|
-  %div#proposal.proposal.details{:id=>proposal.id}
-    %h3 Proposal
+  %div#proposal.proposal.details{:id=>proposal.id,:style=>"display:none"}
+    %h3
+      Proposal
+      %span= "Nº#{proposal.id}"
     =proposal.text
     -if proposal.user_id == current_user.id && !proposal.votes.all?{|v| v.comment.empty?}
       %h3 Some would vote yes if :
@@ -70,4 +75,7 @@
           %li=vote.comment
       
   :javascript    
-    $('#link_#{proposal.id}').bind('click', function() {$('#proposal_#{proposal.id}').dialog({ modal: true, title: '#{proposal.user.nickname} proposes :' ,height:400, width:600  });return false;})
+    $($('#link_#{proposal.id}').click(function(){
+      $(".proposal").hide()
+      $('#proposal_#{proposal.id}').show()
+    }))

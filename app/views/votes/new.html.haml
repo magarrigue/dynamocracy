@@ -1,45 +1,41 @@
 %h1 Vote!
 
-%h2
+%h3
   = @vote.proposal.user.nickname
   proposes :
 
-%h3=@vote.proposal.text
-
-%br
-
-
+.proposition
+  =@vote.proposal.text
 
 - form_for [:proposal, @vote] do |f|
   = f.error_messages
-
-  = f.radio_button :value, 'yes'
-  = f.label :value_yes, "YES, I support this proposal and I am ready to champion it"
-  %br 
-  %br
-  = f.radio_button :value, 'support'
-  = f.label :value_support, "I SUPPORT this proposal, though I have some reservations. I don’t believe I can lead the implementation of this proposal, but I commit not to sabotage it"
-  %br 
-  %br
-  = f.radio_button :value, 'no'
-  = f.label :value_no, 'NO, right now I can’t support this proposal'
-  %br
-  %br
-  = f.radio_button :value, 'pass'
-  = f.label :value_pass, 'I just PASS'
-  %br
-  %br
-  = f.radio_button :value, 'veto'
-  = f.label :value_veto, 'VETO, I am an absolute no. I won’t get in, I’m cancelling the proposal, and I’m claiming it'
-  %br
-  %br
-  = f.label :comment, 'I would vote YES if : '
-  %br
-  = f.text_area :comment, :rows=>4, :cols=> 80
-  %br
-  %br
-  = f.submit 'Vote!'
-  
-%br
+  %p
+    = f.radio_button :value, 'yes'
+    = f.label :value_yes, "YES"
+    %span.hint I support this proposal and I am ready to champion it
+  %p
+    = f.radio_button :value, 'support'
+    = f.label :value_support, "I SUPPORT this proposal"
+    %span.hint
+      though I have some reservations. I don’t believe I can lead the implementation of this proposal, but I commit not to sabotage it
+  %p
+    = f.radio_button :value, 'no'
+    = f.label :value_no, 'NO'
+    %span.hint
+      right now I can’t support this proposal
+  %p
+    = f.radio_button :value, 'pass'
+    = f.label :value_pass, 'I just PASS'
+  %p
+    = f.radio_button :value, 'veto'
+    = f.label :value_veto, 'VETO'
+    %span.hint
+      I am an absolute no. I won’t get in, I’m cancelling the proposal, and I’m claiming it
+  %p
+    = f.label :comment, 'I would vote YES if : '
+    %br
+    = f.text_area :comment, :rows=>4, :cols=> 80
+  %p
+    = f.submit 'Vote !'
 =link_to 'Back', proposal_path(@vote.proposal)
   

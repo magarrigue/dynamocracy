@@ -1,6 +1,6 @@
-log/*
 tmp/*
 test/integration/webrat*
 test/*/public/*
-db/development.sqlite3
+log/*.log
+db/*.sqlite3
 
