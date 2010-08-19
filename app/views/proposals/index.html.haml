@@ -24,19 +24,19 @@
     %tbody
     - @proposals.each do |proposal|
       %tr(class="#{proposal.full_status}")
-        %td
+        %td(class='nickname')
           = proposal.user.nickname
-          proposes : 
+          %br proposes : 
         %td{:id=>"link_#{proposal.id}"}
           = link_to proposal.text[0..20]+"...","#"
           - comments = proposal.votes.collect{|v| v.comment}
           -if mine?(proposal) && !comments.empty?
             %br 
               ="#{comments.size} would vote yes if..."
-        %td= date_distance proposal.opening_at
-        %td= date_distance proposal.closing_at
-        %td= proposal.full_status
-        %td= proposal.signatures_count
+        %td(class='date')= date_distance proposal.opening_at
+        %td(class='date')= date_distance proposal.closing_at
+        %td(class='status')= proposal.full_status
+        %td(class='count')= proposal.signatures_count
         - if actionables?
           %td 
             - if votable? proposal
@@ -45,12 +45,12 @@
               = link_to 'Withdraw!', withdraw_proposal_path(proposal) ,:confirm => "Do you confirm you withdraw : #{proposal.text[0..20]}... ?"  
             
         - if results? 
-          %td
+          %td(class = 'count')
             - if proposal.full_status == 'closed'
-              %font(color='lime')= proposal.yes_count
-              %font(color='gold')= proposal.support_count
-              %font(color='deeppink')= proposal.no_count
-              %font(color='silver')= proposal.pass_count
+              - %w(yes support no pass).each do |type|
+                - count_sym = "#{type}_count".to_sym
+                %span{:class=>"#{type}", :style=>"font-size: #{2+3*proposal.signatures.count/(proposal.send(count_sym) +1)}em"}
+                  = proposal.send  count_sym
               
             - elsif proposal.full_status == 'cancelled'
               %font(color='red')="Vetoed by #{proposal.cancelled_by.nickname}"          

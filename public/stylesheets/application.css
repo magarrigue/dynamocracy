@@ -16,7 +16,7 @@ header {
     margin: 0px;
     top: -25px;
     font-family: 'Lobster', serif;
-    font-size: 4em;
+    font-size: 3em;
     text-shadow: 1px 4px 6px rgba(0, 0, 0, 0.5);
     text-transform: capitalize;
     }
@@ -138,7 +138,36 @@ form {
       font-weight: normal; }
     .proposals thead a {
       color: white; }
-
+   .proposals td.status{
+      font-weight: bold;
+      text-align: center;
+   }
+  .proposals td.count{
+      font-family: 'Lobster', serif;
+      text-align: center;
+      
+    }
+    .proposals td.date{
+      font-size: 0.8em;
+      text-align: center;
+    }
+    .proposals td.nickname{
+      font-family: 'Reenie Beanie', arial, serif;
+      font-size: 1.5em;
+    }
+    .proposals td.count span.yes{
+      color: #41A317;
+    }
+    .proposals td.count span.support{
+      color: orange;
+    }
+    .proposals td.count span.no{
+      color: red;
+    }
+     .proposals td.count span.pass{
+      color: grey;
+    }
 .proposal h3 span {
   color: gray;
   font-size: 0.8em; }
+  
