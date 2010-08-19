@@ -23,16 +23,17 @@
         %th= order @search, :by => :yes_count, :as=> 'Yes/Support/No/Pass ' 
     %tbody
     - @proposals.each do |proposal|
+      - proposal.signatures_count
       %tr(class="#{proposal.full_status}")
         %td(class='nickname')
           = proposal.user.nickname
-          %br proposes : 
+          %br= proposal.full_status == 'open' ? 'proposes:' : 'proposed:'
         %td{:id=>"link_#{proposal.id}"}
           = link_to proposal.text[0..20]+"...","#"
           - comments = proposal.votes.collect{|v| v.comment}
           -if mine?(proposal) && !comments.empty?
             %br 
-              ="#{comments.size} would vote yes if..."
+              ="#{comments.size} would #{proposal.full_status == 'open' ? 'vote' : 'have voted'} yes if..."
         %td(class='date')= date_distance proposal.opening_at
         %td(class='date')= date_distance proposal.closing_at
         %td(class='status')= proposal.full_status
@@ -48,9 +49,10 @@
           %td(class = 'count')
             - if proposal.full_status == 'closed'
               - %w(yes support no pass).each do |type|
-                - count_sym = "#{type}_count".to_sym
-                %span{:class=>"#{type}", :style=>"font-size: #{2+3*proposal.signatures.count/(proposal.send(count_sym) +1)}em"}
-                  = proposal.send  count_sym
+                - count = proposal.send "#{type}_count"
+                - size = 2+3* count/( proposal.signatures_count + 1)
+                %span{:class=>"#{type}", :style=>"font-size: #{size}em"}
+                  = count
               
             - elsif proposal.full_status == 'cancelled'
               %font(color='red')="Vetoed by #{proposal.cancelled_by.nickname}"          
