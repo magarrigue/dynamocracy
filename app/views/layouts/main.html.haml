@@ -14,6 +14,8 @@
       %header
         %h1
           = link_to "Dynamocracy", root_path
+          =" for ${ENV['CREW']}" if ENV['CREW']
+        
         %nav
           %ul
             %li= link_to 'Home', root_path 

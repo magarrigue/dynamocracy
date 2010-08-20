@@ -1,4 +1,14 @@
 %h1 Vote!
+
+%h3 Rules 
+%ul
+  %li Your vote is anonymous except VETO
+  %li You can vote only once, except PASS
+  %li You may comment any vote, only the proposer can see your comments which are anonymous
+  %li If you vote NO, you'll have to explain what change to the proposal would led you to vote YES
+  %li a VETO cancels the proposal immediatly
+
+
 %div#proposal.proposal.details
   = render :partial => "proposals/proposal_detail", :locals=>{:proposal=>@vote.proposal}
 
@@ -9,12 +19,12 @@
   %p
     = f.radio_button :value, 'yes'
     = f.label :value_yes, "YES"
-    %span.hint I support this proposal and I am ready to champion it
+    %span.hint I support this proposal and I am ready to champion it. I may comment this proposal.
   %p
     = f.radio_button :value, 'support'
     = f.label :value_support, "I SUPPORT this proposal"
     %span.hint
-      though I have some reservations. I don’t believe I can lead the implementation of this proposal, but I commit not to sabotage it
+      though I have some reservations. I don’t believe I can lead the implementation of this proposal, but I commit not to sabotage it. I may comment this proposal.
   %p
     = f.radio_button :value, 'no'
     = f.label :value_no, 'NO'
@@ -23,6 +33,8 @@
   %p
     = f.radio_button :value, 'pass'
     = f.label :value_pass, 'I just PASS'
+    %span.hint
+      I may come back later and vote again. I may comment your proposal.
   %p
     = f.radio_button :value, 'veto'
     = f.label :value_veto, 'VETO'
