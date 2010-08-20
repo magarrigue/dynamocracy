@@ -1,7 +1,7 @@
 body {
   background: #e7e7de;
   color: #3e3e3e;
-  font-family: verdana, sans-serif; }
+  font-family: 'Inconsolata', arial, serif; }
 
 a {
   color: #3e3e3e; }
@@ -27,6 +27,7 @@ header {
     font-size: 0.5em;
     }
   header nav {
+    
     position: absolute;
     right: 20px;
     top: 0px;
@@ -44,9 +45,12 @@ header {
       padding-left: 0px; }
       header nav ul li {
         display: inline;
-        margin-left: 10px; }
+        margin-left: 10px; 
+        font-family: 'Inconsolata', arial, serif;
+        }
       header nav ul li:first-child {
         margin-left: 0px; }
+
 
 .everything {
   width: 980px;
@@ -98,15 +102,20 @@ form {
   margin: 0px -20px; }
   .proposals_nav li, .pagination li {
     display: inline;
-    margin-left: 10px; }
+    margin-left: 10px; 
+        font-family: 'Inconsolata', arial, serif;
+        font-size: 1.2em;
+        font-style: bold;}
   .proposals_nav li:first-child, .pagination li:first-child {
-    margin-left: 0px; }
+    margin-left: 0px; 
+    }
 
 .pagination {
   border-bottom: 1px dotted #999999; }
 
 .proposals_nav {
-  border-top: 1px dotted #999999; }
+/*  border-top: 1px dotted #999999; */
+  }
 
 .empty {
   text-align: center;
@@ -117,7 +126,8 @@ form {
 .proposals {
   border-collapse: collapse;
   margin: 0px -20px;
-  width: 100%;
+  padding: 0px -20px 0px -20px;
+  width: 980px;
   font-family: Verdana;
   font-size: 0.9em; }
   .proposals td {
@@ -126,22 +136,22 @@ form {
   .proposals tr.open td {
     background: #CCFFCC;
     color: #666666;
-    font-style: italic; }
+    }
   .proposals tr.pending td {
     background: #C9BE62;
     color: #666666;
-    font-style: italic; }
+    }
     
   .proposals tr.closed td {
     background: #FFFFFF;
     color: #666666;
-    font-style: italic; }
+    }
   .proposals tr.cancelled td {
-    background: #E77471;
+    background: #ffc0cb;
     color: #666666;
     font-style: italic; }
   .proposals tr.withdrawn td {
-    background: #C8BBBE;
+    background: #eedd82;
     color: #666666;
     font-style: italic; }    
   .proposals thead {
@@ -158,7 +168,8 @@ form {
   .proposals td.count{
       font-family: 'Lobster', serif;
       text-align: center;
-      
+/*      padding: 0px;*/
+/*      margin: 0px;  */
     }
     .proposals td.date{
       font-size: 0.8em;
@@ -166,7 +177,8 @@ form {
     }
     .proposals td.nickname{
       font-family: 'Reenie Beanie', arial, serif;
-      font-size: 1.5em;
+      font-style: bold;
+      font-size: 1.8em;
     }
     .proposals td.count span.yes{
       color: #41A317;
@@ -179,6 +191,10 @@ form {
     }
      .proposals td.count span.pass{
       color: grey;
+    }
+    .proposals td.count span.vetoed{
+      color: red;
+      font-size: 1.3em;
     }
 .proposal h3 span {
   color: gray;
