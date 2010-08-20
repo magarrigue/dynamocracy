@@ -39,5 +39,7 @@ module ProposalsHelper
     comments_map
   end
   
+  
+  
 end
 

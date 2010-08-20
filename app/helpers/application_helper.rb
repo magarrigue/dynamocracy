@@ -10,4 +10,8 @@ module ApplicationHelper
     return "#{distance_of_time_in_words_to_now date} ago" if Time.now > date
     "in #{distance_of_time_in_words_to_now date}"
   end
+  
+  def begining(proposal)
+    proposal.text[0..35]+"..."
+  end
 end
