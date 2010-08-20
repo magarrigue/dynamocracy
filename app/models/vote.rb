@@ -38,12 +38,12 @@ class Vote < ActiveRecord::Base
   end
   
   def create_signature
-    Signature.create :user_id => voter_id, :proposal_id => proposal_id
+    Signature.create :user_id => voter_id, :proposal_id => proposal_id unless value=='pass'
   end
   
   
   def update_proposal_votes
-    proposal["#{value}_count".to_sym] += 1  unless value=='veto' 
+    proposal["#{value}_count".to_sym] += 1  unless %w(veto pass).include? value 
     proposal.save!
   end
   

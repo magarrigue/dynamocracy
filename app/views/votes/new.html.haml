@@ -1,11 +1,8 @@
 %h1 Vote!
 
-%h3
-  = @vote.proposal.user.nickname
-  proposes :
+= render :partial => "proposal/proposal_detail", :locals=>{proposal=>@vote.proposal}
 
-.proposition
-  =@vote.proposal.text
+
 
 - form_for [:proposal, @vote] do |f|
   = f.error_messages
@@ -32,7 +29,7 @@
     %span.hint
       I am an absolute no. I won’t get in, I’m cancelling the proposal, and I’m claiming it
   %p
-    = f.label :comment, 'I would vote YES if : '
+    = f.label :comment, 'I (would) (have) vote(d) YES if/ve : '
     %br
     = f.text_area :comment, :rows=>4, :cols=> 80
   %p

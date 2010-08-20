@@ -13,7 +13,7 @@ class VotesTest < ActionController::IntegrationTest
     visit new_proposal_vote_path(proposal)
     choose 'yes'
     assert_no_difference 'Signature.count' do
-      click_button 'Vote!'
+      click_button 'Vote !'
     end
     assert_not_contain 'Show vote'
   end
@@ -23,7 +23,7 @@ class VotesTest < ActionController::IntegrationTest
     visit new_proposal_vote_path(proposal)
     choose 'no'
     assert_no_difference 'Signature.count' do
-      click_button 'Vote!'
+      click_button 'Vote !'
     end
   end
 
@@ -43,7 +43,7 @@ class VotesTest < ActionController::IntegrationTest
     visit new_proposal_vote_path(proposal)
     choose 'yes'
     assert_difference 'Signature.count' do
-      click_button 'Vote!'
+      click_button 'Vote !'
     end
     assert_contain 'You voted for this proposal'
   end

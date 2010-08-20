@@ -1,22 +1,13 @@
-%h1 Proposal detail
+%h1 Proposal 
+%div#proposal.proposal.details
+  =render :partial => "proposal_detail", :locals=>{:proposal=>@proposal}
 
-
-%h2
-  =@proposal.user.nickname 
-  proposes : 
-%p
-  =@proposal.text
-
-
-
-This proposal has been scheduled to be opened at :
-%span= facebook_distance_of_time_in_words @proposal.opening_at
 %br
-and to be closed at :
-%span= facebook_distance_of_time_in_words @proposal.closing_at
+Open :
+%span= date_distance @proposal.opening_at 
 %br
-  
-= link_to 'Vote on this proposal', new_proposal_vote_path(@proposal)
+Close :
+%span= date_distance @proposal.closing_at
+%br
 
-
-= link_to 'Back to list', proposals_path
+= link_to 'Back to list', proposals_path              

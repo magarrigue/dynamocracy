@@ -15,6 +15,7 @@ module ProposalsHelper
     withdrawable?(proposal) || votable?(proposal) 
   end
   
+  
   def result?(proposal)
   %w(closed cancelled).include?(proposal.full_status)
   end
@@ -25,5 +26,7 @@ module ProposalsHelper
   def actionables?
    @proposals.any?{|p|actionable?(p)}
   end
+ 
+  
 end
 

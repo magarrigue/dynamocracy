@@ -30,20 +30,19 @@
           %br= proposal.full_status == 'open' ? 'proposes:' : 'proposed:'
         %td{:id=>"link_#{proposal.id}"}
           = link_to proposal.text[0..20]+"...","#"
-          - comments = proposal.votes.collect{|v| v.comment}
+          - comments = proposal.votes.collect{|v| v.comment}.find_all{|c| !c.empty?}
           -if mine?(proposal) && !comments.empty?
-            %br 
-              ="#{comments.size} would #{proposal.full_status == 'open' ? 'vote' : 'have voted'} yes if..."
+            %br="#{comments.size} suggestion(s)..."
         %td(class='date')= date_distance proposal.opening_at
         %td(class='date')= date_distance proposal.closing_at
         %td(class='status')= proposal.full_status
         %td(class='count')= proposal.signatures_count
         - if actionables?
           %td 
-            - if votable? proposal
+            - if true# votable? proposal
               = link_to 'Vote!', new_proposal_vote_path(proposal) 
             - if withdrawable?(proposal)
-              = link_to 'Withdraw!', withdraw_proposal_path(proposal) ,:confirm => "Do you confirm you withdraw : #{proposal.text[0..20]}... ?"  
+              = link_to 'Withdraw!', withdraw_proposal_path(proposal) ,:confirm => "Do you confirm you abandon your proposal? : #{proposal.text[0..20]}... ?"  
             
         - if results? 
           %td(class = 'count')
@@ -65,16 +64,7 @@
 
 - @proposals.each do |proposal|
   %div#proposal.proposal.details{:id=>proposal.id,:style=>"display:none"}
-    %h3
-      Proposal
-      %span= "Nº#{proposal.id}"
-    =proposal.text
-    -if proposal.user_id == current_user.id && !proposal.votes.all?{|v| v.comment.empty?}
-      %h3 Some would vote yes if :
-      %ul
-      -proposal.votes.each do |vote|
-        -if !vote.comment.empty?
-          %li=vote.comment
+    = render :partial => "proposal_detail", :locals=>{:proposal=>proposal}
       
   :javascript    
     $($('#link_#{proposal.id}').click(function(){

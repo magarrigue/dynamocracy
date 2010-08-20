@@ -170,4 +170,7 @@ form {
 .proposal h3 span {
   color: gray;
   font-size: 0.8em; }
-  
+  .proposal .nickname{
+      font-family: 'Reenie Beanie', arial, serif;
+      font-size: 1.5em;
+     }  

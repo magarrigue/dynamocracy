@@ -38,4 +38,7 @@ class Proposal < ActiveRecord::Base
     return 'unknown'
   end  
   
+  def pass_count
+    signatures_count - yes_count - no_count - support_count
+  end
 end
