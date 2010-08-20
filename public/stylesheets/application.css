@@ -132,7 +132,7 @@ form {
   font-family: Verdana;
   font-size: 0.9em; }
   .proposals tr{
-  border-bottom: 1px dotted #999999;
+    border-bottom: 1px dotted #999999;
   }
   .proposals td {
     padding: 10px 3px; }
