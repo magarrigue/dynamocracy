@@ -8,7 +8,7 @@ module ProposalsHelper
   end
   
   def votable?(proposal)
-    proposal.full_status == 'open' && @my_signatures.none?{|s| s.proposal_id==proposal.id}
+    proposal.full_status == 'open' && @my_signatures.find_all{|s| s.proposal_id==proposal.id}.empty?
   end
   
   def actionable?(proposal)

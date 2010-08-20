@@ -119,16 +119,26 @@ form {
   font-size: 0.9em; }
   .proposals td {
     padding: 10px 3px; }
-  .proposals tr.closed td {
+    
+  .proposals tr.open td {
     background: #CCFFCC;
     color: #666666;
     font-style: italic; }
+  .proposals tr.pending td {
+    background: #C9BE62;
+    color: #666666;
+    font-style: italic; }
+    
+  .proposals tr.closed td {
+    background: #FFFFFF;
+    color: #666666;
+    font-style: italic; }
   .proposals tr.cancelled td {
-    background: #FFCCFF;
+    background: #E77471;
     color: #666666;
     font-style: italic; }
   .proposals tr.withdrawn td {
-    background: #D0D0D0;
+    background: #C8BBBE;
     color: #666666;
     font-style: italic; }    
   .proposals thead {
