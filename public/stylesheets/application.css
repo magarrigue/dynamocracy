@@ -23,6 +23,9 @@ header {
     header h1 a {
       color: inherit;
       text-decoration: inherit; }
+    header h1 span{
+    font-size: 0.5em;
+    }
   header nav {
     position: absolute;
     right: 20px;
