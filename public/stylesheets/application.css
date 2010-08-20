@@ -94,18 +94,18 @@ form {
       background: black; }
 
 .proposals_nav, .pagination {
-  background: #faf9f6;
+/*  background: #faf9f6;*/
   text-align: center;
   margin: 0px;
   padding-left: 0px;
-  padding: 10px 30px;
+  padding: 0px 30px 10px 30px;
   margin: 0px -20px; }
   .proposals_nav li, .pagination li {
     display: inline;
     margin-left: 10px; 
-        font-family: 'Inconsolata', arial, serif;
-        font-size: 1.2em;
-        font-style: bold;}
+    font-family: 'Inconsolata', arial, serif;
+    font-size: 1.2em;
+    font-style: bold;}
   .proposals_nav li:first-child, .pagination li:first-child {
     margin-left: 0px; 
     }
@@ -114,6 +114,7 @@ form {
   border-bottom: 1px dotted #999999; }
 
 .proposals_nav {
+    padding: 0px 10px 10px 10px; 
 /*  border-top: 1px dotted #999999; */
   }
 
@@ -130,6 +131,9 @@ form {
   width: 980px;
   font-family: Verdana;
   font-size: 0.9em; }
+  .proposals tr{
+  border-bottom: 1px dotted #999999;
+  }
   .proposals td {
     padding: 10px 3px; }
     
