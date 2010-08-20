@@ -11,17 +11,16 @@
   
 
   
-  
+ 
 -if mine?(proposal) && proposal.votes
-  -votes = proposal.votes
-  -[[votes.find_all{|v| v[0]='pass'},'Some may vote yes if :'], [votes.find_all{|v| %w(veto no).include?(v[0])}, 'Some would have voted yes if :'], [votes.find_all{|v| %w(yes support).include?(v[0])}, 'Some suggests :']].each do |votes_and_suggest|   
-    -if ! votes_and_suggest[0].empty?
-      %h3= votes_and_suggest[1]
+ 
+  -cbvv = comments_by_vote_value proposal
+  -[[cbvv[:pass],'Some may vote yes if :'], [cbvv[:negative], 'Some would have voted yes if :'], [cbvv[:positive], 'Some suggests :']].each do |comments_and_prompt| 
+    -if comments_and_prompt[0] && !comments_and_prompt[0].empty?
+      %h3= comments_and_prompt[1]
       %ul
-      -votes_and_suggest.each do |vote_and_suggest|
-        -if !vote_and_suggest.empty?
-          %li=vote_and_suggest.inspect
-
+      -comments_and_prompt[0].each do |comment|
+        %li= comment
 
 
 

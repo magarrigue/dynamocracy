@@ -27,6 +27,17 @@ module ProposalsHelper
    @proposals.any?{|p|actionable?(p)}
   end
  
+  def comments_by_vote_value(proposal)
+    comments_map = {:negative=>[], :positive=>[], :neutral=>[]}
+    proposal.votes.each do |v|
+      if !v.comment.empty?
+        comments_map[:neutral].push v.comment if v.value =='pass'
+        comments_map[:positive].push v.comment if %w(yes support).include? v.value
+        comments_map[:negative].push v.comment if %w(no veto).include?  v.value
+       end
+    end
+    comments_map
+  end
   
 end
 
