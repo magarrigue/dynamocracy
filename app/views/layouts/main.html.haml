@@ -17,7 +17,7 @@
       %header
         %h1
           = link_to "Dynamocracy", root_path
-          %span=" for #{ENV['CREW']} crew" 
+          %span=" for #{ENV['CREW']} crew" if ENV['CREW']
         
         %nav
           %ul
