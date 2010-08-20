@@ -1,0 +1,27 @@
+%h3
+  Proposal
+  %span= "Nº#{proposal.id}"
+
+.nickname
+  =proposal.user.nickname
+  = proposal.full_status == 'open' ? 'proposes:' : 'proposed:'
+%br
+%spa=proposal.text
+  
+  
+
+  
+  
+-if mine?(proposal) && proposal.votes
+  -votes_and_comments = proposal.votes.collect{|v| [v.value, v.comment]}
+  -[[votes_and_comments.find_all{|v| v[0]='pass'},'Some may vote yes if :'], [votes_and_comments.find_all{|v| %w(veto no).include?(v[0])}, 'Some may would have voted yes if :'], [votes_and_comments.find_all{|v| %w(yes support).include?(v[0])}, 'Some suggests :']].each do |comments_and_suggest|   
+    -if ! comments_and_suggest[0].empty?
+      %h3= comments_and_suggest[1]
+      %ul
+      -comments_and_suggest[0].each do |vote_and_comment|
+        -if !vote_and_comment[1].empty?
+          %li=vote_and_comment[1]
+
+
+
+
