@@ -16,9 +16,9 @@
         %th= order  @search, :by => attribute      
       %th= order  @search, :by => :signatures_count, :as => 'Signatures'
       - if actionables?
-        %th='Action' 
+        %th(colspan=2)='Action' 
       - if results? 
-        %th= order @search, :by => :yes_count, :as=> 'Yes/Support/No/Pass ' 
+        %th= order @search, :by => :yes_count, :as => 'Yes/Support/No/Pass ' 
     %tbody
     - @proposals.each do |proposal|
       - proposal.signatures_count
@@ -38,17 +38,18 @@
         - if actionables?
           %td 
             - if votable? proposal
-              = link_to 'Vote!', new_proposal_vote_path(proposal) 
+              = link_to 'Vote!', new_proposal_vote_path(proposal), :class => 'vote' 
+          %td    
             - if withdrawable?(proposal)
-              = link_to 'Withdraw!', withdraw_proposal_path(proposal) ,:confirm => "Do you confirm you abandon your proposal? : #{proposal.text[0..20]}... ?"  
+              = link_to 'Withdraw!', withdraw_proposal_path(proposal) ,:confirm => "Do you confirm you abandon your proposal? : #{proposal.text[0..20]}... ?"  , :class => 'withdraw' 
             
         - if results? 
-          %td(class = 'count')
+          %td(class = 'count') 
             - if proposal.full_status == 'closed'
               - %w(yes support no pass).each do |type|
                 - count = proposal.send "#{type}_count"
                 - size = 2+ 4 * count/( proposal.signatures_count + 1)
-                %span{:class=>"#{type}", :style=>"font-size: #{size}em"}
+                %span{:class => "#{type}", :style => "font-size: #{size}em"}
                   = count
               
             - elsif proposal.full_status == 'cancelled'

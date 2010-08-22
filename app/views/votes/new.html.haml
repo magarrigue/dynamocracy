@@ -5,7 +5,7 @@
   %li Your vote is anonymous except VETO
   %li You can vote only once, except PASS
   %li You may comment any vote, only the proposer can see your comments which are anonymous
-  %li If you vote NO, you'll have to explain what change to the proposal would led you to vote YES
+  %li If you vote NO, you'll have to explain what change to the proposal would lead you to vote YES
   %li a VETO cancels the proposal immediatly
 
 
@@ -17,31 +17,37 @@
 - form_for [:proposal, @vote] do |f|
   = f.error_messages
   %p
-    = f.radio_button :value, 'yes'
-    = f.label :value_yes, "YES"
+    %span.yes
+      = f.radio_button :value, 'yes'
+      = f.label :value_yes, "YES"
     %span.hint I support this proposal and I am ready to champion it. I may comment this proposal.
   %p
-    = f.radio_button :value, 'support'
-    = f.label :value_support, "I SUPPORT this proposal"
+    %span.support
+      = f.radio_button :value, 'support'
+      = f.label :value_support, "I SUPPORT"
     %span.hint
-      though I have some reservations. I don’t believe I can lead the implementation of this proposal, but I commit not to sabotage it. I may comment this proposal.
+      this proposal, though I have some reservations. I don’t believe I can lead the implementation of this proposal, but I commit not to sabotage it. I may comment this proposal.
   %p
-    = f.radio_button :value, 'no'
-    = f.label :value_no, 'NO'
+    %span.no
+      = f.radio_button :value, 'no'
+      = f.label :value_no, 'NO'
     %span.hint
-      right now I can’t support this proposal
+      right now I can’t support this proposal.
   %p
-    = f.radio_button :value, 'pass'
-    = f.label :value_pass, 'I just PASS'
+    %span.pass
+      = f.radio_button :value, 'pass'
+      = f.label :value_pass, 'I just PASS'
     %span.hint
-      I may come back later and vote again. I may comment your proposal.
+      I may come back later and vote again. I may comment this proposal.
   %p
-    = f.radio_button :value, 'veto'
-    = f.label :value_veto, 'VETO'
+    %span.veto
+      = f.radio_button :value, 'veto'
+      = f.label :value_veto, 'VETO'
     %span.hint
-      I am an absolute no. I won’t get in, I’m cancelling the proposal, and I’m claiming it
+      I am an absolute no. I won’t get in, I’m cancelling the proposal, and I’m claiming it. I may comment this proposal.
   %p
-    = f.label :comment, 'I (would) (have) vote(d) YES if/because : '
+    = f.label :comment, 'Comment'
+    %span.hint  What can improve this proposal from your point of view? If you vote NO, explain what change to the proposal would lead you to change my mind, otherwise comment is optional (in any case, your comment is only visible by the proposer).
     %br
     = f.text_area :comment, :rows=>4, :cols=> 80
   %p

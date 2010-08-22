@@ -74,7 +74,23 @@ form {
   padding: 10px 50px;
   margin: 10px -20px 5px; }
   form label {
-    font-weight: bold; }
+    font-weight: bold; 
+    font-size: 1.3em}
+  form span.yes{
+      color: #41A317;
+    }
+  form span.support{
+    color: orange;
+  }
+    form span.no{
+      color: red;
+    }
+     form span.pass{
+      color: grey;
+    }
+    form span.veto{
+      color: black;
+    }
   form span.hint {
     font-weight: normal;
     color: gray;
@@ -200,13 +216,42 @@ form {
       color: red;
       font-size: 1.3em;
     }
+   
+    .proposals td a.vote {
+    font-size: 0.8em;
+    background: #088A08;
+    color: white;
+    font-weight: bold;
+    border: none;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    padding: 5px 20px;#088A08
+    cursor: pointer; }
+    .proposals td a:hover {
+      background: black; }  
+
+
+    .proposals td a.withdraw {
+    font-size: 0.8em;
+    background: #A4A4A4;
+    color: white;
+    font-weight: bold;
+    border: none;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    padding: 5px 20px;
+    cursor: pointer; }
+    .proposals td a:hover {
+      background: black; }
+
+
 .proposal h3 span {
   color: gray;
   font-size: 0.8em; }
   .proposal .nickname{
       font-family: 'Reenie Beanie', arial, serif;
       font-size: 1.5em;
-     }  
+     }
      
 .fieldWithErrors {
   padding: 2px;
