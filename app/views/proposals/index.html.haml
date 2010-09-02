@@ -48,7 +48,7 @@
             - if proposal.full_status == 'closed'
               - %w(yes support no pass).each do |type|
                 - count = proposal.send "#{type}_count"
-                - size = 2+ 4 * count/( proposal.signatures_count + 1)
+                - size = ( type!='pass' ? 2+ 4 * count/( proposal.signatures_count + 1) : 1)  
                 %span{:class => "#{type}", :style => "font-size: #{size}em"}
                   = count
               

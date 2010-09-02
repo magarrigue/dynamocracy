@@ -1,6 +1,6 @@
 class Proposal < ActiveRecord::Base
   
-  attr_accessible :user_id, :text, :opening_at, :closing_at#, :yes_count, :no_count, :support_count, :pass_count
+  attr_accessible :user_id, :text, :opening_at, :closing_at, :pass_count
   def after_initialize 
     set_default_opening_and_closing
   end
@@ -38,7 +38,7 @@ class Proposal < ActiveRecord::Base
     return 'unknown'
   end  
   
-  def pass_count
-    signatures_count - yes_count - no_count - support_count
-  end
+#  def pass_count
+#    signatures_count - yes_count - no_count - support_count
+#  end
 end

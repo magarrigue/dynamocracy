@@ -43,7 +43,7 @@ class Vote < ActiveRecord::Base
   
   
   def update_proposal_votes
-    proposal["#{value}_count".to_sym] += 1  unless %w(veto pass).include? value 
+    proposal["#{value}_count".to_sym] += 1  unless %w(veto).include? value 
     proposal.save!
   end
   

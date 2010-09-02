@@ -1,7 +1,20 @@
 
-Factory.define :user  do |u|
-  u.email 'joe@tlfj.com'
-  u.nickname 'joe'
+#Factory.define :user  do |u|
+#  u.email 'joe@tlfj.com'
+##  u.nickname 'joe'
+#  u.password 'password'
+##  u.password_confirmation 'password'
+#end
+
+
+Factory.define :user do |f|
+ f.email "author@example.com"
+ f.password "password"
+ f.password_confirmation "password"
+ f.confirmation_token "confirmation{n}"
+ f.reset_password_token  "reset_pasword_token"
+ f.encrypted_password  "password" 
+ f.password_salt  "password" 
 end
 
 Factory.define :proposal do |p|

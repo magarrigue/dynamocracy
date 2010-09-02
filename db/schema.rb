@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100902164244) do
+ActiveRecord::Schema.define(:version => 20100902215340) do
 
   create_table "open_id_associations", :force => true do |t|
     t.binary  "server_url", :null => false
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20100902164244) do
     t.integer  "support_count",    :default => 0
     t.integer  "cancelled_by_id"
     t.integer  "signatures_count", :default => 0
+    t.integer  "pass_count",       :default => 0
   end
 
   create_table "signatures", :force => true do |t|
