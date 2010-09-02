@@ -1,4 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
+
+  map.devise_for :users
+
   map.resources :proposals do |proposal|
     proposal.resources :votes
   end
