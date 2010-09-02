@@ -1,5 +1,7 @@
 class Proposal < ActiveRecord::Base
   
+
+  
   attr_accessible :user_id, :text, :opening_at, :closing_at, :pass_count
   def after_initialize 
     set_default_opening_and_closing
@@ -10,7 +12,8 @@ class Proposal < ActiveRecord::Base
   validate :closing_in_the_futur
   validates_presence_of :user_id, :text
   validates_length_of :text, :minimum=>20  
-  
+
+  belongs_to :crew  
   belongs_to :user 
   has_many :signatures 
   has_many :votes 

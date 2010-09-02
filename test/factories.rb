@@ -17,9 +17,16 @@ Factory.define :user do |f|
  f.password_salt  "password" 
 end
 
+
+Factory.define :crew do |v|
+  v.name "a new crew"
+  v.creator_id Factory(:user).id
+end
+
 Factory.define :proposal do |p|
   p.text "Superbe proposition assez longue pour avoir un sens"
   p.association :user, :factory => :user
+  p.association :crew, :factory => :crew
 end
 
 Factory.define :vote do |v|
@@ -27,3 +34,5 @@ Factory.define :vote do |v|
   v.voter_id Factory(:user).id
   v.association :proposal, :factory => :proposal
 end
+
+

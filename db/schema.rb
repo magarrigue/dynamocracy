@@ -9,7 +9,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100902215340) do
+ActiveRecord::Schema.define(:version => 20100902230904) do
+
+  create_table "crews", :force => true do |t|
+    t.string   "name"
+    t.text     "constitution"
+    t.integer  "creator_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "memberships", :force => true do |t|
+    t.string   "role"
+    t.integer  "crew_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "memberships_users", :id => false, :force => true do |t|
+    t.integer "membership_id"
+    t.integer "user_id"
+  end
 
   create_table "open_id_associations", :force => true do |t|
     t.binary  "server_url", :null => false
@@ -40,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20100902215340) do
     t.integer  "cancelled_by_id"
     t.integer  "signatures_count", :default => 0
     t.integer  "pass_count",       :default => 0
+    t.integer  "crew_id",                              :null => false
   end
 
   create_table "signatures", :force => true do |t|

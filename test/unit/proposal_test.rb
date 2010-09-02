@@ -30,6 +30,6 @@ class ProposalTest < ActiveSupport::TestCase
     assert_equal 7.day.from_now.to_i, Proposal.new.closing_at.to_i
   end
   
-  
+   
   
 end 
