@@ -1,10 +1,15 @@
 ActionController::Routing::Routes.draw do |map|
 
   map.devise_for :users
-
-  map.resources :proposals do |proposal|
-    proposal.resources :votes
+  
+  map.resources :crews do |crew|
+    crew.resources :proposals
+    crew.resources :proposals do |proposal|
+      proposal.resources :votes
+    end
   end
+  
+  
   map.withdraw_proposal 'proposals/withdraw/:id', :controller => 'proposals',:action=>'withdraw'
   
   # The priority is based upon order of creation: first created -> highest priority.

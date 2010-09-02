@@ -4,6 +4,7 @@ class ProposalsController < ApplicationController
 
   
   inherit_resources
+  belongs_to :crew
   
   def index
      @search = Proposal.search(params[:search])

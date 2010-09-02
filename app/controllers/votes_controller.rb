@@ -4,6 +4,7 @@ class VotesController < ApplicationController
   #after_filter :redirect_to_proposal, :only => :create
   inherit_resources
   belongs_to :proposal
+  belongs_to :crew
   actions :create, :new, :show
   
  
