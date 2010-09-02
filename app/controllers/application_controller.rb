@@ -9,4 +9,9 @@ class ApplicationController < ActionController::Base
   # Preserve privacy even from admin-sys when voting
   filter_parameter_logging :value
   layout "main"
+  
+  rescue_from CanCan::AccessDenied do |exception|
+      flash[:error] = exception.message
+      redirect_to root_url
+  end
 end

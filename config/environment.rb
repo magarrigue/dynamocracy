@@ -27,6 +27,7 @@ Rails::Initializer.run do |config|
   config.gem 'will_paginate'
   config.gem 'warden'
   config.gem 'devise'
+  config.gem 'cancan'
  #config.gem 'devise_openid_authenticatable'
 
   # Only load the plugins named here, in the order given (default is alphabetical).

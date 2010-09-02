@@ -8,7 +8,7 @@
 
 
 Factory.define :user do |f|
- f.email "author@example.com"
+ f.sequence(:email) {|n| "#{n}author@example.com"}
  f.password "password"
  f.password_confirmation "password"
  f.confirmation_token "confirmation{n}"

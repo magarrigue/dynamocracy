@@ -42,6 +42,7 @@ class ActionController::TestCase
   include Devise::TestHelpers
 end
 
+
 Webrat.configure do |config|
   config.mode = :rails
 end
