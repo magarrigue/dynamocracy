@@ -10,7 +10,7 @@ ActionController::Routing::Routes.draw do |map|
   end
   
   
-  map.withdraw_proposal 'proposals/withdraw/:id', :controller => 'proposals',:action=>'withdraw'
+  map.withdraw_proposal 'crews/:crew_id/proposals/:id/withdraw', :controller => 'proposals',:action=>'withdraw'
   
   # The priority is based upon order of creation: first created -> highest priority.
 
