@@ -23,6 +23,13 @@ Factory.define :crew do |v|
   v.creator_id Factory(:user).id
 end
 
+
+Factory.define :membership do |m|
+  m.role "officer"
+  m.user_id Factory(:user).id
+  m.crew_id Factory(:crew).id
+end
+
 Factory.define :proposal do |p|
   p.text "Superbe proposition assez longue pour avoir un sens"
   p.association :user, :factory => :user
