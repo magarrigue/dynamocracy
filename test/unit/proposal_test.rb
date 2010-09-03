@@ -30,6 +30,11 @@ class ProposalTest < ActiveSupport::TestCase
     assert_equal 7.day.from_now.to_i, Proposal.new.closing_at.to_i
   end
   
-   
+  test "a proposal belongs to a crew" do
+    proposal = Factory.build :proposal
+    assert  proposal.save
+    assert !proposal.crew_id.nil?
+    assert !proposal.crew.nil? 
+  end
   
 end 

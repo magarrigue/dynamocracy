@@ -1,38 +1,27 @@
 class ProposalsController < ApplicationController
+ 
+  load_and_authorize_resource
+
   
   before_filter :set_user, :only => :create
-
+  before_filter :get_crew
   
   inherit_resources
   belongs_to :crew
   
+  
   def index
-     search nil
+    puts params.inspect
+      conditions = params[:search]||{}
+      conditions['my'] = current_user.id.to_i if(conditions.has_key?('my'))
+      conditions = conditions.delete_if{|k,v| !%w(ongoing decision pending cancelled withdrawn order my).include? k}
+      conditions = {:crew_id_equals => params[:crew_id]}.merge(conditions)     
+    puts conditions.inspect
+    @search = Proposal.search(conditions)
+    @proposals = @search.paginate(:page=>params[:page], :per_page=>5, :include => [:user, :votes, :cancelled_by])
+    @my_signatures = Signature.user_id_eq(current_user.id).proposal_id_in(@proposals).all 
+    render "index"
   end 
-  
-  def ongoing
-    search(:opening_at_before => Time.now, :closing_at_after => Time.now, :status_equals => 'open')
-  end
-  
-  def decision
-    search(:closing_at_before => Time.now, :status_equals => 'open')
-  end
-
-  def pending
-    search(:opening_at_after => Time.now, :status_equals => 'open' )
-  end
-  
-  def withdrawn
-    search(:status_equals => 'withdrawn')
-  end
-
-  def cancelled
-    search(:status_equals => 'cancelled')
-  end
-  
-  def my
-    search(:user_id => current_user.id)
-  end
   
   def withdraw
     @proposal = Proposal.find(params[:id])
@@ -43,19 +32,29 @@ class ProposalsController < ApplicationController
     else
       flash[:error]='Can\'t withdrawn a proposal that is not yours, closed, cancelled, or already withdrawn'
     end
-    redirect_to :action => "index"
+    redirect_to crew_proposal_path(@proposal.crew, @proposal)
   end
   
   private
   def set_user
     params[:proposal][:user_id] = current_user.id
   end
+  def get_crew
+    @crew = Crew.find(params[:crew_id])
+  end
   
   def search(conditions)
+    conditions = {:crew_id_equals => params[:crew_id]}.merge(conditions)
+    puts conditions
     @search = Proposal.search(conditions)
     @proposals = @search.paginate(:page=>params[:page], :per_page=>5, :include => [:user, :votes, :cancelled_by])
     @my_signatures = Signature.user_id_eq(current_user.id).proposal_id_in(@proposals).all 
     render "index"
+  end
+  
+  
+  def my
+    search(:user_id => current_user.id)
   end
   
 end

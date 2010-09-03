@@ -1,8 +1,9 @@
 %h1 Your crews
+
 - @crews.each do |crew|
-  %br= link_to crew.name, crew_path(crew)
+  =link_to "#{crew.name.capitalize} crew", crew_path(crew)
     
-  %br= link_to 'proposals', crew_proposals_path(crew)
-  %br= link_to 'members', crew_memberships_path(crew)
-
-
+  %ul
+    %li= link_to 'Members', crew_memberships_path(crew)
+    %li= link_to 'Proposals', crew_proposals_path(crew)
+   

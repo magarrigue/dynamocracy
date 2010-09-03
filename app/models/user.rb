@@ -12,4 +12,8 @@ class User < ActiveRecord::Base
   def nickname
     email.split('@')[0]
   end
+  
+  def has_membership?(role_sym)
+     memberships.any? { |r| r.role.underscore.to_sym == role_sym }
+  end
 end

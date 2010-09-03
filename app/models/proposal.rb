@@ -20,6 +20,13 @@ class Proposal < ActiveRecord::Base
   belongs_to :cancelled_by, :class_name=>"User" 
 
   
+  scope_procedure :ongoing,   lambda{opening_at_before(Time.now).closing_at_after(Time.now).status_equals('open')}
+  scope_procedure :decision,  lambda{closing_at_before(Time.now).status_equals('open')}
+  scope_procedure :pending,   lambda{opening_at_after(Time.now).status_equals('open')}
+  scope_procedure :withdrawn, lambda{status_equals('withdrawn')}
+  scope_procedure :cancelled, lambda{status_equals('cancelled')}
+  scope_procedure :my, lambda { |user_id| user_id_equals(user_id)  }
+  
   def set_default_opening_and_closing
     self.opening_at = Time.now if self.opening_at == nil
     self.closing_at = 7.day.from_now if self.closing_at == nil
@@ -40,6 +47,7 @@ class Proposal < ActiveRecord::Base
     return 'pending' if opening_at.future?
     return 'unknown'
   end  
+  
   
 #  def pass_count
 #    signatures_count - yes_count - no_count - support_count

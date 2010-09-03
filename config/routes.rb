@@ -12,9 +12,9 @@ ActionController::Routing::Routes.draw do |map|
   
   
   map.withdraw_crew_proposal 'crews/:crew_id/proposals/:id/withdraw', :controller => 'proposals',:action=>'withdraw'
-  %w(ongoing pending decision withdrawn cancelled my).each do |sub|
-    map.send "crew_#{sub}_proposals", "crews/:crew_id/#{sub}_proposals",  :controller => 'proposals',:action=> sub
-   end
+#  %w(ongoing pending decision withdrawn cancelled my).each do |sub|
+#    map.send "crew_#{sub}_proposals", "crews/:crew_id/#{sub}_proposals",  :controller => 'proposals',:action=> sub
+#   end
     
   
   # The priority is based upon order of creation: first created -> highest priority.

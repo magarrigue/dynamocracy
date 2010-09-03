@@ -1,0 +1,20 @@
+%h1 New proposal
+
+- form_for [:crew, @proposal] do |f|
+  = f.error_messages
+  
+  = f.label :text, "Your proposal : "
+  %br
+  = f.text_area :text,:cols=>"109", :rows=>"20"
+  %br
+  = f.label :opening_at, "Will open at : "
+  %br
+  = f.datetime_select :opening_at
+  %br
+  = f.label :closing_at, "Will close at : "
+  %br
+  = f.datetime_select :closing_at
+  %br
+  %br
+  = submit_tag 'Save your proposal'
+  

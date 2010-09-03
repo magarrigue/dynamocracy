@@ -8,19 +8,19 @@
 
 
 Factory.define :user do |f|
- f.sequence(:email) {|n| "#{n}author@example.com"}
+ f.sequence(:email) {|n| "author#{n}@example.com"}
  f.password "password"
  f.password_confirmation "password"
- f.confirmation_token "confirmation{n}"
+ f.sequence(:confirmation_token){|n| "confirmation#{n}"}
  f.reset_password_token  "reset_pasword_token"
  f.encrypted_password  "password" 
  f.password_salt  "password" 
 end
 
 
-Factory.define :crew do |v|
-  v.name "a new crew"
-  v.creator_id Factory(:user).id
+Factory.define :crew do |c|
+  c.name "a new crew"
+  c.creator_id {Factory.create(:user).id}
 end
 
 

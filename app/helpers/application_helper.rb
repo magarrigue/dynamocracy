@@ -14,4 +14,7 @@ module ApplicationHelper
   def begining(proposal)
     proposal.text[0..35]+"..."
   end
+  
+ 
+
 end

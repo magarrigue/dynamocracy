@@ -15,7 +15,7 @@
 -if mine?(proposal) && proposal.votes
  
   -cbvv = comments_by_vote_value proposal
-  -[[cbvv[:pass],'Some may vote yes if :'], [cbvv[:negative], 'Some would have voted yes if :'], [cbvv[:positive], 'Some suggests :']].each do |comments_and_prompt| 
+  -[[cbvv[:neutral],'Some may vote yes if :'], [cbvv[:negative], 'Some would have voted yes if :'], [cbvv[:positive], 'Some suggests :']].each do |comments_and_prompt| 
     -if comments_and_prompt[0] && !comments_and_prompt[0].empty?
       %h3= comments_and_prompt[1]
       %ul
