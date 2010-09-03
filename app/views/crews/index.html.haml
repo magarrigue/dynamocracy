@@ -1,0 +1,9 @@
+%h1 Your crews
+- @crews.each do |crew|
+  %br= link_to crew.name, crew_path(crew)
+  %br= link_to 'proposals', crew_proposals_path(crew)
+    
+  %br= link_to 'proposals', crew_proposals_path(crew)
+  %br= link_to 'members', crew_memberships_path(crew)
+
+

@@ -17,8 +17,10 @@
       %header
         %h1
           = link_to "Dynamocracy", root_path
-          %span=" for #{ENV['CREW']} crew" if ENV['CREW']
-            
+          -#%span=" for #{ENV['CREW']} crew" if ENV['CREW']
+          
+          %span=" for #{@crew.name} crew" if @crew
+          %span=" for #{@proposal.crew.name} crew" if @proposal
            
         %nav
           %ul
@@ -29,7 +31,7 @@
             %li= link_to 'Home', root_path
             - if user_signed_in? 
               %li= link_to "Logout", destroy_user_session_path
-              %li= link_to 'New proposal', new_proposal_path
+              -#%li= link_to 'New proposal', new_crew_proposal_path
             - else   
               %li= link_to "Login", new_user_session_path
               %li= link_to "Register", new_user_registration_path

@@ -4,13 +4,14 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :crews do |crew|
     crew.resources :proposals
+    crew.resources :memberships
     crew.resources :proposals do |proposal|
       proposal.resources :votes
     end
   end
   
   
-  map.withdraw_proposal 'crews/:crew_id/proposals/:id/withdraw', :controller => 'proposals',:action=>'withdraw'
+  map.withdraw_crew_proposal 'crews/:crew_id/proposals/:id/withdraw', :controller => 'proposals',:action=>'withdraw'
   
   # The priority is based upon order of creation: first created -> highest priority.
 
@@ -44,7 +45,7 @@ ActionController::Routing::Routes.draw do |map|
   #   end
 
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
-  map.root :controller => "proposals"
+  map.root :controller => "crews"
 
   # See how all your routes lay out with "rake routes"
 

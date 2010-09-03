@@ -22,14 +22,12 @@ ActiveRecord::Schema.define(:version => 20100902230904) do
   create_table "memberships", :force => true do |t|
     t.string   "role"
     t.integer  "crew_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "memberships_users", :id => false, :force => true do |t|
-    t.integer "membership_id"
-    t.integer "user_id"
-  end
+  add_index "memberships", ["crew_id", "user_id"], :name => "index_memberships_on_crew_id_and_user_id", :unique => true
 
   create_table "open_id_associations", :force => true do |t|
     t.binary  "server_url", :null => false

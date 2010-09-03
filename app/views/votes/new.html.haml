@@ -14,7 +14,7 @@
 
 
 
-- form_for [:proposal, @vote] do |f|
+- form_for [:crew, :proposal, @vote] do |f|
   = f.error_messages
   %p
     %span.yes
@@ -52,5 +52,5 @@
     = f.text_area :comment, :rows=>4, :cols=> 80
   %p
     = f.submit 'Vote !'
-=link_to 'Back', proposal_path(@vote.proposal)
+=link_to 'Back', crew_proposal_path(@vote.proposal.crew, @vote.proposal)
   
