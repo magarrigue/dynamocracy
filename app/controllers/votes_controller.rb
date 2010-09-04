@@ -3,7 +3,7 @@ class VotesController < ApplicationController
   
   load_and_authorize_resource :crew#, :parent=>false
   load_and_authorize_resource :proposal, :through=>:crew
-  authorize_resource :vote, :find_by => "id", :through =>:proposal 
+  authorize_resource :vote, :through =>:proposal 
   
   inherit_resources
   nested_belongs_to :crew, :proposal

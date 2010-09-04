@@ -1,7 +1,22 @@
 %h1= "Members"
 %ul
 - @memberships.each do |membership|
-  %li= "#{membership.user.nickname} : #{membership.role}"
+  %li
+    %span= "#{membership.user.nickname} : #{membership.role}"
+    -if can? :update, membership 
+      -if membership.role !='disabled'
+        %span
+          - form_for [membership.crew, membership] do |f|
+            = f.error_messages
+            = f.hidden_field :role, :value=> "disabled"
+            = submit_tag 'Disable?'
+      -if membership.role == 'officer'
+        %span
+          - form_for [membership.crew, membership] do |f|
+            = f.error_messages
+            = f.hidden_field :role, :value=> "crewman"
+            = submit_tag 'Revoke?'
+      -#%span= link_to "Disable?",crew_membership_path(membership.crew, membership, :role=>'toto'), :method=>'put'
 
 %br= link_to 'Back to crew', crew_path(@crew)
 %br= link_to 'Back to crews', crews_path

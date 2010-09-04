@@ -20,7 +20,8 @@ ActiveRecord::Schema.define(:version => 20100904130935) do
   end
 
   create_table "invitations", :force => true do |t|
-    t.integer  "membership_id"
+    t.integer  "crew_id"
+    t.integer  "user_id"
     t.string   "email"
     t.datetime "sent_at"
     t.datetime "expire_at"

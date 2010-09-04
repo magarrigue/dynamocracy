@@ -4,7 +4,7 @@ class CrewsController < ApplicationController
 
   before_filter :set_user, :only =>:create
 
-  load_and_authorize_resource
+  load_and_authorize_resource :crew
     
   inherit_resources
   
