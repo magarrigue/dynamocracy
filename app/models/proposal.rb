@@ -2,7 +2,7 @@ class Proposal < ActiveRecord::Base
   
 
   
-  attr_accessible :user_id, :text, :opening_at, :closing_at, :pass_count
+  attr_accessible :user_id, :text, :opening_at, :closing_at, :pass_count, :crew_id
   def after_initialize 
     set_default_opening_and_closing
   end
@@ -10,7 +10,7 @@ class Proposal < ActiveRecord::Base
   validates_inclusion_of :status, :in => %w(open withdrawn cancelled)
   validate :closing_cannot_be_before_opening
   validate :closing_in_the_futur
-  validates_presence_of :user_id, :text
+  validates_presence_of :user_id, :text#, :crew_id
   validates_length_of :text, :minimum=>20  
 
   belongs_to :crew  
@@ -18,7 +18,7 @@ class Proposal < ActiveRecord::Base
   has_many :signatures 
   has_many :votes 
   belongs_to :cancelled_by, :class_name=>"User" 
-
+  
   
   scope_procedure :ongoing,   lambda{opening_at_before(Time.now).closing_at_after(Time.now).status_equals('open')}
   scope_procedure :decision,  lambda{closing_at_before(Time.now).status_equals('open')}

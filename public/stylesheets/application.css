@@ -289,3 +289,10 @@ form {
   list-style: square;
 }
 
+#error_div_id {
+      color: red;
+    }
+#notice_div_id {
+      color: green;
+    }
+

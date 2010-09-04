@@ -4,14 +4,16 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :crews do |crew|
     crew.resources :proposals
-    crew.resources :memberships
+    crew.resources :memberships do |membership|
+      membership.resources :invitations
+    end
     crew.resources :proposals do |proposal|
       proposal.resources :votes
     end
   end
   
   
-  map.withdraw_crew_proposal 'crews/:crew_id/proposals/:id/withdraw', :controller => 'proposals',:action=>'withdraw'
+#  map.withdraw_crew_proposal 'crews/:crew_id/proposals/:id/withdraw', :controller => 'proposals',:action=>'withdraw'
 #  %w(ongoing pending decision withdrawn cancelled my).each do |sub|
 #    map.send "crew_#{sub}_proposals", "crews/:crew_id/#{sub}_proposals",  :controller => 'proposals',:action=> sub
 #   end

@@ -81,8 +81,8 @@ class AbilityTest < ActiveSupport::TestCase
     
     
     assert crewman_ability.can?(:read,my_proposal)
-    assert crewman_ability.can?(:update,my_proposal)
-    assert crewman_ability.cannot?(:destroy,my_proposal)    
+    assert crewman_ability.cannot?(:update,my_proposal)
+    assert crewman_ability.can?(:destroy,my_proposal)    
   end
   
   

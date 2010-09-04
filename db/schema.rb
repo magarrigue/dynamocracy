@@ -9,12 +9,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100902230904) do
+ActiveRecord::Schema.define(:version => 20100904130935) do
 
   create_table "crews", :force => true do |t|
     t.string   "name"
     t.text     "constitution"
     t.integer  "creator_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "invitations", :force => true do |t|
+    t.integer  "membership_id"
+    t.string   "email"
+    t.datetime "sent_at"
+    t.datetime "expire_at"
+    t.datetime "validated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -72,8 +82,8 @@ ActiveRecord::Schema.define(:version => 20100902230904) do
 
   create_table "users", :force => true do |t|
     t.string   "email",                               :default => "", :null => false
-    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
-    t.string   "password_salt",                       :default => "", :null => false
+    t.string   "encrypted_password",   :limit => 128, :default => ""
+    t.string   "password_salt",                       :default => ""
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
@@ -88,10 +98,13 @@ ActiveRecord::Schema.define(:version => 20100902230904) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "identity_url"
+    t.string   "invitation_token",     :limit => 20
+    t.datetime "invitation_sent_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["identity_url"], :name => "index_users_on_identity_url", :unique => true
+  add_index "users", ["invitation_token"], :name => "index_users_on_invitation_token"
 
   create_table "votes", :force => true do |t|
     t.string   "value"

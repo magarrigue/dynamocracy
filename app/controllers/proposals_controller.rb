@@ -1,14 +1,12 @@
 class ProposalsController < ApplicationController
  
-  
-  
   before_filter :set_user, :only => :create
-  before_filter :get_crew
-  load_and_authorize_resource
 
+  load_and_authorize_resource :crew
+  load_and_authorize_resource :proposal, :through => :crew
+  
   inherit_resources
   belongs_to :crew
-  
   
   def index
    
@@ -20,10 +18,11 @@ class ProposalsController < ApplicationController
     @search = Proposal.search(conditions)
     @proposals = @search.paginate(:page=>params[:page], :per_page=>5, :include => [:user, :votes, :cancelled_by])
     @my_signatures = Signature.user_id_eq(current_user.id).proposal_id_in(@proposals).all 
+    @crew = Crew.find(params[:crew_id])
     render "index"
   end 
   
-  def withdraw
+  def destroy
     @proposal = Proposal.find(params[:id])
     if current_user.id == @proposal.user_id && @proposal.status=='open' && @proposal.closing_at > Time.now
       @proposal.status='withdrawn' 
@@ -39,9 +38,13 @@ class ProposalsController < ApplicationController
   def set_user
     params[:proposal][:user_id] = current_user.id
   end
-  def get_crew
-    @crew = Crew.find(params[:crew_id])
+  def set_crew
+    params[:proposal]||={}
+    params[:proposal][:crew_id] = params[:crew_id] 
   end
+#  def get_crew
+#    @crew = Crew.find(params[:crew_id])
+#  end
   
   def search(conditions)
     conditions = {:crew_id_equals => params[:crew_id]}.merge(conditions)

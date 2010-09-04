@@ -39,7 +39,7 @@
               = link_to 'Vote!', new_crew_proposal_vote_path(proposal.crew, proposal), :class => 'vote' 
           %td    
             - if withdrawable?(proposal)
-              = link_to 'Withdraw!', withdraw_crew_proposal_path(proposal.crew, proposal) ,:confirm => "Do you confirm you abandon your proposal? : #{proposal.text[0..20]}... ?"  , :class => 'withdraw' 
+              = link_to 'Withdraw!', crew_proposal_path(proposal.crew, proposal) ,:confirm => "Do you confirm you abandon your proposal? : #{proposal.text[0..20]}... ?"  , :class => 'withdraw', :method => "DELETE"
             
         - if results? 
           %td(class = 'count') 
