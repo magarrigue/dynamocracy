@@ -1,20 +1,16 @@
-%h1 New proposal
+%h1 New crew
 
-- form_for [:crew, @proposal] do |f|
+- form_for [@crew] do |f|
   = f.error_messages
   
-  = f.label :text, "Your proposal : "
+  = f.label :name, "Name your crew : "
   %br
-  = f.text_area :text,:cols=>"109", :rows=>"20"
+  = f.text_field :name
   %br
-  = f.label :opening_at, "Will open at : "
+  = f.label :constitution, "Your crew rules (constitution) : "
   %br
-  = f.datetime_select :opening_at
-  %br
-  = f.label :closing_at, "Will close at : "
-  %br
-  = f.datetime_select :closing_at
+  = f.text_area  :constitution,:cols=>"109", :rows=>"20"
   %br
   %br
-  = submit_tag 'Save your proposal'
+  = submit_tag 'Save your crew'
   

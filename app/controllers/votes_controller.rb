@@ -1,6 +1,6 @@
 class VotesController < ApplicationController
-  load_and_authorize_resource
   before_filter :set_user, :only =>:create
+  load_and_authorize_resource
   inherit_resources
   nested_belongs_to :crew, :proposal
   actions :create, :new, :show

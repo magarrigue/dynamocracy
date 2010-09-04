@@ -1,22 +1,22 @@
 class ProposalsController < ApplicationController
  
-  load_and_authorize_resource
-
+  
   
   before_filter :set_user, :only => :create
   before_filter :get_crew
-  
+  load_and_authorize_resource
+
   inherit_resources
   belongs_to :crew
   
   
   def index
-    puts params.inspect
-      conditions = params[:search]||{}
-      conditions['my'] = current_user.id.to_i if(conditions.has_key?('my'))
-      conditions = conditions.delete_if{|k,v| !%w(ongoing decision pending cancelled withdrawn order my).include? k}
-      conditions = {:crew_id_equals => params[:crew_id]}.merge(conditions)     
-    puts conditions.inspect
+   
+    conditions = params[:search]||{}
+    conditions['my'] = current_user.id.to_i if(conditions.has_key?('my'))
+    conditions = conditions.delete_if{|k,v| !%w(ongoing decision pending cancelled withdrawn order my).include? k}
+    conditions = {:crew_id_equals => params[:crew_id]}.merge(conditions)     
+   
     @search = Proposal.search(conditions)
     @proposals = @search.paginate(:page=>params[:page], :per_page=>5, :include => [:user, :votes, :cancelled_by])
     @my_signatures = Signature.user_id_eq(current_user.id).proposal_id_in(@proposals).all 

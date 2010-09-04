@@ -1,11 +1,16 @@
 class CrewsController < ApplicationController
  
-  load_and_authorize_resource
 
-  #before_filter :set_user, :only =>:create
+
+  before_filter :set_user, :only =>:create
   #after_filter :redirect_to_proposal, :only => :create
+  load_and_authorize_resource
   inherit_resources
   
-  #actions :create, :new, :show
+  private
+  def set_user   
+    params[:crew][:creator_id] = current_user.id
+    puts params.inspect
+  end
   
 end

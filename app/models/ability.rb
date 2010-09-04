@@ -23,7 +23,7 @@ class Ability
         can :read, Vote, :crew_id => membership.crew_id, :proposal=>{:user_id=>user.id}
       end
     end
-    can :create,  Crew, :creator_id => user.id
+    can :create,  Crew
     
   end
     
