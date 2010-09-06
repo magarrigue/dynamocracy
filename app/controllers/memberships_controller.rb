@@ -12,7 +12,7 @@ class MembershipsController < ApplicationController
   
   private
   def only_disable_and_crewman
-    redirect_to root_url unless %w(officer disabled).include? params[:membership][:role]
+    redirect_to root_url unless %w(crewman disabled).include? params[:membership][:role]
   end
   
   
