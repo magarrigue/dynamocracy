@@ -1,0 +1,2 @@
+- if withdrawable?(proposal)
+  = link_to 'Withdraw!', crew_proposal_path(proposal.crew, proposal) ,:confirm => "Do you confirm you abandon your proposal? : #{proposal.text[0..20]}... ?"  , :class => 'withdraw', :method => "DELETE"

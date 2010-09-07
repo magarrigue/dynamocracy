@@ -2,15 +2,11 @@
   = @crew.name.capitalize 
   crew
   
-%ul
-  %li= link_to 'Members', crew_memberships_path(@crew)
-  %li= link_to 'Invitations', crew_invitations_path(@crew)
-  %li= link_to 'All proposals', crew_proposals_path(@crew)
-  - %w(ongoing decision pending cancelled withdrawn my).each do |sub|
-    %li= link_to  "#{sub.capitalize} proposals", crew_proposals_path( @crew, :filter=>sub)
-
 %h2 Constitution
 = @crew.constitution
-
+%br
+%br
+-if can? :update, @crew
+  = link_to "Edit this crew", edit_crew_path, :class=>'new'
 
 

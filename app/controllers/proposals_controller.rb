@@ -9,12 +9,11 @@ class ProposalsController < ApplicationController
   belongs_to :crew
   
   def index
-   
     conditions = params[:search]||{}
     conditions['my'] = current_user.id.to_i if(conditions.has_key?('my'))
     conditions = conditions.delete_if{|k,v| !%w(ongoing decision pending cancelled withdrawn order my).include? k}
     conditions = {:crew_id_equals => params[:crew_id]}.merge(conditions)     
-   
+    conditions = {:order => "by_updated_at_descend"}.merge(conditions) unless params[:search]&&params[:search][:order]
     @search = Proposal.search(conditions)
     @proposals = @search.paginate(:page=>params[:page], :per_page=>5, :include => [:user, :votes, :cancelled_by])
     @my_signatures = Signature.user_id_eq(current_user.id).proposal_id_in(@proposals).all 
@@ -32,6 +31,12 @@ class ProposalsController < ApplicationController
       flash[:error]='Can\'t withdrawn a proposal that is not yours, closed, cancelled, or already withdrawn'
     end
     redirect_to crew_proposal_path(@proposal.crew, @proposal)
+  end
+  
+  
+  def show
+    @my_signatures = Signature.user_id_eq(current_user.id).proposal_id_equals(@proposal.id).all
+    show!
   end
   
   private

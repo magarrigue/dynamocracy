@@ -9,7 +9,6 @@ class AddDeviseColumnsToUsers < ActiveRecord::Migration
       t.rememberable
       t.trackable
       t.timestamps
-      t.openid_authenticatable
     end
     add_index :users, :identity_url, :unique => true
     add_index :users, :email, :unique => true

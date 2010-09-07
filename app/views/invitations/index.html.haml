@@ -3,17 +3,17 @@
 %ul
 - @invitations.each do |invitation|
   %li
-    = link_to "#{invitation.email}", crew_invitation_path(invitation.crew, invitation)
+    = invitation.email
+    as
+    = invitation.role
     -if invitation.pending?
       %span
         , pending
-        - form_for [invitation.crew, invitation] do |f|
-          = f.error_messages
-          = submit_tag 'Resend?'
-        
+        = link_to 'Resend?', crew_invitation_path(invitation.crew, invitation),:method=>'PUT', :class =>'vote'
+        = link_to 'Cancel?', crew_invitation_path(invitation.crew, invitation),:method=>'DELETE', :class =>'withdraw',:confirm=>'Do you confirm you want to cancel #{invitation.email} invitation?'
     -if invitation.validated_at
-      %span= ", validated at #{invitation.validated_at.to_s}" 
+      %span= ", validated #{date_distance invitation.validated_at}" 
 %br  
-= link_to 'New invitation', new_crew_invitation_path
-    
- 
+= link_to 'New invitation', new_crew_invitation_path(:invitation=>{:role=>'crewman'}), :class => 'new' 
+%br    
+%br= link_to 'Back to crews', crews_path 

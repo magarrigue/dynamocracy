@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100904130935) do
+ActiveRecord::Schema.define(:version => 20100907211146) do
 
   create_table "crews", :force => true do |t|
     t.string   "name"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(:version => 20100904130935) do
     t.datetime "expire_at"
     t.datetime "validated_at"
     t.string   "invitation_token"
-    t.string   "type"
+    t.string   "role"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

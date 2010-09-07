@@ -4,7 +4,7 @@ module ProposalsHelper
   end
   
   def withdrawable?(proposal)
-      mine?(proposal) && (proposal.full_status == 'open' || proposal.full_status == 'pending')
+    mine?(proposal) && (proposal.full_status == 'open' || proposal.full_status == 'pending')
   end
   
   def votable?(proposal)
@@ -37,8 +37,6 @@ module ProposalsHelper
        end
     end
     comments_map
-  end
-  
-  
+  end  
 end
 

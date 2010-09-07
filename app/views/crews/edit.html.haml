@@ -1,0 +1,15 @@
+%h1 New crew
+
+- form_for [@crew] do |f|
+  = f.error_messages 
+  = f.label :name, "Name your crew : "
+  %br
+  = f.text_field :name
+  %br
+  = f.label :constitution, "Your crew rules (constitution) : "
+  %br
+  = f.text_area  :constitution,:cols=>"109", :rows=>"20"
+  %br
+  %br
+  = submit_tag 'Save your crew'
+  

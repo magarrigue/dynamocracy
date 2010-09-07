@@ -10,9 +10,14 @@ class MembershipsController < ApplicationController
   actions :update, :show, :index
   before_filter :only_disable_and_crewman, :only=>:update
   
+  def update
+    update!
+    redirect_to crew_memberships_path(@membership.crew)
+  end
+  
   private
   def only_disable_and_crewman
-    redirect_to root_url unless %w(crewman disabled).include? params[:membership][:role]
+    redirect_to root_url unless ( params[:membership] && %w(crewman disabled).include?(params[:membership][:role]) )
   end
   
   

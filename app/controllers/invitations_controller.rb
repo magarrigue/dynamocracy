@@ -17,10 +17,15 @@ class InvitationsController < ApplicationController
     end
   end
   
+  def show
+    show!
+    redirect_to crew_invitations_url
+ end
+  
   def update
     if @invitation.pending?
       send_mail
-      flash[:notice] ="an invitation email has been sent to #{@invitation.email}"         
+      flash[:notice] ="a new invitation email has been sent to #{@invitation.email}"         
     else
       flash[:error] = "This invitation is no more pending"
     end

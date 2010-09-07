@@ -9,5 +9,7 @@ Open :
 Close :
 %span= date_distance @proposal.closing_at
 %br
+%br
+%span= render :partial=>'votable', :locals=>{:proposal=>@proposal, :my_signatures=>@my_signatures}
+%span= render :partial=>'withdrawable', :locals=>{:proposal=>@proposal, :my_signatures=>@my_signatures}
 
-= link_to 'Back to list', crew_proposals_path              

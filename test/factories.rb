@@ -15,6 +15,8 @@ Factory.define :user do |f|
  f.reset_password_token  "reset_pasword_token"
  f.encrypted_password  "password" 
  f.password_salt  "password" 
+ f.confirmed_at  2.days.ago
+ f.confirmation_sent_at 3.days.ago 
 end
 
 

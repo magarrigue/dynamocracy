@@ -8,6 +8,17 @@
   %br
   = f.text_field :email
   %br
+
+  = f.radio_button :role, 'crewman'
+  = f.label :role_crewman, "crewman"
+  .hint
+    A crewman is a crew member
+  %br  
+  = f.radio_button :role, 'officer'
+  = f.label :value_officer, "officer"  
+  .hint
+    A crewman is a crew member that can manage members, and edit crew name and constitution
   %br
-  = submit_tag 'Invit a new crewman'
+  %br
+  = submit_tag 'Save invitation'
   

@@ -1,24 +1,20 @@
 %h1= "Members"
-%ul
-- @memberships.each do |membership|
-  %li
-    %span= "#{membership.user.nickname} : #{membership.role}"
-    -if can? :update, membership 
-      -if membership.role !='disabled'
-        %span
-          - form_for [membership.crew, membership] do |f|
-            = f.error_messages
-            = f.hidden_field :role, :value=> "disabled"
-            = submit_tag 'Disable?'
-      -if membership.role == 'officer'
-        %span
-          - form_for [membership.crew, membership] do |f|
-            = f.error_messages
-            = f.hidden_field :role, :value=> "crewman"
-            = submit_tag 'Revoke?'
-      -#%span= link_to "Disable?",crew_membership_path(membership.crew, membership, :role=>'toto'), :method=>'put'
 
-%br= link_to 'Back to crew', crew_path(@crew)
+%ul
+  - @memberships.each do |membership|
+    %li
+      ="#{membership.user.nickname} : #{membership.role}"
+      -if can? :update, membership 
+        -if membership.role !='disabled' && current_user.id != membership.user_id
+          =link_to 'Disable?', crew_membership_path( membership.crew, membership, :membership => {:role=>'disabled'}), :method=>'PUT',:class=>'withdraw',:confirm=>"Do you confirm you want to disable #{membership.user.nickname}?"  
+        -if membership.role == 'officer'&& current_user.id != membership.user_id
+          = link_to 'Revoke?', crew_membership_path(membership.crew, :membership => {:role=>'disabled'}),:method=>'PUT',:class=>'withdraw',:confirm=>"Do you confirm you want to revoke #{membership.user.nickname} to crewman?"
+        -if membership.role == 'disabled'
+          = link_to 'Invite again?', new_crew_invitation_path(membership.crew, :invitation => {:email=>membership.user.email,:role=>'crewman'}), :class=>'vote'
+        -if membership.role == 'crewman'
+          = link_to 'Invite to be officer?', new_crew_invitation_path(membership.crew, :invitation => {:email=>membership.user.email, :role=>'officer'}), :class=>'vote'
+     
+
 %br= link_to 'Back to crews', crews_path
 
 

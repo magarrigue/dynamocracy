@@ -2,9 +2,10 @@ class Invitation < ActiveRecord::Base
   belongs_to :crew
   belongs_to :user
   
-  validates_presence_of :email, :crew_id, :user_id
+  validates_presence_of :email, :crew_id, :user_id, :type
   validates_format_of :email, :with => Devise::EMAIL_REGEX, :message => "is not a valid email"
-  validates_uniqueness_of :email, :case_sensitive => false, :scope => :crew_id, :message => "has already been invited to this crew"
+  #validates_uniqueness_of :email, :case_sensitive => false, :scope => :crew_id, :message => "has already been invited to this crew"
+ validates_inclusion_of :role, :in => %w(crewman officer), :message => "{{value}} is not a valid role"
   before_save :set_email_to_downcase
   
   

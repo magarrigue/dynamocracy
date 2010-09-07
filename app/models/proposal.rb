@@ -26,6 +26,7 @@ class Proposal < ActiveRecord::Base
   scope_procedure :withdrawn, lambda{status_equals('withdrawn')}
   scope_procedure :cancelled, lambda{status_equals('cancelled')}
   scope_procedure :my, lambda { |user_id| user_id_equals(user_id)  }
+  scope_procedure :accessible, lambda{ |user_id|  crew_memberships_user_id_equals(user_id).crew_memberships_role_does_not_equal('disabled')}
   
   def set_default_opening_and_closing
     self.opening_at = Time.now if self.opening_at == nil
