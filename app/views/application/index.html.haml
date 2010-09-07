@@ -1,0 +1,11 @@
+Welcome to dynamocracy
+%br
+- if user_signed_in?  
+  - if can? :read, Crew
+    = link_to "Your crews", crews_path
+  = link_to "Create a new crew", new_crew_path unless @has_crew
+- else
+  = link_to "Register to create your crew", new_user_registration_path 
+  %br
+  or
+  = link_to "Login", new_user_session_path 

@@ -7,6 +7,8 @@ class CreateTableInvitations < ActiveRecord::Migration
       t.datetime :sent_at
       t.datetime :expire_at
       t.datetime :validated_at
+      t.string :invitation_token
+      t.string :type
       t.timestamps
     end
   end

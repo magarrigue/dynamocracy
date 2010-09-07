@@ -27,7 +27,7 @@ header {
     font-size: 0.5em;
     }
   header nav {
-    
+    color: green;
     position: absolute;
     right: 20px;
     top: 0px;

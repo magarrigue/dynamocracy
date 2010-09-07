@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(:version => 20100904130935) do
     t.datetime "sent_at"
     t.datetime "expire_at"
     t.datetime "validated_at"
+    t.string   "invitation_token"
+    t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,0 +1,13 @@
+Hello 
+= @invitation.email
+!
+
+= @invitation.user.email.split('@')[0]
+has invited you to join a dynamocracy crew 
+= @invitation.crew.name
+, you can accept it through the link below.
+
+= link_to 'Accept invitation', accept_invitation_url(:invitation_token => @invitation.invitation_token)
+
+If you don't want to accept the invitation, please ignore this email.
+Your account won't be created until you access the link above.

@@ -8,7 +8,19 @@ class VotesController < ApplicationController
   inherit_resources
   nested_belongs_to :crew, :proposal
   
-  actions :create, :new, :show
+  actions :create, :new
+  
+  
+  def create
+    create!(:notice => "You voted for this proposal") do |success, failure|
+        success.html{
+         
+          redirect_to crew_proposal_url(@vote.proposal.crew,@vote.proposal)          
+          }
+        failure.html
+    end
+
+  end
   
  
   private

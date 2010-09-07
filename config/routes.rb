@@ -4,14 +4,13 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :crews do |crew|
     crew.resources :proposals
-    crew.resources :memberships do |membership|
-      membership.resources :invitations
-    end
+    crew.resources :invitations
+    crew.resources :memberships
     crew.resources :proposals do |proposal|
       proposal.resources :votes
     end
   end
-  
+  map.accept_invitation 'accept_invitation', :controller => 'invitations', :action=>'accept'
   
 #  map.withdraw_crew_proposal 'crews/:crew_id/proposals/:id/withdraw', :controller => 'proposals',:action=>'withdraw'
 #  %w(ongoing pending decision withdrawn cancelled my).each do |sub|
@@ -51,7 +50,8 @@ ActionController::Routing::Routes.draw do |map|
   #   end
 
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
-  map.root :controller => "crews"
+  map.root  :controller => 'application', :action=>"index"
+
 
   # See how all your routes lay out with "rake routes"
 

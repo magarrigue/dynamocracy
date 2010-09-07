@@ -38,13 +38,7 @@ class ProposalsController < ApplicationController
   def set_user
     params[:proposal][:user_id] = current_user.id
   end
-  def set_crew
-    params[:proposal]||={}
-    params[:proposal][:crew_id] = params[:crew_id] 
-  end
-#  def get_crew
-#    @crew = Crew.find(params[:crew_id])
-#  end
+
   
   def search(conditions)
     conditions = {:crew_id_equals => params[:crew_id]}.merge(conditions)
@@ -55,9 +49,5 @@ class ProposalsController < ApplicationController
     render "index"
   end
   
-  
-  def my
-    search(:user_id => current_user.id)
-  end
   
 end

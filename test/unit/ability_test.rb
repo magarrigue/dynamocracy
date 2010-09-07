@@ -59,7 +59,7 @@ class AbilityTest < ActiveSupport::TestCase
     my_proposal = Factory.create :proposal, :crew_id => crew.id, :user_id=>crewman.id    
     
     assert crewman_ability.can?(:create, my_proposal)
-    assert crewman_ability.cannot?(:create, proposal)
+    assert crewman_ability.can?(:create, proposal)
     assert crewman_ability.cannot?(:create, proposal_2)
     assert admin_ability.cannot?(:create, proposal_2)
     

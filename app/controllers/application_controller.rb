@@ -2,9 +2,11 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
+  include InheritedResources::DSL
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except=>:index
+  before_filter :check_invitation
   
   # Preserve privacy even from admin-sys when voting
   filter_parameter_logging :value
@@ -13,12 +15,35 @@ class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied do |exception|
       flash[:error] = exception.message
       puts exception.inspect
-      redirect_to user_session_url
+      redirect_to root_url
   end
   
-
+  def index
+    @has_crew = Crew.creator_id_equals(current_user.id).count==1 if user_signed_in?
+  end
   
   private
-
-
+  def check_invitation 
+    if user_signed_in? && !pending_invitation.nil?
+       if current_user.email == pending_invitation.email && pending_invitation.pending?
+        puts 'should proceed now'
+        proceed_to_invitation pending_invitation
+       end
+       session[:pending_invitation] = nil
+    end
+  end
+  
+  def pending_invitation
+    session[:pending_invitation]
+  end
+  
+  def proceed_to_invitation(invitation)
+     membership = Membership.crew_id_equals(invitation.crew_id).user_id_equals(current_user.id).first
+     if(membership.nil?)
+      membership = Membership.new(:user_id=>current_user.id, :crew_id=>invitation.crew_id, :role=>'crewman')
+     end
+     membership.save!
+     invitation.validated_at = Time.now
+     invitation.save!
+  end
 end

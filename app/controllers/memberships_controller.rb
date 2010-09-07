@@ -16,20 +16,4 @@ class MembershipsController < ApplicationController
   end
   
   
-#  def destroy
-#    @membership = Membership.find(params[:id])
-#    puts @membership.inspect
-#    @membership.role = 'disabled'
-#    puts @membership.inspect
-#    if(@membership.save)
-
-#      puts 'redirect'
-#      redirect_to crew_memberships_path(@membership),:notice =>membership.errors.inspect
-#    else
-#      puts @membership.errors.inspect
-#      puts @membership.inspect
-#      @memberships = Membership.crew_id_equals(params[:crew_id])
-#      render 'index',:notice =>@membership.errors.inspect
-#    end
-#  end
 end

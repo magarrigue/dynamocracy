@@ -1,0 +1,19 @@
+%h1 Invitations
+
+%ul
+- @invitations.each do |invitation|
+  %li
+    = link_to "#{invitation.email}", crew_invitation_path(invitation.crew, invitation)
+    -if invitation.pending?
+      %span
+        , pending
+        - form_for [invitation.crew, invitation] do |f|
+          = f.error_messages
+          = submit_tag 'Resend?'
+        
+    -if invitation.validated_at
+      %span= ", validated at #{invitation.validated_at.to_s}" 
+%br  
+= link_to 'New invitation', new_crew_invitation_path
+    
+ 

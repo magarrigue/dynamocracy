@@ -3,11 +3,15 @@ class User < ActiveRecord::Base
   #has_one :crew
   has_many :memberships
   
-  devise :database_authenticatable, :registerable,  
-        # :confirmable, :recoverable, 
-         :rememberable, :trackable, :validatable
+  devise  :database_authenticatable, 
+          :registerable,  
+          :confirmable, 
+          :recoverable, 
+          :rememberable, 
+          :trackable, 
+          :validatable
          
-  attr_accessible :email, :password, :password_confirmation       
+  attr_accessible :email, :password, :password_confirmation, :remember_me    
   
   def nickname
     email.split('@')[0]
@@ -15,5 +19,9 @@ class User < ActiveRecord::Base
   
   def has_membership?(role_sym)
      memberships.any? { |r| r.role.underscore.to_sym == role_sym }
+  end
+  
+  def password_required? 
+    new_record? 
   end
 end
