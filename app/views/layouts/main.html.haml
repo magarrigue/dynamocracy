@@ -12,22 +12,24 @@
         %h1
           = link_to "Dynamocracy", root_path
           %span beta
-        %nav
-          %ul
-            %li= link_to 'Home', root_path
-            %li= '|'
-            %li= link_to 'Crews', crews_path
-            -if @crew && @crew.id
-              %li= '>'
-              - crew_name = ( @crew.name.length >= 9 ? "#{@crew.name[0..9]}.." : @crew.name )
-              %li= link_to crew_name, crew_path(@crew)
-              %li= '>'
-              %li= link_to 'Proposals', crew_proposals_path(@crew)
+
+        - if user_signed_in?
+          %nav
+            %ul
+              %li= link_to 'Home', root_path
               %li= '|'
-              %li= link_to 'Members', crew_memberships_path(@crew)
-              - if can? :read, Invitation
+              %li= link_to 'Crews', crews_path
+              -if @crew && @crew.id
+                %li= '>'
+                - crew_name = ( @crew.name.length >= 9 ? "#{@crew.name[0..9]}.." : @crew.name )
+                %li= link_to crew_name, crew_path(@crew)
+                %li= '>'
+                %li= link_to 'Proposals', crew_proposals_path(@crew)
                 %li= '|'
-                %li= link_to 'Invitations', crew_invitations_path(@crew)
+                %li= link_to 'Members', crew_memberships_path(@crew)
+                - if can? :read, Invitation
+                  %li= '|'
+                  %li= link_to 'Invitations', crew_invitations_path(@crew)
             
         %user_nav
           %ul
