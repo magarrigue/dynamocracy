@@ -13,3 +13,4 @@ Close :
 %span= render :partial=>'votable', :locals=>{:proposal=>@proposal, :my_signatures=>@my_signatures}
 %span= render :partial=>'withdrawable', :locals=>{:proposal=>@proposal, :my_signatures=>@my_signatures}
 
+%br= link_to 'New proposal', new_crew_proposal_path(@crew), :class=>"new"

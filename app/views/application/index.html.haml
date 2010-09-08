@@ -1,4 +1,4 @@
-%h1 Welcome to dynamocracy
+%h1 Your dynamocracy 
 - if user_signed_in?  
   %h2= link_to "Your crews", crews_path if can? :read, Crew if can? :read, Crew
   %h2= link_to "Create a new crew", new_crew_path unless @has_crew

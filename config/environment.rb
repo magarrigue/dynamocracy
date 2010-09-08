@@ -21,7 +21,6 @@ Rails::Initializer.run do |config|
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem 'inherited_resources'
   config.gem 'haml'
-  config.gem 'formtastic'
   config.gem 'units'
   config.gem 'searchlogic'
   config.gem 'will_paginate'
