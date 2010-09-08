@@ -19,7 +19,8 @@
             %li= link_to 'Crews', crews_path
             -if @crew && @crew.id
               %li= '>'
-              %li= link_to "#{@crew.name}", crew_path(@crew)
+              - crew_name = ( @crew.name.length >= 9 ? "#{@crew.name[0..9]}.." : @crew.name )
+              %li= link_to crew_name, crew_path(@crew)
               %li= '>'
               %li= link_to 'Proposals', crew_proposals_path(@crew)
               %li= '|'
