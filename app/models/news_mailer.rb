@@ -6,6 +6,7 @@ class NewsMailer < ActionMailer::Base
       subject "News from your Dynamocracy crews : #{Time.now}"
       fetch_news_for_user(user)
       @user = user
+      content_type "text/html"
    end
 
 

@@ -4,6 +4,7 @@ class InvitationMailer < ActionMailer::Base
         from invitation.user.email
         subject "Join my crew?"
         @invitation=invitation
+        content_type "text/html"
    end
 
 

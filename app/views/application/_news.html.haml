@@ -4,27 +4,27 @@
   %ul 
     - @new_unvoteds.each do |proposal|
       %li
-        %span=link_to proposal.begining, crew_proposal_path(proposal.crew,proposal)
+        %span=link_to proposal.begining, crew_proposal_url(proposal.crew,proposal)
         %span is now
         %span= proposal.full_status
         %span in crew : 
-        %span=link_to proposal.crew.name, crew_proposals_path(proposal.crew)
+        %span=link_to proposal.crew.name, crew_proposals_url(proposal.crew)
 - unless @new_decisions.empty?
   %h3 New decisions 
   %ul 
     - @new_decisions.each do |proposal|
       %li
-        %span=link_to proposal.begining, crew_proposal_path(proposal.crew,proposal)
+        %span=link_to proposal.begining, crew_proposal_url(proposal.crew,proposal)
         %span is now
         %span= proposal.full_status
         %span in crew : 
-        %span=link_to proposal.crew.name, crew_proposals_path(proposal.crew)
+        %span=link_to proposal.crew.name, crew_proposals_url(proposal.crew)
 - unless @new_votes.empty?
   %h3 New votes on your proposals
   %ul 
     - @new_votes.each do |proposal|
       %li
-        %span=link_to proposal.begining, crew_proposal_path(proposal.crew,proposal)
+        %span=link_to proposal.begining, crew_proposal_url(proposal.crew,proposal)
         %span has been voted
         %span= proposal.signatures_count
         %span times
@@ -34,9 +34,9 @@
   %ul
     - @new_members.each do |member|
       %li
-        %span= link_to member.user.nickname, crew_memberships_path(member.crew)
+        %span= link_to member.user.nickname, crew_memberships_url(member.crew)
         %span has joined
-        %span= link_to member.crew.name, crew_path(member.crew)
+        %span= link_to member.crew.name, crew_url(member.crew)
         %span as
         %span= member.role
 -if [@new_members,@new_votes,@new_decisions,@new_unvoteds].all?{|i| i.empty?}
