@@ -278,7 +278,9 @@ form {
   .vote:hover {
     background: black; }  
 
-
+.number{
+      font-family: 'Lobster', serif;
+}
 .withdraw {
   font-size: 0.8em;
   background: #A4A4A4;

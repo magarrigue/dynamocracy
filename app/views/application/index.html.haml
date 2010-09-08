@@ -5,49 +5,52 @@ Welcome to dynamocracy
     = link_to "Your crews", crews_path
   = link_to "Create a new crew", new_crew_path unless @has_crew
   %h2 News of the week
-  
-  %h3 New proposals to vote
-  %ul 
-    - @new_unvoteds.each do |proposal|
-      %li
-        %span=link_to begining(proposal), crew_proposal_path(proposal.crew,proposal)
-        %span is now
-        %span= proposal.full_status
-        %span in crew : 
-        %span=link_to proposal.crew.name, crew_proposals_path(proposal.crew)
-
-  %h3 New decisions 
-  %ul 
-    - @new_decisions.each do |proposal|
-      %li
-        %span=link_to begining(proposal), crew_proposal_path(proposal.crew,proposal)
-        %span is now
-        %span= proposal.full_status
-        %span in crew : 
-        %span=link_to proposal.crew.name, crew_proposals_path(proposal.crew)
-  
-  %h3 New votes on your proposals
-  %ul 
-    - @new_votes.each do |proposal|
-      %li
-        %span=link_to begining(proposal), crew_proposal_path(proposal.crew,proposal)
-        %span has been voted
-        %span= proposal.signatures_count
-        %span times
+  - unless @new_unvoteds.empty?
+    %h3 New proposals to vote
+    %ul 
+      - @new_unvoteds.each do |proposal|
+        %li
+          %span=link_to begining(proposal), crew_proposal_path(proposal.crew,proposal)
+          %span is now
+          %span= proposal.full_status
+          %span in crew : 
+          %span=link_to proposal.crew.name, crew_proposals_path(proposal.crew)
+  - unless @new_decisions.empty?
+    %h3 New decisions 
+    %ul 
+      - @new_decisions.each do |proposal|
+        %li
+          %span=link_to begining(proposal), crew_proposal_path(proposal.crew,proposal)
+          %span is now
+          %span= proposal.full_status
+          %span in crew : 
+          %span=link_to proposal.crew.name, crew_proposals_path(proposal.crew)
+  - unless @new_votes.empty?
+    %h3 New votes on your proposals
+    %ul 
+      - @new_votes.each do |proposal|
+        %li
+          %span=link_to begining(proposal), crew_proposal_path(proposal.crew,proposal)
+          %span has been voted
+          %span= proposal.signatures_count
+          %span times
         
-     
-  %h3 New members   
-  %ul
-    - @new_members.each do |member|
-      %li
-        %span= link_to member.user.nickname, crew_memberships_path(member.crew)
-        %span has joined
-        %span= link_to member.crew.name, crew_path(member.crew)
-        %span as
-        %span= member.role
-    
+  - unless @new_members.empty?
+    %h3 New members   
+    %ul
+      - @new_members.each do |member|
+        %li
+          %span= link_to member.user.nickname, crew_memberships_path(member.crew)
+          %span has joined
+          %span= link_to member.crew.name, crew_path(member.crew)
+          %span as
+          %span= member.role
+      
 - else
-  = link_to "Register to create your crew", new_user_registration_path 
+  %br
+  %br
+  = link_to "Register now!", new_user_registration_path 
+  %br
   %br
   or
   = link_to "Login", new_user_session_path 

@@ -1,7 +1,11 @@
-%h3
+%h2
   Proposal
   %span= "Nº#{proposal.id}"
-
+%h3 
+  
+  .number
+    Signatures :
+    =proposal.signatures_count
 .nickname
   =proposal.user.nickname
   = proposal.full_status == 'open' ? 'proposes:' : 'proposed:'
