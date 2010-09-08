@@ -375,13 +375,11 @@ form {
 
 #error_div_id {
   text-align: center;
-  padding: 5px;
   font-weight: bold;
   color: red;
 }
 #notice_div_id {
   text-align: center;
-  padding: 5px;
   font-weight: bold;
   color: green;
 }

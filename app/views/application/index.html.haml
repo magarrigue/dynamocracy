@@ -1,3 +1,6 @@
+%h1 Welcome to Dynamocracy 
+The collective decision-making tool
+%br
 - if user_signed_in?  
   %h2= link_to "Your crews", crews_path if can? :read, Crew if can? :read, Crew
   - unless @has_crew
@@ -7,10 +10,24 @@
     
   = render :partial => "news"
 - else
+
+  %br Dynamocracy helps your crew to make quick and engaging decisions
+  .hint
+    A crew is a body or a class of people who work at a common activity, generally in a structured or hierarchical organization.
+  %h2 How it works :
+  %ul
+    %li build a new crew
+    %li crewmen make propositions
+    %li propositions are voted and enhanced 
+    %li consensus emerge, decisions are made
+
+    
+  .hint
+    "The ultimate purpose of collecting the data is to provide a basis for action or a recommendation." - Dr. W. Edwards Deming (1900 - 1993), American Statistician, Professor and Author
+    %br "Nothing is more difficult, and therefore more precious, than to be able to decide." - Napoleon Bonaparte (1769 - 1821), Military and Political Leader of France
   %br
   %br
-  = link_to "Register now!", new_user_registration_path 
+  = link_to "Register now!", new_user_registration_path, :class=>'new'
   %br
   %br
-  or
-  = link_to "Login", new_user_session_path
+  = link_to "Login", new_user_session_path, :class=>'vote'
