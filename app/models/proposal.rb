@@ -50,6 +50,11 @@ class Proposal < ActiveRecord::Base
     return 'unknown'
   end  
   
+    
+  def begining
+    text[0..35]+"..."
+  end
+  
   
 #  def pass_count
 #    signatures_count - yes_count - no_count - support_count

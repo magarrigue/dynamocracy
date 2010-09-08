@@ -5,4 +5,4 @@ log/*.log
 db/*.sqlite3
 deploy.sh
 .rake_tasks~
-
+doc/guides/*

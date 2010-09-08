@@ -5,7 +5,7 @@ class Vote < ActiveRecord::Base
   belongs_to :proposal
   validates_presence_of :proposal, :value, :voter_id
  
-  validates_inclusion_of :value, :in => %w(yes support no veto pass), :message => "{{value}} is not a valid vote"
+  validates_inclusion_of :value, :in => %w(yes support no veto pass), :message => "%{value} is not a valid vote"
   validates_presence_of :comment, :if => :no?
   
   validate :open_proposal?

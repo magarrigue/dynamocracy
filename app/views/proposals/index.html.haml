@@ -25,7 +25,7 @@
           = proposal.user.nickname
           %br= proposal.full_status == 'open' ? 'proposes:' : 'proposed:'
         %td{:id=>"link_#{proposal.id}"}
-          = link_to begining(proposal),"#proposal_#{proposal.id}"
+          = link_to proposal.begining,"#proposal_#{proposal.id}"
           - comments = proposal.votes.collect{|v| v.comment}.find_all{|c| !c.empty?}
           -if mine?(proposal) && !comments.empty?
             %br="#{comments.size} suggestion(s)..."

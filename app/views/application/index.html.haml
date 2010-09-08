@@ -1,49 +1,11 @@
-%h1 Your dynamocracy 
 - if user_signed_in?  
   %h2= link_to "Your crews", crews_path if can? :read, Crew if can? :read, Crew
-  %h2= link_to "Create a new crew", new_crew_path unless @has_crew
-  %h2 News of the week
-  - unless @new_unvoteds.empty?
-    %h3 New proposals to vote
-    %ul 
-      - @new_unvoteds.each do |proposal|
-        %li
-          %span=link_to begining(proposal), crew_proposal_path(proposal.crew,proposal)
-          %span is now
-          %span= proposal.full_status
-          %span in crew : 
-          %span=link_to proposal.crew.name, crew_proposals_path(proposal.crew)
-  - unless @new_decisions.empty?
-    %h3 New decisions 
-    %ul 
-      - @new_decisions.each do |proposal|
-        %li
-          %span=link_to begining(proposal), crew_proposal_path(proposal.crew,proposal)
-          %span is now
-          %span= proposal.full_status
-          %span in crew : 
-          %span=link_to proposal.crew.name, crew_proposals_path(proposal.crew)
-  - unless @new_votes.empty?
-    %h3 New votes on your proposals
-    %ul 
-      - @new_votes.each do |proposal|
-        %li
-          %span=link_to begining(proposal), crew_proposal_path(proposal.crew,proposal)
-          %span has been voted
-          %span= proposal.signatures_count
-          %span times
-        
-  - unless @new_members.empty?
-    %h3 New members   
-    %ul
-      - @new_members.each do |member|
-        %li
-          %span= link_to member.user.nickname, crew_memberships_path(member.crew)
-          %span has joined
-          %span= link_to member.crew.name, crew_path(member.crew)
-          %span as
-          %span= member.role
-      
+  - unless @has_crew
+    %h2= link_to "Create a new crew", new_crew_path 
+    .hint 
+      You may create at most one crew.
+    
+  = render :partial => "news"
 - else
   %br
   %br
@@ -51,4 +13,4 @@
   %br
   %br
   or
-  = link_to "Login", new_user_session_path 
+  = link_to "Login", new_user_session_path

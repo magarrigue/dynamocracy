@@ -3,6 +3,7 @@
 
 class ApplicationController < ActionController::Base
   include InheritedResources::DSL
+  include News
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   before_filter :authenticate_user!, :except=>:index
@@ -19,8 +20,10 @@ class ApplicationController < ActionController::Base
   end
   
   def index
-    @has_crew = Crew.creator_id_equals(current_user.id).count==1 if user_signed_in?
-    fetch_news
+    if user_signed_in?
+      @has_crew = Crew.creator_id_equals(current_user.id).count==1 
+      fetch_news_for_user(current_user)
+    end
   end
   
   private
@@ -50,14 +53,4 @@ class ApplicationController < ActionController::Base
   end
   
   
-  
- def fetch_news(since=1.week.ago)
-    if user_signed_in?
-      @new_unvoteds = ((Proposal.accessible(current_user.id).ongoing.updated_at_after(since)+
-      Proposal.accessible(current_user.id).ongoing.signatures_count_equals(0).updated_at_after(since))-Proposal.accessible(current_user.id).ongoing.updated_at_after(since).voted(current_user.id)).uniq
-      @new_decisions = Proposal.accessible(current_user.id).decision.updated_at_after(since).uniq
-      @new_members = Membership.accessible(current_user.id).updated_at_after(since).uniq
-      @new_votes = Proposal.accessible(current_user.id).user_id_equals(current_user.id).votes_created_at_after(since).uniq
-    end
- end 
 end

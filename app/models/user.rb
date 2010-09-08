@@ -11,7 +11,11 @@ class User < ActiveRecord::Base
           :trackable, 
           :validatable
          
-  attr_accessible :email, :password, :password_confirmation, :remember_me    
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :newsletter_frequency   
+  validates_presence_of :newsletter_frequency
+  validates_numericality_of :newsletter_frequency, :only_integer => true, :greater_than_or_equal_to=>0,
+  :less_than_or_equal_to=>7
+
   
   def nickname
     email.split('@')[0]

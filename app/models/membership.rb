@@ -2,7 +2,7 @@ class Membership < ActiveRecord::Base
   belongs_to :user
   belongs_to :crew
   validates_presence_of :user, :crew
-  validates_inclusion_of :role, :in => %w(crewman officer root disabled), :message => "{{value}} is not a valid role"
+  validates_inclusion_of :role, :in => %w(crewman officer root disabled), :message => "%{value} is not a valid role"
   validate :not_last_officer?
   scope_procedure :accessible, lambda{ |user_id|  crew_memberships_user_id_equals(user_id).crew_memberships_role_does_not_equal('disabled')}
   def new_record?
