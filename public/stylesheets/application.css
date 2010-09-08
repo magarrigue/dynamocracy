@@ -90,6 +90,10 @@ header {
     -moz-border-radius: 20px;
     -webkit-border-radius: 20px;
     padding: 10px 20px; }
+    
+.everything li{
+  margin: 8px;
+}
 
 .footer {
   text-align: center;
@@ -370,9 +374,15 @@ form {
 }
 
 #error_div_id {
-      color: red;
-    }
+  text-align: center;
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+}
 #notice_div_id {
-      color: green;
-    }
+  text-align: center;
+  padding: 5px;
+  font-weight: bold;
+  color: green;
+}
 
