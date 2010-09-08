@@ -2,4 +2,4 @@ tmp/*
 test/integration/webrat*
 test/*/public/*
 log/*.log
-db/*.sqlite
+db/*.sqlite3

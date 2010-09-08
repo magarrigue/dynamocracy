@@ -1,10 +1,10 @@
-
 #Factory.define :user  do |u|
 #  u.email 'joe@tlfj.com'
 ##  u.nickname 'joe'
 #  u.password 'password'
 ##  u.password_confirmation 'password'
 #end
+
 
 
 Factory.define :user do |f|
@@ -16,7 +16,8 @@ Factory.define :user do |f|
  f.encrypted_password  "password" 
  f.password_salt  "password" 
  f.confirmed_at  2.days.ago
- f.confirmation_sent_at 3.days.ago 
+ f.confirmation_sent_at 3.days.ago
+
 end
 
 
