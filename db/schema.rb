@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100907234621) do
+ActiveRecord::Schema.define(:version => 20100908102607) do
 
   create_table "crews", :force => true do |t|
     t.string   "name"
@@ -42,21 +42,6 @@ ActiveRecord::Schema.define(:version => 20100907234621) do
 
   add_index "memberships", ["crew_id", "user_id"], :name => "index_memberships_on_crew_id_and_user_id", :unique => true
 
-  create_table "open_id_associations", :force => true do |t|
-    t.binary  "server_url", :null => false
-    t.string  "handle",     :null => false
-    t.binary  "secret",     :null => false
-    t.integer "issued",     :null => false
-    t.integer "lifetime",   :null => false
-    t.string  "assoc_type", :null => false
-  end
-
-  create_table "open_id_nonces", :force => true do |t|
-    t.string  "server_url", :null => false
-    t.integer "timestamp",  :null => false
-    t.string  "salt",       :null => false
-  end
-
   create_table "proposals", :force => true do |t|
     t.text     "text"
     t.string   "status",           :default => "open", :null => false
@@ -85,8 +70,8 @@ ActiveRecord::Schema.define(:version => 20100907234621) do
 
   create_table "users", :force => true do |t|
     t.string   "email",                                  :default => "", :null => false
-    t.string   "encrypted_password",      :limit => 128, :default => ""
-    t.string   "password_salt",                          :default => ""
+    t.string   "encrypted_password",      :limit => 128, :default => "", :null => false
+    t.string   "password_salt",                          :default => "", :null => false
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
@@ -100,16 +85,11 @@ ActiveRecord::Schema.define(:version => 20100907234621) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "identity_url"
-    t.string   "invitation_token",        :limit => 20
-    t.datetime "invitation_sent_at"
     t.integer  "newsletter_frequency",                   :default => 7
     t.datetime "newsletter_last_sent_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["identity_url"], :name => "index_users_on_identity_url", :unique => true
-  add_index "users", ["invitation_token"], :name => "index_users_on_invitation_token"
 
   create_table "votes", :force => true do |t|
     t.string   "value"

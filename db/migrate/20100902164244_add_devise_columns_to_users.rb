@@ -10,7 +10,6 @@ class AddDeviseColumnsToUsers < ActiveRecord::Migration
       t.trackable
       t.timestamps
     end
-    add_index :users, :identity_url, :unique => true
     add_index :users, :email, :unique => true
     
   end
