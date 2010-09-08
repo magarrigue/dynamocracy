@@ -15,23 +15,31 @@
         %nav
           %ul
             %li= link_to 'Home', root_path
+            %li= '|'
+            %li= link_to 'Crews', crews_path
             -if @crew && @crew.id
-              %li= link_to "#{@crew.name} >> ", crew_path(@crew)
+              %li= '>'
+              %li= link_to "#{@crew.name}", crew_path(@crew)
+              %li= '>'
               %li= link_to 'Proposals', crew_proposals_path(@crew)
+              %li= '|'
               %li= link_to 'Members', crew_memberships_path(@crew)
               - if can? :read, Invitation
+                %li= '|'
                 %li= link_to 'Invitations', crew_invitations_path(@crew)
             
         %user_nav
           %ul
           
             - if user_signed_in? 
-              %li= link_to current_user.email, edit_user_registration_path
+              %li= link_to current_user.email.capitalize, edit_user_registration_path
+              %li= '|'
               %li= link_to "Logout", destroy_user_session_path
               
               -#%li= link_to 'New proposal', new_crew_proposal_path
             - else   
               %li= link_to "Login", new_user_session_path
+              %li= '|'
               %li= link_to "Register", new_user_registration_path
             -#%li= link_to 'Logout', logout_path
            
