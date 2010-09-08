@@ -10,7 +10,7 @@
       %span
         , pending
         = link_to 'Resend?', crew_invitation_path(invitation.crew, invitation),:method=>'PUT', :class =>'vote'
-        = link_to 'Cancel?', crew_invitation_path(invitation.crew, invitation),:method=>'DELETE', :class =>'withdraw',:confirm=>'Do you confirm you want to cancel #{invitation.email} invitation?'
+        = link_to 'Cancel?', crew_invitation_path(invitation.crew, invitation),:method=>'DELETE', :class =>'withdraw',:confirm=>"Do you confirm you want to cancel #{invitation.email} invitation?"
     -if invitation.validated_at
       %span= ", validated #{date_distance invitation.validated_at}" 
 %br  

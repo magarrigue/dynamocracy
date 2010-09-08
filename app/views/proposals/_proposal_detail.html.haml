@@ -5,8 +5,8 @@
 .nickname
   =proposal.user.nickname
   = proposal.full_status == 'open' ? 'proposes:' : 'proposed:'
-%br
-%span=proposal.text
+
+%pre=proposal.text
 .suggest
   -if mine?(proposal) && proposal.votes 
     -cbvv = comments_by_vote_value proposal

@@ -52,13 +52,12 @@ class ApplicationController < ActionController::Base
   
   
  def fetch_news(since=1.week.ago)
-
     if user_signed_in?
-      @new_unvoteds = Proposal.accessible(current_user.id).ongoing.signatures_user_id_does_not_equal_all(current_user.id).updated_at_after(since)+
-      Proposal.accessible(current_user.id).ongoing.signatures_count_equals(0).updated_at_after(since)
-      @new_decisions = Proposal.accessible(current_user.id).decision.updated_at_after(since)
-      @new_members = Membership.accessible(current_user.id).updated_at_after(since)
-      @new_votes = Proposal.accessible(current_user.id).user_id_equals(current_user.id).votes_created_at_after(since)
+      @new_unvoteds = ((Proposal.accessible(current_user.id).ongoing.updated_at_after(since)+
+      Proposal.accessible(current_user.id).ongoing.signatures_count_equals(0).updated_at_after(since))-Proposal.accessible(current_user.id).ongoing.updated_at_after(since).voted(current_user.id)).uniq
+      @new_decisions = Proposal.accessible(current_user.id).decision.updated_at_after(since).uniq
+      @new_members = Membership.accessible(current_user.id).updated_at_after(since).uniq
+      @new_votes = Proposal.accessible(current_user.id).user_id_equals(current_user.id).votes_created_at_after(since).uniq
     end
  end 
 end

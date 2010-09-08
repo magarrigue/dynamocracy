@@ -3,9 +3,11 @@ Hello
 !
 
 = @invitation.user.email.split('@')[0]
-has invited you to join a dynamocracy crew 
+has invited you to join a dynamocracy crew named :'
 = @invitation.crew.name
-, you can accept it through the link below.
+\' as
+=@invitation.role
+You can accept it through the link below.
 
 = link_to 'Accept invitation', accept_invitation_url(:invitation_token => @invitation.invitation_token)
 
