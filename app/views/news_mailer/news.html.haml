@@ -1,8 +1,9 @@
-="Hello #{@user.nickname},"
-here are the breaking news from your Dynamocracy crews:
+%h1="Hello #{@user.nickname}"
+
+%h2=Here are the breaking news from your Dynamocracy crews:
 
 = render :partial=>'application/news'
 
 If you want to change you Dynamocracy newsletter settings follow the link below :
-= link_to "My settings", edit_user_registration_path(@user)
+= link_to "My settings", edit_user_registration_url(@user)
 
