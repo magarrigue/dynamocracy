@@ -1,7 +1,7 @@
 !!! html 5
 %html
   %head
-    %title= 'Dynamocracy'
+    %title= ENV['CREW'] || 'Dynamocracy'
     %meta(http-equiv="content-type" content="text/html; charset=utf-8")
     = stylesheet_link_tag "application"
     %link(href='http://fonts.googleapis.com/css?family=Lobster:regular' rel='stylesheet' type='text/css')
@@ -10,7 +10,7 @@
     .everything
       %header
         %h1
-          = link_to "Dynamocracy", root_path
+          = link_to ENV['CREW'] || 'Dynamocracy', root_path
           %span beta
 
         - if user_signed_in?
@@ -35,7 +35,7 @@
           %ul
           
             - if user_signed_in? 
-              %li= link_to current_user.email.capitalize, edit_user_registration_path
+              %li= link_to current_user.nickname.capitalize, edit_user_registration_path
               %li= '|'
               %li= link_to "Logout", destroy_user_session_path
               

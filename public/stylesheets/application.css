@@ -28,6 +28,7 @@ header {
     }
     
  header nav {
+   font-size: 0.8em;
     color: #C9BE62;
     position: absolute;
     left: 280px;
@@ -37,6 +38,7 @@ header {
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px; }
     header nav a {
+      
       color: black;
       text-decoration: none; }
       header nav a:hover {
@@ -56,6 +58,7 @@ header {
     
     
   header user_nav {
+  font-size: 0.8em;
     color: #C9BE62;
     position: absolute;
     right: 20px;
