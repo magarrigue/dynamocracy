@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
 
+ 
+
+  
   #has_one :crew
   has_many :memberships
   
@@ -15,7 +18,12 @@ class User < ActiveRecord::Base
   validates_presence_of :newsletter_frequency
   validates_numericality_of :newsletter_frequency, :only_integer => true, :greater_than_or_equal_to=>0,
   :less_than_or_equal_to=>7
+  validate :email_is_in_domain?, :if=> :domain_restriction?
 
+  def self.domain
+    ENV['ONLY_DOMAIN']
+  end
+  
   
   def nickname
     email.split('@')[0]
@@ -28,4 +36,14 @@ class User < ActiveRecord::Base
   def password_required? 
     new_record? 
   end
+  
+  private
+  def email_is_in_domain?
+    errors.add_to_base "You must provide a #{User.domain.downcase} email" unless email.split('@')[1].downcase == User.domain.downcase
+  end
+  
+  def domain_restriction?
+    !User.domain.nil?
+  end
+
 end
