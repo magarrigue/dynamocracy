@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
- 
+ include MailValidation
 
   
   #has_one :crew
@@ -20,9 +20,7 @@ class User < ActiveRecord::Base
   :less_than_or_equal_to=>7
   validate :email_is_in_domain?, :if=> :domain_restriction?
 
-  def self.domain
-    ENV['ONLY_DOMAIN']
-  end
+
   
   
   def nickname
@@ -37,13 +35,5 @@ class User < ActiveRecord::Base
     new_record? 
   end
   
-  private
-  def email_is_in_domain?
-    errors.add_to_base "You must provide a #{User.domain.downcase} email" unless email.split('@')[1].downcase == User.domain.downcase
-  end
   
-  def domain_restriction?
-    !User.domain.nil?
-  end
-
 end
