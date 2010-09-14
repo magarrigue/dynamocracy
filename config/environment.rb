@@ -19,7 +19,8 @@ Rails::Initializer.run do |config|
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
-  config.gem 'inherited_resources'
+  config.gem 'inherited_resources', :version => '1.0.6'
+  #config.gem 'responders', :version => '0.4.0'
   config.gem 'haml'
   config.gem 'units'
   config.gem 'searchlogic'
@@ -27,6 +28,7 @@ Rails::Initializer.run do |config|
   config.gem 'warden', :version=>'0.10.7'
   config.gem 'devise', :version=>'1.0.8'
   config.gem 'cancan', :version=>'1.3.4'
+  #config.gem 'railties', :version => '3.0.0'
  #config.gem 'devise_openid_authenticatable'
 
   # Only load the plugins named here, in the order given (default is alphabetical).
