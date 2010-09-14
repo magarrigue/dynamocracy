@@ -39,5 +39,5 @@
         %span= link_to member.crew.name, crew_url(member.crew)
         %span as
         %span= member.role
--if [@new_members,@new_votes,@new_decisions,@new_unvoteds].all?{|i| i.empty?}
+-if @new_members.empty? && @new_votes.empty? && @new_decisions.empty? && @new_unvoteds.empty?
   %h3 nothing...

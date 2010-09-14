@@ -9,4 +9,3 @@ module News
       @new_votes = Proposal.accessible(user.id).user_id_equals(user.id).votes_created_at_after(since).uniq
  end
 end
-
