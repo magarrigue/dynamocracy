@@ -1,6 +1,6 @@
 module News
  def fetch_news_for_user(user,since=nil)
-      @since||=user.newsletter_frequency
+      @since||=user.newsletter_frequency.days.ago
       @since =[@since.days.ago, user.newsletter_last_sent_at].min if user.newsletter_last_sent_at
       since=@since
       @new_unvoteds = ((Proposal.accessible(user.id).ongoing.updated_at_after(@since)+
