@@ -1,4 +1,4 @@
-%h2= "What happens past #{@since} days ?"
+%h2= "What happens since #{@since.ctime} ?"
 - unless @new_unvoteds.empty?
   %h3 New proposals to vote
   %ul 
@@ -39,5 +39,5 @@
         %span= link_to member.crew.name, crew_url(member.crew)
         %span as
         %span= member.role
--if @new_members.empty? && @new_votes.empty? && @new_decisions.empty? && @new_unvoteds.empty?
+-if [@new_members, @new_votes, @new_decisions, @new_unvoteds].all?{|i| i.empty?}
   %h3 nothing...

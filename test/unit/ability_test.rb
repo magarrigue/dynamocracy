@@ -3,12 +3,6 @@ require 'test_helper'
 class AbilityTest < ActiveSupport::TestCase
 
 
-def setup
-    setup_mailer
-    Devise.mailer_sender = 'test@example.com'
-end
-
-
   test 'user can only create crew' do
     user = Factory.build :user
     ability = Ability.new(user)
