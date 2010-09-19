@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   before_filter :authenticate_user!, :except=>:index
-  before_filter :check_invitation
+  before_filter :check_invitation, :unless=>:signed?
   
   # Preserve privacy even from admin-sys when voting
   filter_parameter_logging :value
@@ -21,12 +21,18 @@ class ApplicationController < ActionController::Base
   
   def index
     if user_signed_in?
-      @has_crew = Crew.creator_id_equals(current_user.id).count==1 
+      @my_crew = Crew.creator_id_equals(current_user.id).first
       fetch_news_for_user(current_user)
     end
   end
   
   private
+  def signed?
+  puts controller_name ;
+  self.controller_name=='sessions'
+  end
+  
+  
   def check_invitation 
     if user_signed_in? && !pending_invitation.nil?
        if current_user.email == pending_invitation.email && pending_invitation.pending?

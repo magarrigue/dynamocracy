@@ -9,6 +9,7 @@ class Invitation < ActiveRecord::Base
  validates_inclusion_of :role, :in => %w(crewman officer), :message => "%{value} is not a valid role"
   before_save :set_email_to_downcase
   validate :email_is_in_domain?, :if=> :domain_restriction?
+  validate :not_me?
   
   def set_new_token
    self.invitation_token = Devise.friendly_token
@@ -24,5 +25,8 @@ class Invitation < ActiveRecord::Base
     self.email = self.email.downcase
   end
   
+  def not_me?
+    errors.add :email, ' : you can\'t invite yourself' if user.email == email
+  end
   
 end

@@ -11,6 +11,10 @@ module ProposalsHelper
     proposal.full_status == 'open' && @my_signatures.find_all{|s| s.proposal_id==proposal.id}.empty?
   end
   
+  def voted?(proposal)
+    ! @my_signatures.find_all{|s| s.proposal_id==proposal.id}.empty?
+  end
+  
   def actionable?(proposal)
     withdrawable?(proposal) || votable?(proposal) 
   end

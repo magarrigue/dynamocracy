@@ -10,13 +10,20 @@
 -else
   %table.proposals
     %thead
-      - [:user,:text,:opening_at,:closing_at,:status].each do |attribute|
-        %th= order  @search, :by => attribute      
-      %th= order  @search, :by => :signatures_count, :as => 'Signatures'
-      - if actionables?
-        %th(colspan=2)='Action' 
-      - if results? 
-        %th= order @search, :by => :yes_count, :as => 'Yes/Support/No/Pass ' 
+      - [:user,:text,:status,:signatures_count,:opening_at,:closing_at, :updated_at].each do |attribute|
+        -if attribute == :text
+          %th= order  @search, :by => attribute, :as => 'Proposal'
+        -elsif attribute == :signatures_count
+          %th= order  @search, :by => attribute, :as => 'Signatures'
+          - if actionables?
+            %th(colspan=2)='Action' 
+          - if results? 
+            %th= order @search, :by => :yes_count, :as => 'Yes/Support/No/Pass ' 
+        -elsif attribute == :status
+          %th Status
+        -else
+          %th= order  @search, :by => attribute 
+      
     %tbody
     - @proposals.each do |proposal|
       - proposal.signatures_count
@@ -29,17 +36,14 @@
           - comments = proposal.votes.collect{|v| v.comment}.find_all{|c| !c.empty?}
           -if mine?(proposal) && !comments.empty?
             %br="#{comments.size} suggestion(s)..."
-        %td(class='date')= date_distance proposal.opening_at
-        %td(class='date')= date_distance proposal.closing_at
         %td(class='status')= proposal.full_status
         %td(class='count')= proposal.signatures_count
-        - if actionables?
-          %td 
-            = render :partial => "votable", :locals=>{:proposal=>proposal}
-
-          %td    
-            = render :partial => "withdrawable", :locals=>{:proposal=>proposal}
-            
+        -if actionables?
+          -if voted? proposal
+            %td(class='count')='Voted'
+          - else
+            %td= render :partial => "votable", :locals=>{:proposal=>proposal}
+          %td= render :partial => "withdrawable", :locals=>{:proposal=>proposal}
         - if results? 
           %td(class = 'count') 
             - if proposal.full_status == 'closed'
@@ -48,11 +52,13 @@
                 - size = ( type!='pass' ? 2+ 4 * count/( proposal.signatures_count + 1) : 1)  
                 %span{:class => "#{type}", :style => "font-size: #{size}em"}
                   = count
-              
+                
             - elsif proposal.full_status == 'cancelled'
               %span(class='vetoed')="Vetoed by #{proposal.cancelled_by.nickname}"          
-           
-              
+        %td(class='date')= date_distance proposal.opening_at
+        %td(class='date')= date_distance proposal.closing_at
+        
+        %td(class='date')= date_distance proposal.updated_at
           
           
           

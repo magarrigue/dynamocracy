@@ -2,12 +2,22 @@
 The collective decision-making tool
 %br
 - if user_signed_in?  
-  %h2= link_to "Your crews", crews_path if can? :read, Crew if can? :read, Crew
-  - unless @has_crew
-    %h2= link_to "Create a new crew", new_crew_path 
+  - if @my_crew
+    %h2
+      My Crew :
+      -if can? :read, Crew, :crew_id => @my_crew.id
+        =link_to " #{@my_crew.name}", crew_path(@my_crew)
+      
+  - else
+    %h2= link_to "Create a new crew", new_crew_path, :class => 'vote' 
     .hint 
       You may create at most one crew.
-    
+  %h2
+    -if can? :read, Crew  
+      Currently part of :
+      = link_to "those crews", crews_path  
+    -else
+     
   = render :partial => "news"
 - else
 
@@ -27,7 +37,9 @@ The collective decision-making tool
     %br "Nothing is more difficult, and therefore more precious, than to be able to decide." - Napoleon Bonaparte (1769 - 1821), Military and Political Leader of France
   %br
   %br
-  = link_to "Register now!", new_user_registration_path, :class=>'new'
-  %br
-  %br
-  = link_to "Login", new_user_session_path, :class=>'vote'
+  %span= link_to "Login", new_user_session_path, :class=>'vote'
+  %span= link_to "Register now!", new_user_registration_path, :class=>'new'
+  
+  
+  
+  

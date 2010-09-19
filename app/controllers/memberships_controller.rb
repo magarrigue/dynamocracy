@@ -12,12 +12,13 @@ class MembershipsController < ApplicationController
   
   def update
     update!
-    redirect_to crew_memberships_path(@membership.crew)
+    redirect_to crew_memberships_path(@membership.crew) and return 
   end
   
   private
   def only_disable_and_crewman
-    redirect_to root_url unless ( params[:membership] && %w(crewman disabled).include?(params[:membership][:role]) )
+    puts "only_disable_and_crewman"
+   # redirect_to root_url and return  unless ( params[:membership] && %w(crewman disabled).include?(params[:membership][:role]) ) 
   end
   
   

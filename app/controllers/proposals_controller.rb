@@ -13,7 +13,7 @@ class ProposalsController < ApplicationController
     conditions['my'] = current_user.id.to_i if(conditions.has_key?('my'))
     conditions = conditions.delete_if{|k,v| !%w(ongoing decision pending cancelled withdrawn order my).include? k}
     conditions = {:crew_id_equals => params[:crew_id]}.merge(conditions)     
-    conditions = {:order => "by_updated_at_descend"}.merge(conditions) unless params[:search]&&params[:search][:order]
+    conditions = {:order => "descend_by_updated_at"}.merge(conditions) # => unless params[:search]&&params[:search][:order]
     @search = Proposal.search(conditions)
     @proposals = @search.paginate(:page=>params[:page], :per_page=>5, :include => [:user, :votes, :cancelled_by])
     @my_signatures = Signature.user_id_eq(current_user.id).proposal_id_in(@proposals).all 
