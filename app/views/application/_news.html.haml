@@ -1,4 +1,4 @@
-%h2= "What happens since #{@since.ctime} ?"
+%h2= "What happens since #{@since.strftime('%A, %B %d')} ?"
 - unless @new_unvoteds.empty?
   %h3 New proposals to vote
   %ul 
