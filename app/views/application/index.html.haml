@@ -14,10 +14,9 @@ The collective decision-making tool
       You may create at most one crew.
   %h2
     -if can? :read, Crew  
-      Currently part of :
-      = link_to "those crews", crews_path  
-    -else
-     
+      Currently part of 
+      = link_to "#{@crews_count} crew".pluralize, crews_path  
+   
   = render :partial => "news"
 - else
 

@@ -23,6 +23,7 @@ class ApplicationController < ActionController::Base
     if user_signed_in?
       @my_crew = Crew.creator_id_equals(current_user.id).first
       fetch_news_for_user(current_user)
+      @crews_count = Membership.user_id_equals(current_user).role_does_not_equal('disabled').count
     end
   end
   

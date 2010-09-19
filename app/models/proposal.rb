@@ -52,7 +52,8 @@ class Proposal < ActiveRecord::Base
   
     
   def begining
-    text[0..35]+"..."
+    return text[0..35]+"..." if(text.length>=35)
+    text
   end
   
   
