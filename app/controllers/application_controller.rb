@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   before_filter :authenticate_user!, :except=>:index
-  before_filter :check_invitation, :unless=>:signed?
+  before_filter :check_invitation#, :unless=>:signed?
   
   # Preserve privacy even from admin-sys when voting
   filter_parameter_logging :value
