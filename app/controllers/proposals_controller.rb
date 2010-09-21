@@ -47,7 +47,6 @@ class ProposalsController < ApplicationController
   
   def search(conditions)
     conditions = {:crew_id_equals => params[:crew_id]}.merge(conditions)
-    puts conditions
     @search = Proposal.search(conditions)
     @proposals = @search.paginate(:page=>params[:page], :per_page=>5, :include => [:user, :votes, :cancelled_by])
     @my_signatures = Signature.user_id_eq(current_user.id).proposal_id_in(@proposals).all 

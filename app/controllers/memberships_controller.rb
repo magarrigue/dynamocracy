@@ -8,18 +8,13 @@ class MembershipsController < ApplicationController
   inherit_resources
   belongs_to :crew
   actions :update, :show, :index
-  before_filter :only_disable_and_crewman, :only=>:update
   
   def update
     update!
     redirect_to crew_memberships_path(@membership.crew) and return 
   end
   
-  private
-  def only_disable_and_crewman
-    puts "only_disable_and_crewman"
-   # redirect_to root_url and return  unless ( params[:membership] && %w(crewman disabled).include?(params[:membership][:role]) ) 
-  end
+
   
   
 end

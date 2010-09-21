@@ -8,6 +8,4 @@ class NewsMailer < ActionMailer::Base
       @user = user
       content_type "text/html"
    end
-
-
 end

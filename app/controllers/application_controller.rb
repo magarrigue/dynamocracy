@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   
   rescue_from CanCan::AccessDenied do |exception|
       flash[:error] = exception.message
-      puts exception.inspect
+      logger.warn exception.inspect
       redirect_to root_url
   end
   
@@ -28,16 +28,15 @@ class ApplicationController < ActionController::Base
   end
   
   private
-  def signed?
-  puts controller_name ;
-  self.controller_name=='sessions'
-  end
-  
+#  def signed?
+#  
+#    self.controller_name=='sessions'
+#  end
+#  
   
   def check_invitation 
     if user_signed_in? && !pending_invitation.nil?
        if current_user.email == pending_invitation.email && pending_invitation.pending?
-        puts 'should proceed now'
         proceed_to_invitation pending_invitation
        end
        session[:pending_invitation] = nil
