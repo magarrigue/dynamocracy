@@ -13,6 +13,6 @@ module News
  end
  
  def has_news?
-   [@new_members, @new_votes, @new_decisions, @new_unvoteds].all?{|i| i.empty?}
+   ! [@new_members, @new_votes, @new_decisions, @new_unvoteds].all?{|i| i.empty?}
  end
 end
