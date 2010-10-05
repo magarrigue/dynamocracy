@@ -22,7 +22,7 @@ class Proposal < ActiveRecord::Base
   
   scope_procedure :ongoing,   lambda{opening_at_before(Time.zone.now).closing_at_after(Time.zone.now).status_equals('open')}
   scope_procedure :decision,  lambda{closing_at_before(Time.zone.now).status_equals('open')}
-  scope_procedure :pending,   lambda{opening_at_after(Time.now).status_equals('open')}
+  scope_procedure :pending,   lambda{opening_at_after(Time.zone.now).status_equals('open')}
   scope_procedure :withdrawn, lambda{status_equals('withdrawn')}
   scope_procedure :cancelled, lambda{status_equals('cancelled')}
   scope_procedure :my, lambda { |user_id| user_id_equals(user_id)  }
