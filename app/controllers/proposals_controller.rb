@@ -23,7 +23,7 @@ class ProposalsController < ApplicationController
   
   def destroy
     @proposal = Proposal.find(params[:id])
-    if current_user.id == @proposal.user_id && @proposal.status=='open' && @proposal.closing_at > Time.now
+    if current_user.id == @proposal.user_id && @proposal.status=='open' && @proposal.closing_at > Time.zone.now
       @proposal.status='withdrawn' 
       @proposal.save
       flash[:notice]='Proposal succesfully withdrawn'

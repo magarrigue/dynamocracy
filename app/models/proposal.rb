@@ -20,8 +20,8 @@ class Proposal < ActiveRecord::Base
   belongs_to :cancelled_by, :class_name=>"User" 
   
   
-  scope_procedure :ongoing,   lambda{opening_at_before(Time.now).closing_at_after(Time.now).status_equals('open')}
-  scope_procedure :decision,  lambda{closing_at_before(Time.now).status_equals('open')}
+  scope_procedure :ongoing,   lambda{opening_at_before(Time.zone.now).closing_at_after(Time.zone.now).status_equals('open')}
+  scope_procedure :decision,  lambda{closing_at_before(Time.zone.now).status_equals('open')}
   scope_procedure :pending,   lambda{opening_at_after(Time.now).status_equals('open')}
   scope_procedure :withdrawn, lambda{status_equals('withdrawn')}
   scope_procedure :cancelled, lambda{status_equals('cancelled')}
@@ -30,7 +30,7 @@ class Proposal < ActiveRecord::Base
   scope_procedure :voted, lambda{ |user_id|  signatures_user_id_equals(user_id)}
   
   def set_default_opening_and_closing
-    self.opening_at = Time.now if self.opening_at == nil
+    self.opening_at = Time.zone.now if self.opening_at == nil
     self.closing_at = 7.day.from_now if self.closing_at == nil
   end
   
