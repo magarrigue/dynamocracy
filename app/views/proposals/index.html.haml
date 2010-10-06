@@ -3,7 +3,8 @@
   %li= link_to 'All', crew_proposals_path
   - %w(ongoing decision pending cancelled withdrawn my).each do |sub|
     %li= link_to sub.capitalize, crew_proposals_path(:search=>{sub=>true})
-
+  %li
+  %li= link_to 'New proposal', new_crew_proposal_path(@crew), :class=>"new"
 -if @proposals.empty?
   .empty
     No proposal
@@ -64,12 +65,18 @@
           
   =will_paginate
   
-%br= link_to 'New proposal', new_crew_proposal_path(@crew), :class=>"new"
-              
+             
 - @proposals.each do |proposal|
   %div#proposal.proposal.details{:id=>proposal.id,:style=>"display:none"}
     = render :partial => "proposal_detail", :locals=>{:proposal=>proposal}
+    -if voted? proposal
+      %br(class='count')='Voted'
+    - else
+      %span= render :partial => "votable", :locals=>{:proposal=>proposal}
       
+    %span= render :partial => "withdrawable", :locals=>{:proposal=>proposal}
+
+   
   :javascript    
     $($('#link_#{proposal.id}').click(function(){
       $(".proposal").hide()

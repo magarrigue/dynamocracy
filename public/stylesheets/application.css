@@ -168,8 +168,10 @@ form {
     margin-left: 0px; 
     }
 
+
 .pagination {
-  border-bottom: 1px dotted #999999; }
+  margin: 20px 0px 0px;
+ /* border-bottom: 1px dotted #999999; */}
 
 .proposals_nav {
     padding: 0px 10px 10px 10px; 
