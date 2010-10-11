@@ -22,11 +22,11 @@ class Vote < ActiveRecord::Base
   attr_accessor :voter_id
   
   def open_proposal?
-    errors.add_to_base 'This proposal is not open yet' if proposal.opening_at > Time.now
+    errors.add_to_base 'This proposal is not open yet' if proposal.opening_at > Time.zone.now
   end
   
   def not_closed_proposal?
-    errors.add_to_base 'This proposal is closed' if proposal.closing_at < Time.now
+    errors.add_to_base 'This proposal is closed' if proposal.closing_at < Time.zone.now
   end
   
   def not_cancelled_proposal?
