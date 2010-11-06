@@ -35,6 +35,7 @@
           %ul
           
             - if user_signed_in? 
+              %li= image_tag current_user.gravatar_url(:size=>15)
               %li= link_to current_user.nickname.capitalize, edit_user_registration_path
               %li= '|'
               %li= link_to "Logout", destroy_user_session_path

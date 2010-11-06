@@ -30,7 +30,8 @@
       - proposal.signatures_count
       %tr(class="#{proposal.full_status}")
         %td(class='nickname')
-          = proposal.user.nickname
+          %span=image_tag proposal.user.gravatar_url
+          %span= proposal.user.nickname
           %br
           = proposal.full_status == 'open' ? 'proposes' : 'proposed'
        
@@ -58,7 +59,9 @@
                   = count
                 
             - elsif proposal.full_status == 'cancelled'
-              %span(class='vetoed')="Vetoed by #{proposal.cancelled_by.nickname}"          
+              %span(class='vetoed')="Vetoed by "
+              %span(class='vetoed')=proposal.cancelled_by.nickname
+              %span=image_tag proposal.user.gravatar_url
         %td(class='date')= date_distance proposal.opening_at
         %td(class='date')= date_distance proposal.closing_at
         

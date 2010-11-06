@@ -34,6 +34,7 @@
   %ul
     - @new_members.each do |member|
       %li
+        %span=image_tag member.user.gravatar_url
         %span= link_to member.user.nickname, crew_memberships_url(member.crew)
         %span has joined
         %span= link_to member.crew.name, crew_url(member.crew)

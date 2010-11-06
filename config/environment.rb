@@ -28,6 +28,7 @@ Rails::Initializer.run do |config|
   config.gem 'warden', :version=>'0.10.7'
   config.gem 'devise', :version=>'1.0.8'
   config.gem 'cancan', :version=>'1.3.4'
+  config.gem 'gravtastic', :version => '2.1.0'
   #config.gem 'railties', :version => '3.0.0'
  #config.gem 'devise_openid_authenticatable'
 

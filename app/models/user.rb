@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
 
+  is_gravtastic  :email, :size => 25#, :default=>"wavatar"
+ 
  include MailValidation
-
   
   #has_one :crew
   has_many :memberships
@@ -19,6 +20,7 @@ class User < ActiveRecord::Base
   validates_numericality_of :newsletter_frequency, :only_integer => true, :greater_than_or_equal_to=>0,
   :less_than_or_equal_to=>7
   validate :email_is_in_domain?, :if=> :domain_restriction?
+
 
 
   

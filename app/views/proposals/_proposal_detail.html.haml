@@ -9,7 +9,8 @@
     Signatures :
     =proposal.signatures_count
 .nickname
-  =proposal.user.nickname
+  = image_tag proposal.user.gravatar_url
+  = proposal.user.nickname
   = proposal.full_status == 'open' ? 'proposes:' : 'proposed:'
 
 %pre=proposal.text
