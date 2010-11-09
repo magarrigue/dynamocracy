@@ -17,8 +17,8 @@
           %nav
             %ul
               %li= link_to 'Home', root_path
-              %li= '|'
-              %li= link_to 'Crews', crews_path
+              %li= '|' if can? :read, Crew  
+              %li= link_to 'Crews', crews_path if can? :read, Crew  
               -if @crew && @crew.id
                 %li= '|'
                 - crew_name = ( @crew.name.length >= 18 ? "#{@crew.name[0..18]}.." : @crew.name )

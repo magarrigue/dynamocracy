@@ -76,7 +76,8 @@
   %div#proposal.proposal.details{:id=>proposal.id,:style=>"display:none"}
     = render :partial => "proposal_detail", :locals=>{:proposal=>proposal}
     -if voted? proposal
-      %br(class='count')='Voted'
+      %div(class='number')='Voted'
+      %br
     - else
       %span= render :partial => "votable", :locals=>{:proposal=>proposal}
       
