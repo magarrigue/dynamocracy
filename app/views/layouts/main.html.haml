@@ -27,7 +27,7 @@
                 %li= link_to 'Proposals', crew_proposals_path(@crew)
                 %li= '|'
                 %li= link_to 'Members', crew_memberships_path(@crew)
-                - if can? :read, Invitation
+                - if can? :update, @crew
                   %li= '|'
                   %li= link_to 'Invitations', crew_invitations_path(@crew)
             

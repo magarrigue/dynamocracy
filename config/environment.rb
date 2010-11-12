@@ -23,7 +23,7 @@ Rails::Initializer.run do |config|
   #config.gem 'responders', :version => '0.4.0'
   config.gem 'haml'
   config.gem 'units'
-  config.gem 'searchlogic'
+  config.gem 'searchlogic', :version=>'2.4.27'
   config.gem 'will_paginate'
   config.gem 'warden', :version=>'0.10.7'
   config.gem 'devise', :version=>'1.0.8'
