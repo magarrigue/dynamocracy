@@ -55,6 +55,17 @@
             -#%li= link_to 'Logout', logout_path
            
       .content
+      
+        %div(class='addthis_toolbox addthis_default_style')
+          %a(class="addthis_button_preferred_1")
+          %a(class="addthis_button_preferred_2")
+          %a(class="addthis_button_preferred_3")
+          %a(class="addthis_button_preferred_4")
+          %a(class="addthis_button_compact")
+        %script(src='http://s7.addthis.com/js/250/addthis_widget.js#username=xa-4cdebb326e9412a7')
+    
+      
+
         #error_div_id.flash.error
           = flash[:error] 
           = flash[:alert]

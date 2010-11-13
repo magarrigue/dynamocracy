@@ -7,12 +7,24 @@
   .number
     Signatures :
     =proposal.signatures_count
+
+  
 .nickname
   = image_tag proposal.user.gravatar_url
   = proposal.user.nickname
   = proposal.full_status == 'open' ? 'proposes:' : 'proposed:'
 
 %pre=proposal.text
+
+.number
+  - if proposal.full_status == 'closed'
+    - %w(yes support no pass).each do |type|
+      - count = proposal.send "#{type}_count"
+      - size = ( type!='pass' ? 2+ 4 * count/( proposal.signatures_count + 1) : 1)
+      %span{:class => "#{type}", :style => "font-size: #{size}em"}
+        = "#{type}: #{count}"
+      %br
+
 .suggest
   -if mine?(proposal) && proposal.votes 
     -cbvv = comments_by_vote_value proposal

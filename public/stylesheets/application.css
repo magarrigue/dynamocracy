@@ -251,19 +251,19 @@ form {
       font-style: bold;
       font-size: 1.2em;
     }
-    .proposals td.count span.yes{
+    span.yes{
       color: #41A317;
     }
-    .proposals td.count span.support{
+    span.support{
       color: orange;
     }
-    .proposals td.count span.no{
+    span.no{
       color: red;
     }
-     .proposals td.count span.pass{
+    span.pass{
       color: grey;
     }
-    .proposals td.count span.vetoed{
+    span.vetoed{
       color: red;
       font-size: 1.3em;
     }
