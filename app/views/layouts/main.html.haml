@@ -13,7 +13,10 @@
     = calendar_date_select_includes 'silver'
     :javascript 
       var $j = jQuery.noConflict();
+      
   %body
+    #crowdsound-activate-popup
+      Feedback  
     .everything
       %header
         %h1
@@ -62,8 +65,9 @@
           %a(class="addthis_button_preferred_3")
           %a(class="addthis_button_preferred_4")
           %a(class="addthis_button_compact")
-        %script(src='http://s7.addthis.com/js/250/addthis_widget.js#username=xa-4cdebb326e9412a7')
-    
+        
+        
+        
       
 
         #error_div_id.flash.error
@@ -73,3 +77,5 @@
         = yield
       .footer
         Copyright © 2009-2010 Dynamocracy.org
+%script(src='http://crowdsound.com/widgets/popup?&aid=4603')
+%script(src='http://s7.addthis.com/js/250/addthis_widget.js#username=xa-4cdebb326e9412a7')

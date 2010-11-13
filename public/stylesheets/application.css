@@ -389,12 +389,20 @@ form {
 
 #error_div_id {
   text-align: center;
-  font-weight: bold;
+  font-weight: bolbordd;
   color: red;
 }
 #notice_div_id {
   text-align: center;
   font-weight: bold;
   color: green;
+}
+
+#crowdsound-activate-popup{
+  position: relative;
+  font-weight: bold;  
+  right:5px;
+  top: 90px;
+  color: blue;
 }
 
