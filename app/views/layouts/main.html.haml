@@ -4,8 +4,15 @@
     %title= ENV['CREW'] || 'Dynamocracy'
     %meta(http-equiv="content-type" content="text/html; charset=utf-8")
     = stylesheet_link_tag "application"
+
     %link(href='http://fonts.googleapis.com/css?family=Lobster:regular' rel='stylesheet' type='text/css')
+
+    = javascript_include_tag :defaults
     = javascript_include_tag 'jquery-1.4.2.min'
+
+    = calendar_date_select_includes 'silver'
+    :javascript 
+      var $j = jQuery.noConflict();
   %body
     .everything
       %header

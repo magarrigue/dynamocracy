@@ -3,7 +3,10 @@
 %ul
 - @invitations.each do |invitation|
   %li
+    
     = invitation.email
+    was invited 
+    = date_distance invitation.updated_at
     as
     = invitation.role
     -if invitation.pending?
@@ -12,8 +15,8 @@
         = link_to 'Resend?', crew_invitation_path(invitation.crew, invitation),:method=>'PUT', :class =>'vote'
         = link_to 'Cancel?', crew_invitation_path(invitation.crew, invitation),:method=>'DELETE', :class =>'withdraw',:confirm=>"Do you confirm you want to cancel #{invitation.email} invitation?"
     -if invitation.validated_at
-      %span= ", validated #{date_distance invitation.validated_at}" 
+      %span=", validated #{date_distance invitation.validated_at}" 
 %br  
 = link_to 'New invitation', new_crew_invitation_path(:invitation=>{:role=>'crewman'}), :class => 'new' 
 %br    
-%br= link_to 'Back to crews', crews_path 
+%br= link_to 'Back to proposals', crew_proposals_path(@crew)  

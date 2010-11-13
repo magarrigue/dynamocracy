@@ -8,3 +8,4 @@ warden -v 0.10.7
 devise -v 1.0.8
 cancan -v 1.3.4
 gravtastic -v 2.1.0
+calendar_date_select

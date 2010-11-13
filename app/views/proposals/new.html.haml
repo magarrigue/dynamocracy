@@ -1,4 +1,7 @@
+
 %h1 New proposal
+
+- date_select_options = {:time => true, :embedded => false, :popup => :force, :month_year => "label", :valid_date_check => "date > (new Date())" ,:minute_interval => 15 }
 
 - form_for [:crew, @proposal] do |f|
   = f.error_messages
@@ -8,12 +11,14 @@
   = f.text_area :text,:cols=>"109", :rows=>"20"
   %br
   = f.label :opening_at, "Will open at : "
-  %br
-  = f.datetime_select :opening_at
+  -#%br
+  = f.calendar_date_select :opening_at, date_select_options
+  -# = f.datetime_select :opening_at
   %br
   = f.label :closing_at, "Will close at : "
-  %br
-  = f.datetime_select :closing_at
+  -#%br
+  -#= f.datetime_select :closing_at
+  = f.calendar_date_select :closing_at, date_select_options
   %br
   %br
   = submit_tag 'Save your proposal'
