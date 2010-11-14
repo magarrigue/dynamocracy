@@ -15,14 +15,11 @@
       var $j = jQuery.noConflict();
       
   %body
-    #crowdsound-activate-popup
-      Feedback  
     .everything
       %header
         %h1
           = link_to ENV['CREW'] || 'Dynamocracy', root_path
           %span beta
-
         - if user_signed_in?
           %nav
             %ul
@@ -56,20 +53,15 @@
               %li= '|'
               %li= link_to "Register", new_user_registration_path
             -#%li= link_to 'Logout', logout_path
-           
-      .content
       
+                 
+      .content
         %div(class='addthis_toolbox addthis_default_style')
           %a(class="addthis_button_preferred_1")
           %a(class="addthis_button_preferred_2")
           %a(class="addthis_button_preferred_3")
           %a(class="addthis_button_preferred_4")
           %a(class="addthis_button_compact")
-        
-        
-        
-      
-
         #error_div_id.flash.error
           = flash[:error] 
           = flash[:alert]
@@ -77,5 +69,26 @@
         = yield
       .footer
         Copyright © 2009-2010 Dynamocracy.org
-%script(src='http://crowdsound.com/widgets/popup?&aid=4603')
+
 %script(src='http://s7.addthis.com/js/250/addthis_widget.js#username=xa-4cdebb326e9412a7')
+:javascript
+
+  var uservoiceOptions = {
+    key: 'dynamocracy',
+    host: 'dynamocracy.uservoice.com', 
+    forum: '86217',
+    alignment: 'left',
+    background_color:'#f00', 
+    text_color: 'white',
+    hover_color: '#06c',
+    lang: 'en',
+    showTab: true
+    };
+  function _loadUserVoice() {
+    var s = document.createElement('script');
+    s.src = ("https:" == document.location.protocol ? "https://" : "http://") + "cdn.uservoice.com/javascripts/widgets/tab.js";
+    document.getElementsByTagName('head')[0].appendChild(s);
+  }
+  _loadSuper = window.onload;
+  window.onload = (typeof window.onload != 'function') ? _loadUserVoice : function() { _loadSuper(); _loadUserVoice(); };
+
