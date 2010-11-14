@@ -1,7 +1,9 @@
 %h1 
   Membership of 
-  =@membership.user.nickname
+  = @membership.user.nickname
   is now
   = @membership.role
+  since
+  = @membership.updated_at
 
 =link_to 'Back', crew_memberships_path
