@@ -13,7 +13,7 @@
     %thead
       - [:user,:text,:status,:signatures_count,:opening_at,:closing_at, :updated_at].each do |attribute|
         -if attribute == :text
-          %th= order  @search, :by => attribute, :as => 'Proposal'
+          %th= order  @search, :by => :proposal_id, :as => 'Proposal'
         -elsif attribute == :signatures_count
           %th= order  @search, :by => attribute, :as => 'Signatures'
           - if actionables?
@@ -22,6 +22,8 @@
             %th= order @search, :by => :yes_count, :as => 'Yes/Support/No/Pass ' 
         -elsif attribute == :status
           %th Status
+        -elsif attribute == :user
+          %th= order  @search, :by => :user_email, :as => 'User'
         -else
           %th= order  @search, :by => attribute 
       
