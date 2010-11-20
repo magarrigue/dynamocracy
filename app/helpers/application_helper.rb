@@ -10,7 +10,7 @@ module ApplicationHelper
   def member_proposal_contribution_score(membership)  
     proposals = Proposal.user_id_equals(membership.user_id).crew_id_equals(membership.crew_id)
     score = 0
-    proposals.each{|p| score += p.yes_count+p.support_count}
+    proposals.each{|p| score += p.yes_count+p.support_count if p.full_status=='closed'}
     score
   end
  
