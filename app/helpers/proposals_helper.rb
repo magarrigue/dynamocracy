@@ -3,6 +3,8 @@ module ProposalsHelper
     proposal.user_id == current_user.id
   end
   
+
+  
   def withdrawable?(proposal)
     mine?(proposal) && (proposal.full_status == 'open' || proposal.full_status == 'pending')
   end

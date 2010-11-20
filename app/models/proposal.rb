@@ -2,7 +2,7 @@ class Proposal < ActiveRecord::Base
   
 
   
-  attr_accessible :user_id, :text, :opening_at, :closing_at, :pass_count, :crew_id
+  attr_accessible :user_id, :text, :opening_at, :closing_at, :pass_count, :crew_id, :public_comments_allowed
   def after_initialize 
     set_default_opening_and_closing
   end
@@ -54,6 +54,15 @@ class Proposal < ActiveRecord::Base
   def begining
     return text[0..35]+"..." if(text.length>=35)
     text
+  end
+  
+  
+  def comments(user_id)
+    comments = []
+    if(public_comments_allowed || self.user_id == user_id)
+      comments = votes.collect{|v| v.comment}.find_all{|c| !c.empty?}
+    end
+    comments
   end
   
   

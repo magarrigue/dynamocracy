@@ -4,9 +4,14 @@
   %ul
     %li Your vote is anonymous except VETO
     %li You can vote only once, except PASS
-    %li You may comment any vote, only the proposer can see your comments which are anonymous
+    %li You may comment any vote
     %li If you vote NO, you'll have to explain what change to the proposal would lead you to vote YES
-    %li a VETO cancels the proposal immediatly
+    %li a VETO cancels the proposal 
+    %b
+      -if !@vote.proposal.public_comments_allowed
+        %li Only the proposer can see your comments which are anonymous
+      -else
+        %li Comments are public and anonymous
 
 
 %div#proposal.proposal.details
@@ -31,7 +36,7 @@
       = f.radio_button :value, 'no'
       = f.label :value_no, 'No'
     %span.hint
-      right now I can’t support this proposal.
+      right now I can’t support this proposal.:
   %p
     %span.pass
       = f.radio_button :value, 'pass'
@@ -45,7 +50,12 @@
   %p
     %span.comment
       = f.label :comment, 'Comment'
-    %span.hint : What can improve this proposal from your point of view? If you vote NO, explain what change to the proposal would lead you to change my mind, otherwise comment is optional (in any case, your comment is only visible by the proposer).
+    %span.hint  
+      \: What can improve this proposal from your point of view? If you vote NO, explain what change to the proposal would lead you to change my mind, otherwise comment is optional.
+      -if !@vote.proposal.public_comments_allowed
+        Only the proposer can see your comments which are anonymous
+      -else
+        Comments are public and anonymous
     %br
     = f.text_area :comment, :rows=>4, :cols=> 80
   %p

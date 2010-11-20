@@ -20,6 +20,8 @@
   -#= f.datetime_select :closing_at
   = f.calendar_date_select :closing_at, date_select_options
   %br
+  = f.label :public_comments_allowed, "Allow public comments?"
+  = f.check_box :public_comments_allowed
   %br
   = submit_tag 'Save your proposal'
   

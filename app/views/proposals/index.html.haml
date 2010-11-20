@@ -40,8 +40,8 @@
         %td{:id=>"link_#{proposal.id}"}
           ="n°#{proposal.id} :"
           %br= link_to proposal.begining,"#proposal_#{proposal.id}"
-          - comments = proposal.votes.collect{|v| v.comment}.find_all{|c| !c.empty?}
-          -if mine?(proposal) && !comments.empty?
+          - comments = proposal.comments(current_user.id)         
+          -if !comments.empty?
             %br="#{comments.size} suggestion(s)..."
         %td(class='status')= proposal.full_status
         %td(class='count')= proposal.signatures_count

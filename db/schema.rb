@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101113125836) do
+ActiveRecord::Schema.define(:version => 20101120112355) do
 
   create_table "crews", :force => true do |t|
     t.string    "name"
@@ -58,20 +58,21 @@ ActiveRecord::Schema.define(:version => 20101113125836) do
   add_index "memberships", ["crew_id", "user_id"], :name => "index_memberships_on_crew_id_and_user_id", :unique => true
 
   create_table "proposals", :force => true do |t|
-    t.text      "text"
-    t.string    "status",           :default => "open", :null => false
-    t.timestamp "opening_at",                           :null => false
-    t.timestamp "closing_at",                           :null => false
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.integer   "user_id"
-    t.integer   "yes_count",        :default => 0
-    t.integer   "no_count",         :default => 0
-    t.integer   "support_count",    :default => 0
-    t.integer   "cancelled_by_id"
-    t.integer   "signatures_count", :default => 0
-    t.integer   "pass_count",       :default => 0
-    t.integer   "crew_id",                              :null => false
+    t.text     "text"
+    t.string   "status",                  :default => "open", :null => false
+    t.datetime "opening_at",                                  :null => false
+    t.datetime "closing_at",                                  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "yes_count",               :default => 0
+    t.integer  "no_count",                :default => 0
+    t.integer  "support_count",           :default => 0
+    t.integer  "cancelled_by_id"
+    t.integer  "signatures_count",        :default => 0
+    t.integer  "pass_count",              :default => 0
+    t.integer  "crew_id",                                     :null => false
+    t.boolean  "public_comments_allowed", :default => true,   :null => false
   end
 
   create_table "signatures", :force => true do |t|
