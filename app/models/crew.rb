@@ -4,7 +4,7 @@ class Crew < ActiveRecord::Base
   has_many :memberships
   has_many :invitations
   validates_presence_of :name, :creator_id
-  validates_uniqueness_of :creator_id, :message => 'You can only create one Crew, and you already did'
+  #validates_uniqueness_of :creator_id, :message => 'You can only create one Crew, and you already did'
   after_create :add_officer_membership
   
   def add_officer_membership

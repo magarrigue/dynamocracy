@@ -2,14 +2,14 @@ require 'test_helper'
 
 class CrewTest < ActiveSupport::TestCase
  
- test 'Create one crew and only one crew' do
+ test 'Create crew ' do
     user = Factory.build :user
     assert user.save
     crew = Crew.new(:name=>'test21', :creator_id=>user.id)
     assert crew.save!
     assert_equal user.id, crew.creator_id
     crew = Crew.new(:name=>'test21', :creator_id=>user.id)
-    assert !crew.save
+    assert crew.save
   end
   
  test 'Creating a crew create an officer membership for the creator' do

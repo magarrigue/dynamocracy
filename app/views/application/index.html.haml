@@ -2,16 +2,14 @@
 The collective decision-making tool
 %br
 - if user_signed_in?  
-  - if @my_crew
-    %h2
-      My Crew :
-      -if can? :read, Crew, :crew_id => @my_crew.id
-        =link_to " #{@my_crew.name}", crew_path(@my_crew)
+  -if !@my_crews.empty?
+    %h2 My Crews :
+    - @my_crews.each do |my_crew|
+      %ul
+      -if can? :read, Crew, :crew_id => my_crew.id
+        %li=link_to " #{my_crew.name}", crew_path(my_crew)
       
-  - else
-    %h2= link_to "Create a new crew", new_crew_path, :class => 'vote' 
-    .hint 
-      You may create at most one crew.
+  %h2= link_to "Create a new crew", new_crew_path, :class => 'vote' 
   %h2
     -if can? :read, Crew  
       Currently part of 
