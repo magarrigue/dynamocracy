@@ -41,7 +41,8 @@
               -if @crew && @crew.id
                 %li= '|'
                 - crew_name = ( @crew.name.length >= 18 ? "#{@crew.name[0..18]}.." : @crew.name )
-                %li= link_to crew_name, crew_path(@crew)
+                %li
+                  %strong= link_to crew_name, crew_path(@crew)
                 %li= '|'
                 %li= link_to 'Proposals', crew_proposals_path(@crew)
                 %li= '|'
