@@ -1,21 +1,9 @@
-%h1= "Members"
-
-%ul
-  - @memberships.each do |membership|
-    %li
-      ="#{membership.user.nickname} : #{membership.role}, #{date_distance membership.updated_at}"
-      -if can? :update, membership 
-        -if membership.role !='disabled' && current_user.id != membership.user_id
-          =link_to 'Disable?', crew_membership_path( membership.crew, membership, :membership => {:role=>'disabled'}), :method=>'PUT',:class=>'withdraw',:confirm=>"Do you confirm you want to disable #{membership.user.nickname}?"  
-        -if membership.role == 'officer'&& current_user.id != membership.user_id
-          = link_to 'Revoke?', crew_membership_path(membership.crew, membership, :membership => {:role=>'disabled'}),:method=>'PUT',:class=>'withdraw',:confirm=>"Do you confirm you want to revoke #{membership.user.nickname} to crewman?"
-        -if membership.role == 'disabled'
-          = link_to 'Invite again?', new_crew_invitation_path(membership.crew, membership, :invitation => {:email=>membership.user.email,:role=>'crewman'}), :class=>'vote'
-        -if membership.role == 'crewman'
-          = link_to 'Invite to be officer?', new_crew_invitation_path(membership.crew, membership, :invitation => {:email=>membership.user.email, :role=>'officer'}), :class=>'vote'
+%h2 Members
+=render :partial=>"members_table", :locals=>{:memberships=>@memberships}
      
 
 %br= link_to 'Back to proposals', crew_proposals_path(@crew)
+%br= link_to 'Back to crew', crew_path(@crew)
 
 
 

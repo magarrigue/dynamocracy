@@ -8,10 +8,10 @@
 
 
 %ul
-  %li= link_to 'Proposals', crew_proposals_path(@crew)
-  %li= link_to 'Members', crew_memberships_path(@crew)
+  %li= link_to "Proposals (#{Proposal.crew_id_equals(@crew.id).count})", crew_proposals_path(@crew)
+  %li= link_to "Members (#{Membership.crew_id_equals(@crew.id).count})", crew_memberships_path(@crew)
   -if can? :read, Invitation, :crew_id => @crew.id
-    %li= link_to 'Invitations', crew_invitations_path(@crew)
+    %li= link_to "Invitations (#{Invitation.crew_id_equals(@crew.id).count})", crew_invitations_path(@crew)
 
    
 

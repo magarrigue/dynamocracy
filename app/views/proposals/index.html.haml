@@ -31,9 +31,8 @@
     - @proposals.each do |proposal|
       - proposal.signatures_count
       %tr(class="#{proposal.full_status}")
-        %td(class='nickname')
-          %span=image_tag proposal.user.gravatar_url
-          %span= proposal.user.nickname
+        %td
+          =render :partial=>"application/member", :locals=>{:user=>proposal.user}
           %br
           = proposal.full_status == 'open' ? 'proposes' : 'proposed'
        

@@ -1,6 +1,12 @@
 %h1 Your crews
 %ul
 - @crews.each do |crew|
-  %li= link_to "#{crew.name.capitalize} crew", crew_proposals_path(crew)
+  %li
+    = link_to "#{crew.name.capitalize} crew", crew_path(crew)
+    ,
+    = link_to "#{Membership.crew_id_equals(crew.id).role_does_not_equal('disabled').count} actives users", crew_memberships_path(crew)
+    ,
+    = link_to "#{Proposal.crew_id_equals(crew.id).count} proposals", crew_proposals_path(crew)
+    
     
   
