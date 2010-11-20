@@ -1,12 +1,15 @@
 %h2
-  %span= link_to "Proposal Nº#{proposal.id}", crew_proposal_path(proposal.crew, proposal)
-%h3 
-
-
+  %span= link_to "Proposal Nº#{proposal.id}", crew_proposal_path(proposal.crew, proposal) 
   
+
+.hint
+  -if proposal.public_comments_allowed
+    Public comments allowed  
+%h3   
   .number
     Signatures :
     =proposal.signatures_count
+
 
   
 .nickname
